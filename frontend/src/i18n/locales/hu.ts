@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const hu: Messages = {
   meta: {
-    title: 'Ingyenes metaadat-tisztító – MI-metaadatok és MI-címkék törlése',
+    title: 'All Metadata Cleaner – MI-metaadatok és címkék ingyen törlése',
     description:
-      'Ingyenes eszköz MI-metaadatok (C2PA, EXIF, GPS, promptok) eltávolítására JPG, PNG, WebP és HEIC képekről. A böngészőben fut – nincs feltöltés, nincs minőségromlás.',
+      'Ingyenes eszköz MI-metaadatok (C2PA, EXIF, GPS, promptok) eltávolítására JPG, PNG, WebP és HEIC képekről. A böngészőben fut, feltöltés nélkül.',
   },
   header: {
     language: 'Nyelv',

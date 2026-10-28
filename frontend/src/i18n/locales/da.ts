@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const da: Messages = {
   meta: {
-    title: 'Gratis metadata-renser – AI-metadata-renser & AI-tag-fjerner',
+    title: 'All Metadata Cleaner – Fjern AI-metadata og tags gratis',
     description:
-      'Gratis værktøj til at fjerne AI-metadata (C2PA, EXIF, GPS, prompts) fra JPG-, PNG-, WebP- og HEIC-billeder. Kører i browseren – ingen upload, intet kvalitetstab.',
+      'Gratis værktøj til at fjerne AI-metadata (C2PA, EXIF, GPS, prompts) fra JPG-, PNG-, WebP- og HEIC-billeder. Kører i browseren – ingen upload.',
   },
   header: {
     language: 'Sprog',

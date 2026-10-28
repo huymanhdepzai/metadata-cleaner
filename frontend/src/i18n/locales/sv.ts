@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const sv: Messages = {
   meta: {
-    title: 'Ta bort metadata gratis – AI-metadata & AI-taggar',
+    title: 'All Metadata Cleaner – Ta bort AI-metadata & taggar gratis',
     description:
-      'Gratis verktyg för att ta bort AI-metadata (C2PA, EXIF, GPS, prompter) från JPG-, PNG-, WebP- och HEIC-bilder. I webbläsaren – ingen uppladdning, ingen kvalitetsförlust.',
+      'Gratis verktyg för att ta bort AI-metadata (C2PA, EXIF, GPS, prompter) från JPG-, PNG-, WebP- och HEIC-bilder. I webbläsaren, utan uppladdning.',
   },
   header: {
     language: 'Språk',

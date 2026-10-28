@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const th: Messages = {
   meta: {
-    title: 'ลบเมทาดาทาฟรี – ลบเมทาดาทา AI และแท็ก AI',
+    title: 'All Metadata Cleaner – ลบเมทาดาทาและแท็ก AI ฟรี',
     description:
       'เครื่องมือฟรีสำหรับลบเมทาดาทา AI (C2PA, EXIF, GPS และพรอมต์) ออกจากรูป JPG, PNG, WebP และ HEIC ทำงานในเบราว์เซอร์ ไม่ต้องอัปโหลด และคุณภาพไม่ลดลง',
   },

@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const zhTW: Messages = {
   meta: {
-    title: '免費中繼資料清除 – AI 中繼資料清除與 AI 標籤移除',
+    title: 'All Metadata Cleaner – 免費移除 AI 中繼資料與標籤',
     description:
       '免費工具，可檢查並移除 JPG、PNG、WebP 與 HEIC 圖片中的 AI 中繼資料（C2PA、EXIF、GPS、XMP，以及 Midjourney、Stable Diffusion、ComfyUI 提示詞）。在瀏覽器中執行，無須上傳，畫質不受影響。',
   },

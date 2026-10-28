@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const pl: Messages = {
   meta: {
-    title: 'Darmowe usuwanie metadanych – Metadane AI i tagi AI',
+    title: 'All Metadata Cleaner – Usuń metadane i tagi AI za darmo',
     description:
-      'Bezpłatne narzędzie do usuwania metadanych AI (C2PA, EXIF, GPS, prompty) z obrazów JPG, PNG, WebP i HEIC. Działa w przeglądarce — bez przesyłania i utraty jakości.',
+      'Bezpłatne narzędzie do usuwania metadanych AI (C2PA, EXIF, GPS, prompty) z obrazów JPG, PNG, WebP i HEIC. Działa w przeglądarce, bez przesyłania.',
   },
   header: {
     language: 'Język',

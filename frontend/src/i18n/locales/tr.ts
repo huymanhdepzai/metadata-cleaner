@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const tr: Messages = {
   meta: {
-    title: 'Ücretsiz meta veri temizleyici – AI meta verisi ve etiketi silme',
+    title: 'All Metadata Cleaner – Ücretsiz AI meta veri ve etiket silme',
     description:
-      'JPG, PNG, WebP ve HEIC görsellerdeki yapay zekâ meta verilerini (C2PA, EXIF, GPS, promptlar) kaldıran ücretsiz araç. Tarayıcıda çalışır: yükleme yok, kalite kaybı yok.',
+      'JPG, PNG, WebP ve HEIC görsellerdeki yapay zekâ meta verilerini (C2PA, EXIF, GPS, promptlar) kaldıran ücretsiz araç. Tarayıcıda çalışır, yükleme yok.',
   },
   header: {
     language: 'Dil',

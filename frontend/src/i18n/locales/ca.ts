@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const ca: Messages = {
   meta: {
-    title: 'Elimina metadades gratis – Netejador de metadades i etiquetes d’IA',
+    title: 'All Metadata Cleaner – Elimina metadades d’IA i tags gratis',
     description:
       'Eina gratuïta per eliminar metadades d’IA (C2PA, EXIF, GPS, prompts) d’imatges JPG, PNG, WebP i HEIC. Al navegador: sense pujades ni pèrdua de qualitat.',
   },

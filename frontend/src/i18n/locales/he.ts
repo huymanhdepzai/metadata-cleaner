@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const he: Messages = {
   meta: {
-    title: 'ניקוי מטא-דאטה בחינם – ניקוי מטא-דאטה של AI והסרת תגי AI',
+    title: 'All Metadata Cleaner – הסרת מטא-דאטה ותגי AI בחינם',
     description:
-      'כלי חינמי לבדיקה ולהסרה של מטא-דאטה של בינה מלאכותית (C2PA,‏ EXIF,‏ GPS ופרומפטים) מתמונות JPG,‏ PNG,‏ WebP ו-HEIC. פועל בדפדפן — בלי העלאה ובלי פגיעה באיכות.',
+      'כלי חינמי לבדיקה ולהסרה של מטא-דאטה של בינה מלאכותית (C2PA,‏ EXIF,‏ GPS ופרומפטים) מתמונות JPG,‏ PNG,‏ WebP ו-HEIC. פועל בדפדפן, בלי העלאה.',
   },
   header: {
     language: 'שפה',

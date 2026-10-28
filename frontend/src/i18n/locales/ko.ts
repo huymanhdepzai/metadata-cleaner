@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const ko: Messages = {
   meta: {
-    title: '무료 메타데이터 제거 – AI 메타데이터 & AI 태그 제거',
+    title: 'All Metadata Cleaner – AI 메타데이터·태그 무료 제거',
     description:
       'JPG, PNG, WebP, HEIC 이미지에서 AI 메타데이터(C2PA, EXIF, GPS, XMP, Midjourney·Stable Diffusion·ComfyUI 프롬프트)를 확인하고 제거하는 무료 도구. 브라우저에서 처리되므로 업로드가 없고 화질 손실도 없습니다.',
   },

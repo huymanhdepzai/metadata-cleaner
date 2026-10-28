@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const hr: Messages = {
   meta: {
-    title: 'Besplatno čišćenje metapodataka – AI metapodaci i AI oznake',
+    title: 'All Metadata Cleaner – Ukloni AI metapodatke i oznake gratis',
     description:
-      'Besplatan alat za uklanjanje AI metapodataka (C2PA, EXIF, GPS, promptovi) sa slika JPG, PNG, WebP i HEIC. Radi u pregledniku – bez prijenosa i gubitka kvalitete.',
+      'Besplatan alat za uklanjanje AI metapodataka (C2PA, EXIF, GPS, promptovi) sa slika JPG, PNG, WebP i HEIC. Radi u pregledniku, bez prijenosa.',
   },
   header: {
     language: 'Jezik',

@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const fi: Messages = {
   meta: {
-    title: 'Ilmainen metatietojen poisto – Tekoälyn metatiedot & tunnisteet',
+    title: 'All Metadata Cleaner – Poista AI-metatiedot ja tagit maksutta',
     description:
-      'Ilmainen työkalu tekoälyn metatietojen (C2PA, EXIF, GPS, kehotteet) poistamiseen JPG-, PNG-, WebP- ja HEIC-kuvista. Selaimessa – ei latausta, ei laatuhäviötä.',
+      'Ilmainen työkalu tekoälyn metatietojen (C2PA, EXIF, GPS, kehotteet) poistamiseen JPG-, PNG-, WebP- ja HEIC-kuvista. Selaimessa, ilman latausta.',
   },
   header: {
     language: 'Kieli',

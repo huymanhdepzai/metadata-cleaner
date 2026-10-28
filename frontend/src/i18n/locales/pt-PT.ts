@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const ptPT: Messages = {
   meta: {
-    title: 'Removedor de metadados gratuito – Metadados e etiquetas de IA',
+    title: 'All Metadata Cleaner – Remover metadados e etiquetas IA grátis',
     description:
-      'Ferramenta gratuita para remover metadados de IA (C2PA, EXIF, GPS, prompts) de imagens JPG, PNG, WebP e HEIC. No navegador: sem carregamentos nem perda de qualidade.',
+      'Ferramenta gratuita para remover metadados de IA (C2PA, EXIF, GPS, prompts) de imagens JPG, PNG, WebP e HEIC. No navegador, sem carregamentos.',
   },
   header: {
     language: 'Idioma',

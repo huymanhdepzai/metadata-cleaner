@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const de: Messages = {
   meta: {
-    title: 'Metadaten kostenlos entfernen – KI-Metadaten & KI-Tags entfernen',
+    title: 'All Metadata Cleaner – KI-Metadaten & Tags gratis entfernen',
     description:
-      'Kostenloses Tool zum Entfernen von KI-Metadaten (C2PA, EXIF, GPS, Prompts) aus JPG-, PNG-, WebP- und HEIC-Bildern. Im Browser – kein Upload, kein Qualitätsverlust.',
+      'Kostenloses Tool zum Entfernen von KI-Metadaten (C2PA, EXIF, GPS, Prompts) aus JPG-, PNG-, WebP- und HEIC-Bildern. Im Browser, ohne Upload.',
   },
   header: {
     language: 'Sprache',

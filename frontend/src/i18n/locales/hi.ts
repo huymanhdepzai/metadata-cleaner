@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const hi: Messages = {
   meta: {
-    title: 'मुफ़्त मेटाडेटा क्लीनर – AI मेटाडेटा क्लीनर और AI टैग रिमूवर',
+    title: 'All Metadata Cleaner – AI मेटाडेटा और टैग मुफ़्त में हटाएँ',
     description:
       'JPG, PNG, WebP और HEIC तस्वीरों से AI मेटाडेटा (C2PA, EXIF, GPS, प्रॉम्प्ट) हटाने का मुफ़्त टूल। ब्राउज़र में चलता है — न कोई अपलोड, न गुणवत्ता में कमी।',
   },

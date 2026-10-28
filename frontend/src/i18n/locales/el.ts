@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const el: Messages = {
   meta: {
-    title: 'Δωρεάν καθαρισμός μεταδεδομένων – Μεταδεδομένα ΤΝ & ετικέτες ΤΝ',
+    title: 'All Metadata Cleaner – Δωρεάν αφαίρεση μεταδεδομένων ΤΝ & tags',
     description:
       'Δωρεάν εργαλείο αφαίρεσης μεταδεδομένων ΤΝ (C2PA, EXIF, GPS, prompts) από εικόνες JPG, PNG, WebP και HEIC. Χωρίς μεταφόρτωση, χωρίς απώλεια ποιότητας.',
   },

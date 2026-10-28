@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const ja: Messages = {
   meta: {
-    title: '無料メタデータ削除 – AIメタデータ・AIタグ削除',
+    title: 'All Metadata Cleaner – 無料でAIメタデータ・タグを削除',
     description:
       'JPG・PNG・WebP・HEIC画像からAIメタデータ（C2PA、EXIF、GPS、XMP、Midjourney・Stable Diffusion・ComfyUIのプロンプト）を確認・削除できる無料ツール。ブラウザ内で処理するため、アップロード不要で画質も劣化しません。',
   },

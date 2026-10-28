@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const ro: Messages = {
   meta: {
-    title: 'Curățare metadate gratuită – Metadate IA și etichete IA',
+    title: 'All Metadata Cleaner – Elimină metadate și etichete IA gratuit',
     description:
-      'Instrument gratuit pentru eliminarea metadatelor IA (C2PA, EXIF, GPS, prompturi) din imagini JPG, PNG, WebP și HEIC. În browser – fără încărcare sau pierderi de calitate.',
+      'Instrument gratuit pentru eliminarea metadatelor IA (C2PA, EXIF, GPS, prompturi) din imagini JPG, PNG, WebP și HEIC. În browser, fără încărcare.',
   },
   header: {
     language: 'Limbă',

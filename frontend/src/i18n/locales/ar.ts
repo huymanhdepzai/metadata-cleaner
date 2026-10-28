@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const ar: Messages = {
   meta: {
-    title: 'حذف البيانات الوصفية مجانًا – منظف بيانات AI ومزيل وسوم AI',
+    title: 'All Metadata Cleaner – حذف بيانات AI الوصفية والوسوم مجانًا',
     description:
-      'أداة مجانية لفحص وإزالة بيانات الذكاء الاصطناعي الوصفية (C2PA وEXIF وGPS والأوامر) من صور JPG وPNG وWebP وHEIC. تعمل داخل متصفحك: دون رفع ودون فقدان للجودة.',
+      'أداة مجانية لفحص وإزالة بيانات الذكاء الاصطناعي الوصفية (C2PA وEXIF وGPS والأوامر) من صور JPG وPNG وWebP وHEIC. تعمل داخل متصفحك دون رفع.',
   },
   header: {
     language: 'اللغة',

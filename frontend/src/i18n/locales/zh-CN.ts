@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const zhCN: Messages = {
   meta: {
-    title: '免费元数据清除 – AI 元数据清除与 AI 标签移除',
+    title: 'All Metadata Cleaner – 免费删除 AI 元数据与标签',
     description:
       '免费工具，可检查并删除 JPG、PNG、WebP 和 HEIC 图片中的 AI 元数据（C2PA、EXIF、GPS、XMP，以及 Midjourney、Stable Diffusion、ComfyUI 提示词）。在浏览器中运行，无需上传，画质无损。',
   },
