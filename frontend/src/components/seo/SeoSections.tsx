@@ -124,30 +124,13 @@ export function WhyChoose() {
     <section id={HOME_SECTIONS.why} className="scroll-mt-20 bg-gradient-to-b from-indigo-50/70 to-slate-50 py-16 sm:py-20">
       <div className="mx-auto max-w-5xl px-4">
         <SectionHeading eyebrow={why.eyebrow} title={fmt(why.title, { name: SITE.name })} text={why.text} />
-        {/* Điện thoại: mỗi tiêu chí là một thẻ, ba cách làm xếp dọc (không phải cuộn ngang bảng). */}
-        <ul data-reveal="group" className="space-y-3 sm:hidden">
-          {WHY_ROWS.map((cells, i) => (
-            <li key={i} className="rounded-2xl border border-slate-200 bg-surface p-4 shadow-sm">
-              <p className="font-semibold text-slate-900">{why.rows[i]}</p>
-              <dl className="mt-3 space-y-2 text-sm">
-                {[SITE.name, why.columns.online, why.columns.screenshot].map((label, c) => (
-                  <div
-                    key={c}
-                    className={`flex items-center justify-between gap-3 rounded-lg px-3 py-2 ${c === 0 ? 'bg-indigo-50 font-semibold text-indigo-700' : 'text-slate-600'}`}
-                  >
-                    <dt className="min-w-0">{label}</dt>
-                    <dd className="shrink-0">
-                      <SupportMark value={cells[c]} labels={why.legend} />
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </li>
-          ))}
-        </ul>
-        <div data-reveal className="hidden overflow-x-auto rounded-2xl border border-slate-200 bg-surface shadow-sm sm:block">
-          <table className="w-full min-w-[640px] text-start text-sm">
-            <thead className="bg-slate-50 text-slate-700">
+        {/*
+          Một bảng duy nhất (không lặp nội dung trong HTML). Điện thoại: mỗi hàng hiển thị thành một thẻ, ba cách làm
+          xếp dọc; tên cột lấy từ data-label qua CSS. Màn hình rộng: bảng bình thường.
+        */}
+        <div data-reveal className="sm:overflow-x-auto sm:rounded-2xl sm:border sm:border-slate-200 sm:bg-surface sm:shadow-sm">
+          <table className="w-full text-start text-sm sm:min-w-[640px]">
+            <thead className="bg-slate-50 text-slate-700 max-sm:sr-only">
               <tr>
                 <th scope="col" className="px-5 py-4 text-start font-semibold">
                   {why.columns.feature}
@@ -163,14 +146,20 @@ export function WhyChoose() {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200">
+            <tbody className="max-sm:block max-sm:space-y-3 sm:divide-y sm:divide-slate-200">
               {WHY_ROWS.map((cells, i) => (
-                <tr key={i}>
-                  <th scope="row" className="px-5 py-3.5 text-start font-medium text-slate-800">
+                <tr key={i} className="max-sm:block max-sm:rounded-2xl max-sm:border max-sm:border-slate-200 max-sm:bg-surface max-sm:p-4 max-sm:shadow-sm">
+                  <th scope="row" className="text-start font-medium text-slate-800 max-sm:mb-3 max-sm:block max-sm:font-semibold max-sm:text-slate-900 sm:px-5 sm:py-3.5">
                     {why.rows[i]}
                   </th>
                   {cells.map((value, c) => (
-                    <td key={c} className={`px-5 py-3.5 text-center ${c === 0 ? 'bg-indigo-50/60' : ''}`}>
+                    <td
+                      key={c}
+                      data-label={[SITE.name, why.columns.online, why.columns.screenshot][c]}
+                      className={`max-sm:mt-2 max-sm:flex max-sm:items-center max-sm:justify-between max-sm:gap-3 max-sm:rounded-lg max-sm:px-3 max-sm:py-2 max-sm:before:min-w-0 max-sm:before:content-[attr(data-label)] sm:px-5 sm:py-3.5 sm:text-center ${
+                        c === 0 ? 'bg-indigo-50/60 max-sm:bg-indigo-50 max-sm:font-semibold max-sm:text-indigo-700' : 'max-sm:text-slate-600'
+                      }`}
+                    >
                       <SupportMark value={value} labels={why.legend} />
                     </td>
                   ))}
@@ -201,32 +190,13 @@ export function FormatTable() {
     <section id={HOME_SECTIONS.formats} className="scroll-mt-20 bg-surface py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4">
         <SectionHeading eyebrow={formats.eyebrow} title={formats.title} text={formats.text} />
-        {/* Điện thoại/máy tính bảng dọc: mỗi định dạng một thẻ; màn hình rộng: bảng đầy đủ. */}
-        <ul data-reveal="group" className="grid gap-3 sm:grid-cols-2 lg:hidden" dir="ltr">
-          {FORMAT_ROWS.map((r) => (
-            <li key={r.format} className="rounded-2xl border border-slate-200 bg-surface p-4">
-              <p className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                <span className="font-bold text-slate-900">
-                  <FormatName row={r} />
-                </span>
-                <span className="text-xs text-slate-500">{r.structure}</span>
-              </p>
-              <dl className="mt-3 space-y-2 text-sm">
-                <div>
-                  <dt className="text-xs font-semibold tracking-wide text-slate-500 uppercase">{formats.colRemoved}</dt>
-                  <dd className="mt-0.5 break-words text-rose-700">{r.removed}</dd>
-                </div>
-                <div>
-                  <dt className="text-xs font-semibold tracking-wide text-slate-500 uppercase">{formats.colKept}</dt>
-                  <dd className="mt-0.5 break-words text-emerald-700">{r.kept}</dd>
-                </div>
-              </dl>
-            </li>
-          ))}
-        </ul>
-        <div data-reveal className="hidden overflow-x-auto rounded-2xl border border-slate-200 lg:block">
-          <table className="w-full min-w-[720px] text-start text-sm">
-            <thead className="bg-slate-50 text-slate-700">
+        {/*
+          Một bảng duy nhất (không lặp nội dung trong HTML). Điện thoại/máy tính bảng dọc: mỗi định dạng hiển thị thành
+          một thẻ, tên cột lấy từ data-label qua CSS; màn hình rộng: bảng đầy đủ.
+        */}
+        <div data-reveal className="lg:overflow-x-auto lg:rounded-2xl lg:border lg:border-slate-200">
+          <table className="w-full text-start text-sm lg:min-w-[720px]">
+            <thead className="bg-slate-50 text-slate-700 max-lg:sr-only">
               <tr>
                 <th className="px-4 py-3 text-start font-semibold">{formats.colFormat}</th>
                 <th className="px-4 py-3 text-start font-semibold">{formats.colStructure}</th>
@@ -234,15 +204,28 @@ export function FormatTable() {
                 <th className="px-4 py-3 text-start font-semibold">{formats.colKept}</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100" dir="ltr">
+            <tbody className="max-lg:grid max-lg:gap-3 sm:max-lg:grid-cols-2 lg:divide-y lg:divide-slate-100" dir="ltr">
               {FORMAT_ROWS.map((r) => (
-                <tr key={r.format}>
-                  <td className="px-4 py-3 font-semibold whitespace-nowrap text-slate-900">
+                <tr
+                  key={r.format}
+                  className="max-lg:flex max-lg:flex-wrap max-lg:items-baseline max-lg:justify-between max-lg:gap-x-3 max-lg:gap-y-1 max-lg:rounded-2xl max-lg:border max-lg:border-slate-200 max-lg:bg-surface max-lg:p-4"
+                >
+                  <td className="font-semibold whitespace-nowrap text-slate-900 max-lg:font-bold lg:px-4 lg:py-3">
                     <FormatName row={r} />
                   </td>
-                  <td className="px-4 py-3 text-slate-600">{r.structure}</td>
-                  <td className="px-4 py-3 text-rose-700">{r.removed}</td>
-                  <td className="px-4 py-3 text-emerald-700">{r.kept}</td>
+                  <td className="text-slate-600 max-lg:text-xs max-lg:text-slate-500 lg:px-4 lg:py-3">{r.structure}</td>
+                  {[
+                    [formats.colRemoved, r.removed, 'text-rose-700 max-lg:mt-2'],
+                    [formats.colKept, r.kept, 'text-emerald-700 max-lg:mt-1'],
+                  ].map(([label, value, tone]) => (
+                    <td
+                      key={label}
+                      data-label={label}
+                      className={`${tone} max-lg:w-full max-lg:break-words max-lg:before:mb-0.5 max-lg:before:block max-lg:before:text-xs max-lg:before:font-semibold max-lg:before:tracking-wide max-lg:before:text-slate-500 max-lg:before:uppercase max-lg:before:content-[attr(data-label)] lg:px-4 lg:py-3`}
+                    >
+                      {value}
+                    </td>
+                  ))}
                 </tr>
               ))}
             </tbody>

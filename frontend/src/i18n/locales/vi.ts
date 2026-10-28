@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const vi: Messages = {
   meta: {
-    title: 'All Metadata Cleaner – Xóa Metadata AI & Tag miễn phí',
+    title: 'All Metadata Cleaner – Xóa metadata AI & gỡ nhãn AI miễn phí',
     description:
       'Công cụ miễn phí xóa metadata AI (C2PA, EXIF, GPS, prompt Midjourney, ComfyUI) khỏi ảnh JPG, PNG, WebP, HEIC. Xử lý trên trình duyệt, không tải ảnh lên.',
   },

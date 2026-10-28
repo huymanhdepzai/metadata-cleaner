@@ -13,6 +13,14 @@ import { Badge, Icon, Spinner } from '../ui';
 /** Kích thước logic của màn hình (16:10); cả màn hình được thu phóng cho vừa khung. */
 const W = 960;
 const H = 600;
+
+/**
+ * Chữ trang trí trong mockup (tiêu đề, mô tả, vùng thả ảnh, màn kết): vẽ bằng CSS `content: attr(data-text)` nên
+ * không thành văn bản trong HTML — tránh lặp H1/nội dung trang (mật độ từ khóa, nội dung trùng) mà hình vẫn y hệt.
+ */
+function Txt({ children }: { children: string }) {
+  return <span data-text={children} className="before:content-[attr(data-text)]" />;
+}
 const DURATION = 18500;
 /** Thời điểm bắt đầu của từng chương (bước). */
 const CHAPTERS = [0, 3600, 7000, 11000];
@@ -207,7 +215,7 @@ export function HowItWorksDemo() {
                   <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
                   <span className="h-3 w-3 rounded-full bg-[#28c840]" />
                   <span className="mx-auto flex items-center gap-1.5 rounded-md bg-surface px-24 py-1 text-xs text-slate-500 ring-1 ring-slate-200">
-                    <Icon name="lock" className="h-3 w-3" /> {SITE.origin.replace(/^https:\/\//, '')}
+                    <Icon name="lock" className="h-3 w-3" /> <Txt>{SITE.origin.replace(/^https:\/\//, '')}</Txt>
                   </span>
                   <span className="w-[52px]" />
                 </div>
@@ -215,7 +223,9 @@ export function HowItWorksDemo() {
                 {/* Header trang */}
                 <div className="flex h-12 items-center gap-2 border-b border-slate-200 bg-surface px-6">
                   <BrandMark className="h-6 w-6" gradientId="demo-brand" />
-                  <span className="font-brand text-sm font-extrabold text-slate-900">{SITE.name}</span>
+                  <span className="font-brand text-sm font-extrabold text-slate-900">
+                    <Txt>{SITE.name}</Txt>
+                  </span>
                   <span className="ms-auto flex gap-3">
                     {[48, 64, 40, 56].map((w) => (
                       <span key={w} className="h-2 rounded-full bg-slate-200" style={{ width: w }} />
@@ -227,27 +237,39 @@ export function HowItWorksDemo() {
                   {!hasFiles ? (
                     <>
                       <p className="text-center text-3xl font-extrabold tracking-tight text-slate-900">
-                        {t.hero.title} <span className="text-indigo-600">{t.hero.titleAccent}</span>
+                        <Txt>{t.hero.title}</Txt>{' '}
+                        <span className="text-indigo-600">
+                          <Txt>{t.hero.titleAccent}</Txt>
+                        </span>
                       </p>
-                      <p className="mx-auto mt-2 line-clamp-2 max-w-2xl text-center text-sm text-slate-600">{t.hero.subtitle}</p>
+                      <p className="mx-auto mt-2 line-clamp-2 max-w-2xl text-center text-sm text-slate-600">
+                        <Txt>{t.hero.subtitle}</Txt>
+                      </p>
                       <div className="mx-auto mt-6 max-w-2xl rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/50 px-6 py-9 text-center">
                         <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-indigo-600 text-white shadow-lg shadow-indigo-600/30">
                           <Icon name="upload" className="h-6 w-6" />
                         </span>
-                        <p className="mt-3 font-semibold text-slate-900">{t.dropzone.drop}</p>
-                        <p className="mt-1 text-sm text-slate-500">{t.dropzone.or}</p>
+                        <p className="mt-3 font-semibold text-slate-900">
+                          <Txt>{t.dropzone.drop}</Txt>
+                        </p>
+                        <p className="mt-1 text-sm text-slate-500">
+                          <Txt>{t.dropzone.or}</Txt>
+                        </p>
                         <span
                           ref={reg('choose')}
                           className={`mt-2 inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition ${press('choose')}`}
                         >
-                          <Icon name="photo" className="h-4 w-4" /> {t.dropzone.choose}
+                          <Icon name="photo" className="h-4 w-4" /> <Txt>{t.dropzone.choose}</Txt>
                         </span>
                       </div>
                     </>
                   ) : (
                     <>
                       <p className="text-xl font-extrabold tracking-tight text-slate-900">
-                        {t.hero.title} <span className="text-indigo-600">{t.hero.titleAccent}</span>
+                        <Txt>{t.hero.title}</Txt>{' '}
+                        <span className="text-indigo-600">
+                          <Txt>{t.hero.titleAccent}</Txt>
+                        </span>
                       </p>
                       {/* Thanh công cụ */}
                       <div className="mt-3 rounded-2xl border border-slate-200 bg-surface p-3 shadow-sm">
@@ -487,8 +509,6 @@ export function HowItWorksDemo() {
   );
 }
 
-/** Từ khóa chính của trang (tiếng Anh ở mọi ngôn ngữ — là cụm tìm kiếm/thương hiệu). */
-const END_KEYWORDS = ['AI Metadata Cleaner', 'AI Tag Remover'];
 const END_FORMATS = 'C2PA · EXIF · GPS · XMP · IPTC · Midjourney · Stable Diffusion · ComfyUI';
 
 function EndCard({ visible }: { visible: boolean }) {
@@ -506,30 +526,38 @@ function EndCard({ visible }: { visible: boolean }) {
 
       <div {...rise(0, 'relative flex items-center justify-center gap-3')}>
         <BrandMark className="h-12 w-12 rounded-xl ring-2 ring-white/30" gradientId="end-brand" />
-        <span className="font-brand text-2xl font-extrabold tracking-tight">{SITE.name}</span>
+        <span className="font-brand text-2xl font-extrabold tracking-tight">
+          <Txt>{SITE.name}</Txt>
+        </span>
       </div>
-      <p {...rise(1, 'relative mt-7 text-6xl font-extrabold tracking-tight')}>Free Metadata Cleaner</p>
-      <p {...rise(2, 'relative mt-3 text-3xl font-semibold text-[#e0e7ff]')}>{END_KEYWORDS.join(' · ')}</p>
-      <ul {...rise(3, 'relative mt-8 flex flex-wrap justify-center gap-2.5')}>
+      {/* Tiêu đề theo ngôn ngữ đang xem (không chèn cụm tiếng Anh cố định vào trang ngôn ngữ khác). */}
+      <p {...rise(1, 'relative mt-7 text-5xl font-extrabold tracking-tight')}>
+        <Txt>{t.hero.title}</Txt>
+      </p>
+      <p {...rise(2, 'relative mt-3 text-3xl font-semibold text-[#e0e7ff]')}>
+        <Txt>{t.hero.titleAccent}</Txt>
+      </p>
+      <div {...rise(3, 'relative mt-8 flex flex-wrap justify-center gap-2.5')}>
         {[trust.free, trust.noUpload, trust.lossless, trust.batch].map((item) => (
-          <li key={item} className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-1.5 text-base font-medium ring-1 ring-white/25">
-            <Icon name="tick" className="h-4 w-4" /> {item}
-          </li>
+          <span key={item} className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-1.5 text-base font-medium ring-1 ring-white/25">
+            <Icon name="tick" className="h-4 w-4" /> <Txt>{item}</Txt>
+          </span>
         ))}
-      </ul>
+      </div>
       <p {...rise(4, 'relative mt-5 text-sm tracking-wide text-[#c7d2fe]')} dir="ltr">
-        {END_FORMATS}
+        <Txt>{END_FORMATS}</Txt>
       </p>
       <div {...rise(5, 'relative mt-8 flex flex-col items-center gap-3')}>
         <a
           href={`#${HOME_SECTIONS.tool}`}
           tabIndex={visible ? undefined : -1}
+          aria-label={t.dropzone.choose}
           className="pointer-events-auto inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-lg font-bold text-[#4338ca] shadow-xl shadow-indigo-950/30 transition-transform hover:scale-105"
         >
-          <Icon name="sparkles" className="h-5 w-5" /> {t.dropzone.choose}
+          <Icon name="sparkles" className="h-5 w-5" /> <Txt>{t.dropzone.choose}</Txt>
         </a>
         <span className="text-base font-semibold text-white/80" dir="ltr">
-          {SITE.origin.replace(/^https:\/\//, '')}
+          <Txt>{SITE.origin.replace(/^https:\/\//, '')}</Txt>
         </span>
       </div>
     </div>

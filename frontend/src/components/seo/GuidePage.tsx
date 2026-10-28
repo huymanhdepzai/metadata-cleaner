@@ -12,26 +12,46 @@ import { GuideCard } from './SeoSections';
 const sectionId = (i: number) => `section-${i + 1}`;
 
 /**
- * Bảng trên màn hình hẹp (< sm): mỗi hàng thành một thẻ — cột đầu làm tiêu đề, các cột còn lại thành cặp nhãn/giá trị.
- * Tránh bảng nhiều cột bị ép chữ hoặc phải cuộn ngang mà người đọc không biết còn cột bị khuất.
+ * Bảng trong bài — một cấu trúc HTML duy nhất (không lặp nội dung). Màn hình hẹp (< sm): mỗi hàng hiển thị thành
+ * một thẻ — cột đầu làm tiêu đề, các cột còn lại thành cặp nhãn/giá trị (nhãn lấy từ data-label qua CSS). Tránh bảng
+ * nhiều cột bị ép chữ hoặc phải cuộn ngang mà người đọc không biết còn cột bị khuất.
  */
-function ArticleTableCards({ table }: { table: { head: string[]; rows: string[][] } }) {
+function ArticleTable({ table }: { table: { head: string[]; rows: string[][] } }) {
   return (
-    <ul className="mt-5 space-y-3 sm:hidden">
-      {table.rows.map((row, r) => (
-        <li key={r} className="rounded-xl border border-slate-200 bg-surface p-4">
-          <p className="font-semibold text-slate-900">{row[0]}</p>
-          <dl className="mt-2 space-y-1.5 text-sm">
-            {row.slice(1).map((cell, c) => (
-              <div key={c} className="flex gap-3">
-                <dt className="w-2/5 shrink-0 text-slate-500">{table.head[c + 1]}</dt>
-                <dd className="min-w-0 text-slate-700">{cell}</dd>
-              </div>
+    <div className="mt-5 sm:overflow-x-auto sm:rounded-xl sm:border sm:border-slate-200">
+      <table className="w-full text-start text-sm">
+        <thead className="bg-slate-50 text-slate-700 max-sm:sr-only">
+          <tr>
+            {table.head.map((h) => (
+              <th key={h} scope="col" className="px-4 py-2.5 text-start font-semibold">
+                {h}
+              </th>
             ))}
-          </dl>
-        </li>
-      ))}
-    </ul>
+          </tr>
+        </thead>
+        <tbody className="text-slate-700 max-sm:block max-sm:space-y-3 sm:divide-y sm:divide-slate-100">
+          {table.rows.map((row, r) => (
+            <tr key={r} className="max-sm:block max-sm:space-y-1.5 max-sm:rounded-xl max-sm:border max-sm:border-slate-200 max-sm:bg-surface max-sm:p-4">
+              {row.map((cell, c) =>
+                c === 0 ? (
+                  <th key={c} scope="row" className="text-start font-medium text-slate-900 max-sm:mb-2 max-sm:block max-sm:font-semibold sm:px-4 sm:py-2.5">
+                    {cell}
+                  </th>
+                ) : (
+                  <td
+                    key={c}
+                    data-label={table.head[c]}
+                    className="max-sm:flex max-sm:gap-3 max-sm:before:w-2/5 max-sm:before:shrink-0 max-sm:before:text-slate-500 max-sm:before:content-[attr(data-label)] sm:px-4 sm:py-2.5"
+                  >
+                    <span className="min-w-0">{cell}</span>
+                  </td>
+                ),
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -186,39 +206,7 @@ export function GuidePage({ slug }: { slug: GuideSlug }) {
                   ))}
                 </ul>
               )}
-              {s.table && <ArticleTableCards table={s.table} />}
-              {s.table && (
-                <div className="mt-5 hidden overflow-x-auto rounded-xl border border-slate-200 sm:block">
-                  <table className="w-full text-start text-sm">
-                    <thead className="bg-slate-50 text-slate-700">
-                      <tr>
-                        {s.table.head.map((h) => (
-                          <th key={h} scope="col" className="px-4 py-2.5 text-start font-semibold">
-                            {h}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 text-slate-700">
-                      {s.table.rows.map((row, r) => (
-                        <tr key={r}>
-                          {row.map((cell, c) =>
-                            c === 0 ? (
-                              <th key={c} scope="row" className="px-4 py-2.5 text-start font-medium text-slate-900">
-                                {cell}
-                              </th>
-                            ) : (
-                              <td key={c} className="px-4 py-2.5">
-                                {cell}
-                              </td>
-                            ),
-                          )}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
+              {s.table && <ArticleTable table={s.table} />}
               {s.related && <SeeAlso slugs={s.related} />}
             </section>
           ))}
