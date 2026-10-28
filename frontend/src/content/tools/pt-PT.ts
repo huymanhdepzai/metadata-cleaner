@@ -4,7 +4,7 @@ const tools: ToolsContent = {
   hub: {
     title: 'Ferramentas gratuitas de metadados de imagem',
     description:
-      'Ferramentas gratuitas no navegador para ver, analisar e remover metadados de imagens: visualizador EXIF, análise de privacidade, tamanho dos metadados, remover EXIF, GPS e C2PA.',
+      'Ferramentas gratuitas no navegador para ver, analisar e remover metadados de imagens: visualizador EXIF, análise de privacidade, tamanho dos metadados.',
     intro:
       'Todas as ferramentas funcionam no seu navegador com o mesmo motor: as imagens nunca são enviadas e nada é recomprimido. Escolha o que precisa — ver o interior de uma fotografia, verificar o que revela ou limpá-la.',
   },
@@ -51,9 +51,9 @@ const tools: ToolsContent = {
       ],
     },
     'privacy-check': {
-      title: 'Análise de privacidade de fotografias — encontre GPS e dados pessoais',
+      title: 'Análise de privacidade de fotografias — GPS e dados pessoais',
       description:
-        'Verifique o que uma fotografia revela antes de a partilhar: localização GPS para abrir no mapa, autor, número de série, hora da captura e dados de IA. Gratuito, sem envio.',
+        'Verifique o que uma fotografia revela antes de a partilhar: localização GPS para abrir no mapa, autor, hora da captura e dados de IA. Gratuito, sem envio.',
       intro:
         'Descubra o que uma fotografia denuncia antes de a publicar. A análise mostra se contém uma localização GPS (e para onde aponta), dados pessoais como o autor ou o número de série do dispositivo, a hora da captura e dados de proveniência de IA — com um nível de risco simples.',
       steps: [
@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Tamanho dos metadados — quantos metadados tem uma fotografia?',
       description:
-        'Meça quantos metadados uma imagem contém: total de bytes, percentagem do ficheiro, os maiores blocos EXIF, XMP, C2PA ou de prompts e o risco de privacidade. Gratuito, sem envio.',
+        'Meça quantos metadados uma imagem contém: total de bytes, os maiores blocos EXIF, C2PA ou de prompts e o risco de privacidade. Gratuito, sem envio.',
       intro:
         'Veja que parte de um ficheiro são metadados e não imagem. A ferramenta lista cada bloco de metadados por tamanho — EXIF, XMP, C2PA, pré-visualizações incorporadas, prompts e fluxos de IA —, mostra a percentagem do ficheiro e avalia o risco de privacidade.',
       steps: [

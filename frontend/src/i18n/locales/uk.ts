@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const uk: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Видалити метадані ШІ із зображень',
+    title: 'Безкоштовне очищення метаданих – метадані ШІ та теги ШІ',
     description:
-      'Безкоштовний інструмент для перевірки та видалення метаданих ШІ (C2PA, EXIF, GPS, XMP, промптів Midjourney, Stable Diffusion і ComfyUI) із зображень JPG, PNG, WebP і HEIC. Працює у браузері — без завантаження на сервер і без втрати якості.',
+      'Безкоштовний інструмент для видалення метаданих ШІ (C2PA, EXIF, GPS, промптів) із зображень JPG, PNG, WebP і HEIC. У браузері — без завантаження і без втрати якості.',
   },
   header: {
     language: 'Мова',
@@ -14,8 +14,8 @@ const uk: Messages = {
   },
   hero: {
     eyebrow: 'Підтримка C2PA · EXIF · XMP · IPTC · промптів ШІ',
-    title: 'Видаліть метадані ШІ із зображень',
-    titleAccent: 'безпечно й без втрати якості',
+    title: 'Безкоштовне очищення метаданих ШІ',
+    titleAccent: 'і видалення тегів ШІ',
     subtitle:
       'Перевірте й видаліть Content Credentials (C2PA), EXIF, GPS, XMP та промпти Midjourney, Stable Diffusion або ComfyUI із зображень JPG, PNG, WebP, HEIC і AVIF — обробка відбувається у браузері, фото ніколи не залишають ваш пристрій.',
     trust: {

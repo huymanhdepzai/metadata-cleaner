@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const he: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | הסרת מטא-דאטה של בינה מלאכותית מתמונות',
+    title: 'ניקוי מטא-דאטה בחינם – ניקוי מטא-דאטה של AI והסרת תגי AI',
     description:
-      'כלי חינמי לבדיקה ולהסרה של מטא-דאטה של בינה מלאכותית (C2PA,‏ EXIF,‏ GPS,‏ XMP, פרומפטים של Midjourney,‏ Stable Diffusion ו-ComfyUI) מתמונות JPG,‏ PNG,‏ WebP ו-HEIC. פועל בדפדפן — בלי העלאה ובלי פגיעה באיכות.',
+      'כלי חינמי לבדיקה ולהסרה של מטא-דאטה של בינה מלאכותית (C2PA,‏ EXIF,‏ GPS ופרומפטים) מתמונות JPG,‏ PNG,‏ WebP ו-HEIC. פועל בדפדפן — בלי העלאה ובלי פגיעה באיכות.',
   },
   header: {
     language: 'שפה',
@@ -14,8 +14,8 @@ const he: Messages = {
   },
   hero: {
     eyebrow: 'תמיכה ב-C2PA · EXIF · XMP · IPTC · פרומפטים של AI',
-    title: 'הסירו מטא-דאטה של בינה מלאכותית מתמונות',
-    titleAccent: 'בבטחה ובלי לפגוע באיכות',
+    title: 'ניקוי מטא-דאטה של בינה מלאכותית בחינם',
+    titleAccent: 'והסרת תגי AI',
     subtitle:
       'בדקו והסירו Content Credentials ‏(C2PA),‏ EXIF,‏ GPS,‏ XMP ופרומפטים של Midjourney,‏ Stable Diffusion או ComfyUI מתמונות JPG,‏ PNG,‏ WebP,‏ HEIC ו-AVIF — העיבוד מתבצע בדפדפן, והתמונות שלכם אף פעם לא יוצאות מהמכשיר.',
     trust: {

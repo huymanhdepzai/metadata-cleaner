@@ -87,7 +87,7 @@ const pages: Pages = {
   terms: {
     title: 'Warunki korzystania',
     description:
-      'Warunki korzystania z All Metadata Cleaner: darmowe narzędzie udostępniane w stanie, w jakim jest, Twoja odpowiedzialność za użycie oczyszczonych obrazów i granice naszej odpowiedzialności.',
+      'Warunki korzystania: darmowe narzędzie udostępniane w stanie, w jakim jest, Twoja odpowiedzialność za użycie oczyszczonych obrazów i granice naszej odpowiedzialności.',
     intro:
       'Korzystając z All Metadata Cleaner, akceptujesz te warunki. Przeczytaj je razem z zastrzeżeniem na stronie głównej i naszą Polityką prywatności.',
     sections: [

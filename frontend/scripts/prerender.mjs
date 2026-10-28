@@ -4,6 +4,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { gzipSync } from 'node:zlib';
 import { Resvg } from '@resvg/resvg-js';
 
 const root = path.resolve(import.meta.dirname, '..');
@@ -61,9 +62,21 @@ for (const [file, size] of [['apple-touch-icon.png', 180], ['icon-192.png', 192]
   await fs.writeFile(path.join(dist, file), toPng(favicon, size));
 }
 
+// Nén sẵn (gzip mức 9) cho Nginx gzip_static: HTML, CSS, JS, sitemap… ≥ 1 KB — giảm thời gian phản hồi máy chủ.
+const compressible = /\.(html|css|js|mjs|json|xml|txt|svg|webmanifest)$/;
+let gzipped = 0;
+for (const entry of await fs.readdir(dist, { recursive: true, withFileTypes: true })) {
+  if (!entry.isFile() || !compressible.test(entry.name)) continue;
+  const file = path.join(entry.parentPath, entry.name);
+  const data = await fs.readFile(file);
+  if (data.length < 1024) continue;
+  await fs.writeFile(`${file}.gz`, gzipSync(data, { level: 9 }));
+  gzipped++;
+}
+
 // Cấu hình Nginx cho VPS (301, chọn ngôn ngữ ở "/", cache, 404) — nằm ngoài dist/ để không bị phục vụ công khai.
 await fs.mkdir(path.join(root, 'deploy'), { recursive: true });
 await fs.writeFile(path.join(root, 'deploy', 'nginx.conf'), nginxConf());
 
 await fs.rm(ssrDir, { recursive: true, force: true });
-console.log(`prerendered ${count} pages + 404.html + sitemap.xml + ${og.length} OG images + deploy/nginx.conf`);
+console.log(`prerendered ${count} pages + 404.html + sitemap.xml + ${og.length} OG images + ${gzipped} .gz + deploy/nginx.conf`);

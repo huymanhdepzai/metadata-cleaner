@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const ru: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Удалить метаданные ИИ из изображений',
+    title: 'Бесплатная очистка метаданных – удаление метаданных и тегов ИИ',
     description:
-      'Бесплатный инструмент для проверки и удаления метаданных ИИ (C2PA, EXIF, GPS, XMP, промптов Midjourney, Stable Diffusion и ComfyUI) из изображений JPG, PNG, WebP и HEIC. Работает в браузере — без загрузки и без потери качества.',
+      'Бесплатный инструмент для удаления метаданных ИИ (C2PA, EXIF, GPS, промптов) из изображений JPG, PNG, WebP и HEIC. В браузере — без загрузки и без потери качества.',
   },
   header: {
     language: 'Язык',
@@ -14,8 +14,8 @@ const ru: Messages = {
   },
   hero: {
     eyebrow: 'Поддержка C2PA · EXIF · XMP · IPTC · промптов ИИ',
-    title: 'Удалите метаданные ИИ из изображений',
-    titleAccent: 'безопасно и без потери качества',
+    title: 'Бесплатная очистка метаданных ИИ',
+    titleAccent: 'и удаление ИИ-тегов',
     subtitle:
       'Проверьте и удалите Content Credentials (C2PA), EXIF, GPS, XMP и промпты Midjourney, Stable Diffusion или ComfyUI из изображений JPG, PNG, WebP, HEIC и AVIF — обработка идёт в браузере, фото никогда не покидают ваше устройство.',
     trust: {

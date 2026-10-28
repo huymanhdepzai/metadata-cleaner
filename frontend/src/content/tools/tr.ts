@@ -4,7 +4,7 @@ const tools: ToolsContent = {
   hub: {
     title: 'Ücretsiz görüntü meta veri araçları',
     description:
-      'Görüntü meta verilerini görmek, analiz etmek ve kaldırmak için tarayıcıda ücretsiz araçlar: EXIF görüntüleyici, gizlilik kontrolü, meta veri boyutu, EXIF, GPS ve C2PA kaldırma.',
+      'Görüntü meta verilerini görmek, analiz etmek ve kaldırmak için tarayıcıda ücretsiz araçlar: EXIF görüntüleyici, gizlilik kontrolü, meta veri boyutu.',
     intro:
       'Tüm araçlar tarayıcınızda aynı motorla çalışır: görüntüleriniz asla yüklenmez ve hiçbir şey yeniden sıkıştırılmaz. İhtiyacınızı seçin — bir fotoğrafın içine bakın, neyi açığa çıkardığını kontrol edin veya temizleyin.',
   },
@@ -53,7 +53,7 @@ const tools: ToolsContent = {
     'privacy-check': {
       title: 'Fotoğraf gizlilik kontrolü — GPS ve kişisel verileri bulun',
       description:
-        'Paylaşmadan önce bir fotoğrafın neyi açığa çıkardığını kontrol edin: haritada açılabilen GPS konumu, yazar, cihaz seri numarası, çekim zamanı ve yapay zekâ verileri. Ücretsiz, yüklemesiz.',
+        'Paylaşmadan önce bir fotoğrafın neyi açığa çıkardığını kontrol edin: haritada açılabilen GPS konumu, yazar, çekim zamanı ve yapay zekâ verileri. Ücretsiz, yüklemesiz.',
       intro:
         'Paylaşmadan önce bir fotoğrafın neleri ele verdiğini öğrenin. Kontrol; GPS konumu olup olmadığını (ve nereyi gösterdiğini), yazar ya da cihaz seri numarası gibi kişisel bilgileri, çekim zamanını ve yapay zekâ kaynak verilerini basit bir risk seviyesiyle gösterir.',
       steps: [

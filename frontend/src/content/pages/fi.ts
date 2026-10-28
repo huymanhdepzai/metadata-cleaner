@@ -4,7 +4,7 @@ const pages: Pages = {
   about: {
     title: 'Tietoa All Metadata Cleanerista',
     description:
-      'All Metadata Cleaner on ilmainen, yksityisyyttä kunnioittava työkalu, joka näyttää ja poistaa kuvista EXIF-, GPS-, XMP-, IPTC- ja C2PA-tiedot sekä tekoälykehotteet selaimessa.',
+      'All Metadata Cleaner on ilmainen, yksityisyyttä kunnioittava työkalu, joka näyttää ja poistaa kuvista EXIF-, GPS- ja C2PA-tiedot sekä tekoälykehotteet selaimessa.',
     intro:
       'All Metadata Cleaner on ilmainen verkkotyökalu kuvatiedostojen piilotietojen katseluun ja poistamiseen: EXIF ja GPS-sijainti, XMP, IPTC, C2PA Content Credentials sekä tekoälygeneraattorien upottamat kehotteet ja työnkulut.',
     sections: [

@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Metatietojen koko – kuinka paljon metatietoja kuvassa on?',
       description:
-        'Mittaa, kuinka paljon metatietoja kuvassa on: tavut yhteensä, osuus tiedostosta, suurimmat EXIF-, XMP-, C2PA- tai kehotelohkot ja yksityisyysriski. Ilmainen, ilman lähetystä.',
+        'Mittaa, kuinka paljon metatietoja kuvassa on: tavut yhteensä, osuus tiedostosta, suurimmat EXIF-, C2PA- tai kehotelohkot ja yksityisyysriski. Ilmainen, ilman lähetystä.',
       intro:
         'Näe, kuinka suuri osa tiedostosta on metatietoja eikä kuvaa. Työkalu listaa jokaisen metatietolohkon koon mukaan — EXIF, XMP, C2PA, upotetut esikatselut, tekoälykehotteet ja työnkulut — näyttää osuuden tiedostosta ja arvioi yksityisyysriskin.',
       steps: [

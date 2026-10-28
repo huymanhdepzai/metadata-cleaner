@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const de: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | KI-Metadaten aus Bildern entfernen',
+    title: 'Metadaten kostenlos entfernen – KI-Metadaten & KI-Tags entfernen',
     description:
-      'Kostenloses Tool zum Prüfen und Entfernen von KI-Metadaten (C2PA, EXIF, GPS, XMP, Prompts von Midjourney, Stable Diffusion und ComfyUI) aus JPG-, PNG-, WebP- und HEIC-Bildern. Läuft im Browser – kein Upload, kein Qualitätsverlust.',
+      'Kostenloses Tool zum Entfernen von KI-Metadaten (C2PA, EXIF, GPS, Prompts) aus JPG-, PNG-, WebP- und HEIC-Bildern. Im Browser – kein Upload, kein Qualitätsverlust.',
   },
   header: {
     language: 'Sprache',
@@ -14,8 +14,8 @@ const de: Messages = {
   },
   hero: {
     eyebrow: 'Unterstützt C2PA · EXIF · XMP · IPTC · KI-Prompts',
-    title: 'KI-Metadaten aus Bildern entfernen',
-    titleAccent: 'sicher und ohne Qualitätsverlust',
+    title: 'Kostenloser KI-Metadaten-Entferner',
+    titleAccent: '& KI-Tag-Entferner',
     subtitle:
       'Prüfen und entfernen Sie Content Credentials (C2PA), EXIF, GPS, XMP sowie Prompts von Midjourney, Stable Diffusion oder ComfyUI aus JPG-, PNG-, WebP-, HEIC- und AVIF-Bildern – direkt im Browser, Ihre Fotos verlassen nie Ihr Gerät.',
     trust: {

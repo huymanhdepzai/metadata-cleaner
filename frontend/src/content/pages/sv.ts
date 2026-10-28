@@ -87,7 +87,7 @@ const pages: Pages = {
   terms: {
     title: 'Användarvillkor',
     description:
-      'Användarvillkor för All Metadata Cleaner: ett gratis verktyg som tillhandahålls i befintligt skick, ditt ansvar för hur rensade bilder används och gränserna för vårt ansvar.',
+      'Användarvillkor: ett gratis verktyg som tillhandahålls i befintligt skick, ditt ansvar för hur rensade bilder används och gränserna för vårt ansvar.',
     intro:
       'Genom att använda All Metadata Cleaner godkänner du dessa villkor. Läs dem tillsammans med ansvarsfriskrivningen på startsidan och vår integritetspolicy.',
     sections: [

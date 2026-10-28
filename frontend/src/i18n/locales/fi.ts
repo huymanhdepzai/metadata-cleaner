@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const fi: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Poista tekoälyn metatiedot kuvista',
+    title: 'Ilmainen metatietojen poisto – Tekoälyn metatiedot & tunnisteet',
     description:
-      'Ilmainen työkalu tekoälyn metatietojen (C2PA, EXIF, GPS, XMP sekä Midjourneyn, Stable Diffusionin ja ComfyUI:n kehotteet) tarkistamiseen ja poistamiseen JPG-, PNG-, WebP- ja HEIC-kuvista. Toimii selaimessa – ei latausta palvelimelle eikä laadun heikkenemistä.',
+      'Ilmainen työkalu tekoälyn metatietojen (C2PA, EXIF, GPS, kehotteet) poistamiseen JPG-, PNG-, WebP- ja HEIC-kuvista. Selaimessa – ei latausta, ei laatuhäviötä.',
   },
   header: {
     language: 'Kieli',
@@ -14,8 +14,8 @@ const fi: Messages = {
   },
   hero: {
     eyebrow: 'Tukee C2PA · EXIF · XMP · IPTC · tekoälykehotteita',
-    title: 'Poista tekoälyn metatiedot kuvista',
-    titleAccent: 'turvallisesti ja laatua menettämättä',
+    title: 'Ilmainen tekoälyn metatietojen poisto',
+    titleAccent: '& tekoälytunnisteiden poisto',
     subtitle:
       'Tarkista ja poista Content Credentials (C2PA), EXIF, GPS, XMP sekä Midjourneyn, Stable Diffusionin tai ComfyUI:n kehotteet JPG-, PNG-, WebP-, HEIC- ja AVIF-kuvista – käsittely tapahtuu selaimessa, eivätkä kuvasi koskaan poistu laitteeltasi.',
     trust: {

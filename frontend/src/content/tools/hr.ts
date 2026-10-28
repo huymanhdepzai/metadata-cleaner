@@ -4,7 +4,7 @@ const tools: ToolsContent = {
   hub: {
     title: 'Besplatni alati za metapodatke slika',
     description:
-      'Besplatni alati u pregledniku za pregled, analizu i uklanjanje metapodataka slika: preglednik EXIF-a, provjera privatnosti, veličina metapodataka, uklanjanje EXIF-a, GPS-a i C2PA.',
+      'Besplatni alati u pregledniku za pregled, analizu i uklanjanje metapodataka slika: preglednik EXIF-a, provjera privatnosti, veličina metapodataka.',
     intro:
       'Svi alati rade u vašem pregledniku na istom pogonu: slike se nikad ne učitavaju na poslužitelj i ništa se ponovno ne sažima. Odaberite što vam treba — zavirite u fotografiju, provjerite što otkriva ili je očistite.',
   },

@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const ar: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | إزالة بيانات الذكاء الاصطناعي الوصفية من الصور',
+    title: 'حذف البيانات الوصفية مجانًا – منظف بيانات AI ومزيل وسوم AI',
     description:
-      'أداة مجانية لفحص وإزالة بيانات الذكاء الاصطناعي الوصفية (C2PA وEXIF وGPS وXMP وأوامر Midjourney وStable Diffusion وComfyUI) من صور JPG وPNG وWebP وHEIC. تعمل داخل متصفحك: دون رفع ودون فقدان للجودة.',
+      'أداة مجانية لفحص وإزالة بيانات الذكاء الاصطناعي الوصفية (C2PA وEXIF وGPS والأوامر) من صور JPG وPNG وWebP وHEIC. تعمل داخل متصفحك: دون رفع ودون فقدان للجودة.',
   },
   header: {
     language: 'اللغة',
@@ -14,8 +14,8 @@ const ar: Messages = {
   },
   hero: {
     eyebrow: 'يدعم C2PA · EXIF · XMP · IPTC · أوامر الذكاء الاصطناعي',
-    title: 'أزل بيانات الذكاء الاصطناعي الوصفية من صورك',
-    titleAccent: 'بأمان ودون فقدان الجودة',
+    title: 'منظف مجاني لبيانات الذكاء الاصطناعي الوصفية',
+    titleAccent: 'ومزيل وسوم الذكاء الاصطناعي',
     subtitle:
       'افحص وأزل Content Credentials ‏(C2PA) وEXIF وGPS وXMP وأوامر Midjourney أو Stable Diffusion أو ComfyUI من صور JPG وPNG وWebP وHEIC وAVIF — تتم المعالجة في متصفحك ولا تغادر صورك جهازك أبدًا.',
     trust: {

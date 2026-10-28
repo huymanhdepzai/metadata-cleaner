@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const id: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Hapus Metadata AI dari Gambar',
+    title: 'Pembersih Metadata Gratis – Hapus Metadata AI & Tag AI',
     description:
-      'Alat gratis untuk memeriksa dan menghapus metadata AI (C2PA, EXIF, GPS, XMP, prompt Midjourney, Stable Diffusion, ComfyUI) dari gambar JPG, PNG, WebP, dan HEIC. Berjalan di browser Anda — tanpa unggah, tanpa penurunan kualitas.',
+      'Alat gratis untuk menghapus metadata AI (C2PA, EXIF, GPS, prompt) dari gambar JPG, PNG, WebP, dan HEIC. Di browser Anda — tanpa unggah, tanpa penurunan kualitas.',
   },
   header: {
     language: 'Bahasa',
@@ -14,8 +14,8 @@ const id: Messages = {
   },
   hero: {
     eyebrow: 'Mendukung C2PA · EXIF · XMP · IPTC · prompt AI',
-    title: 'Hapus metadata AI dari gambar',
-    titleAccent: 'dengan aman, tanpa penurunan kualitas',
+    title: 'Pembersih Metadata AI Gratis',
+    titleAccent: '& Penghapus Tag AI',
     subtitle:
       'Periksa dan hapus Content Credentials (C2PA), EXIF, GPS, XMP, serta prompt Midjourney, Stable Diffusion, atau ComfyUI dari gambar JPG, PNG, WebP, HEIC, dan AVIF — diproses di browser Anda, foto tidak pernah meninggalkan perangkat.',
     trust: {

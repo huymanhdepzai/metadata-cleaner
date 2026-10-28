@@ -4,7 +4,7 @@ const pages: Pages = {
   about: {
     title: 'A All Metadata Cleanerről',
     description:
-      'A All Metadata Cleaner ingyenes, adatvédelmet előtérbe helyező eszköz, amely a böngészőben megjeleníti és eltávolítja a képek EXIF, GPS, XMP, IPTC, C2PA adatait és MI-promptjait.',
+      'A All Metadata Cleaner ingyenes, adatvédelmet előtérbe helyező eszköz, amely a böngészőben megjeleníti és eltávolítja a képek EXIF, GPS, C2PA adatait és MI-promptjait.',
     intro:
       'A All Metadata Cleaner ingyenes webes eszköz a képfájlokban rejtett információk megtekintésére és eltávolítására: EXIF és GPS-helyadatok, XMP, IPTC, C2PA Content Credentials, valamint az MI-képgenerátorok által beágyazott promptok és munkafolyamatok.',
     sections: [
@@ -87,7 +87,7 @@ const pages: Pages = {
   terms: {
     title: 'Felhasználási feltételek',
     description:
-      'A All Metadata Cleaner felhasználási feltételei: ingyenes, adott állapotában nyújtott eszköz, a megtisztított képek felhasználásáért viselt felelősséged és felelősségünk korlátai.',
+      'Felhasználási feltételek: ingyenes, adott állapotában nyújtott eszköz, a megtisztított képek felhasználásáért viselt felelősséged és felelősségünk korlátai.',
     intro:
       'A All Metadata Cleaner használatával elfogadod ezeket a feltételeket. Olvasd el őket a kezdőlapon található jogi nyilatkozattal és az adatvédelmi szabályzatunkkal együtt.',
     sections: [

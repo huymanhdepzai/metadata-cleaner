@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const sk: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Odstránenie metadát AI z obrázkov',
+    title: 'Odstránenie metadát zadarmo – Čistič metadát AI a AI štítkov',
     description:
-      'Bezplatný nástroj na kontrolu a odstránenie metadát AI (C2PA, EXIF, GPS, XMP, promptov z Midjourney, Stable Diffusion a ComfyUI) z obrázkov JPG, PNG, WebP a HEIC. Funguje v prehliadači – bez nahrávania a bez straty kvality.',
+      'Bezplatný nástroj na odstránenie metadát AI (C2PA, EXIF, GPS, promptov) z obrázkov JPG, PNG, WebP a HEIC. Funguje v prehliadači – bez nahrávania a straty kvality.',
   },
   header: {
     language: 'Jazyk',
@@ -14,8 +14,8 @@ const sk: Messages = {
   },
   hero: {
     eyebrow: 'Podpora C2PA · EXIF · XMP · IPTC · promptov AI',
-    title: 'Odstráňte metadáta AI z obrázkov',
-    titleAccent: 'bezpečne a bez straty kvality',
+    title: 'Bezplatný čistič metadát AI',
+    titleAccent: 'a odstraňovač AI štítkov',
     subtitle:
       'Skontrolujte a odstráňte Content Credentials (C2PA), EXIF, GPS, XMP a prompty z Midjourney, Stable Diffusion alebo ComfyUI z obrázkov JPG, PNG, WebP, HEIC a AVIF – všetko prebieha v prehliadači a vaše fotky nikdy neopustia zariadenie.',
     trust: {

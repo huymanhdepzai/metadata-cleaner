@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const tr: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Görsellerden Yapay Zekâ Meta Verilerini Kaldırın',
+    title: 'Ücretsiz meta veri temizleyici – AI meta verisi ve etiketi silme',
     description:
-      'JPG, PNG, WebP ve HEIC görsellerdeki yapay zekâ meta verilerini (C2PA, EXIF, GPS, XMP, Midjourney, Stable Diffusion ve ComfyUI promptları) inceleyip kaldıran ücretsiz araç. Tarayıcınızda çalışır: yükleme yok, kalite kaybı yok.',
+      'JPG, PNG, WebP ve HEIC görsellerdeki yapay zekâ meta verilerini (C2PA, EXIF, GPS, promptlar) kaldıran ücretsiz araç. Tarayıcıda çalışır: yükleme yok, kalite kaybı yok.',
   },
   header: {
     language: 'Dil',
@@ -14,8 +14,8 @@ const tr: Messages = {
   },
   hero: {
     eyebrow: 'C2PA · EXIF · XMP · IPTC · yapay zekâ promptları desteklenir',
-    title: 'Görsellerden yapay zekâ meta verilerini kaldırın',
-    titleAccent: 'güvenle ve kalite kaybı olmadan',
+    title: 'Ücretsiz AI meta veri temizleyici',
+    titleAccent: 've AI etiketi kaldırıcı',
     subtitle:
       'JPG, PNG, WebP, HEIC ve AVIF görsellerinden Content Credentials (C2PA), EXIF, GPS, XMP ile Midjourney, Stable Diffusion veya ComfyUI promptlarını inceleyip kaldırın — işlem tarayıcınızda yapılır, fotoğraflarınız cihazınızdan asla çıkmaz.',
     trust: {

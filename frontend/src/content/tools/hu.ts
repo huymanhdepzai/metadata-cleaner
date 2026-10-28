@@ -4,7 +4,7 @@ const tools: ToolsContent = {
   hub: {
     title: 'Ingyenes képmetaadat-eszközök',
     description:
-      'Ingyenes böngészős eszközök a képek metaadatainak megtekintéséhez, elemzéséhez és eltávolításához: EXIF-néző, adatvédelmi ellenőrzés, metaadat-méret, EXIF, GPS és C2PA eltávolítása.',
+      'Ingyenes böngészős eszközök a képek metaadatainak megtekintéséhez, elemzéséhez és eltávolításához: EXIF-néző, adatvédelmi ellenőrzés, metaadat-méret.',
     intro:
       'Minden eszköz a böngésződben fut, ugyanazzal a motorral: a képek soha nem töltődnek fel, és semmi sem tömörül újra. Válaszd ki, amire szükséged van — nézz bele egy fotóba, ellenőrizd, mit árul el, vagy tisztítsd meg.',
   },
@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Metaadat-méret — mennyi metaadat van egy fotóban?',
       description:
-        'Mérd meg, mennyi metaadatot tartalmaz egy kép: összes bájt, arány a fájlban, a legnagyobb EXIF-, XMP-, C2PA- vagy promptblokkok és adatvédelmi kockázat. Ingyenes, feltöltés nélkül.',
+        'Mérd meg, mennyi metaadatot tartalmaz egy kép: összes bájt, a legnagyobb EXIF-, C2PA- vagy promptblokkok és adatvédelmi kockázat. Ingyenes, feltöltés nélkül.',
       intro:
         'Nézd meg, a fájl mekkora része metaadat a kép helyett. Az eszköz méret szerint listáz minden metaadat-blokkot — EXIF, XMP, C2PA, beágyazott előnézetek, MI-promptok és munkafolyamatok —, megmutatja az arányukat a fájlban, és értékeli az adatvédelmi kockázatot.',
       steps: [

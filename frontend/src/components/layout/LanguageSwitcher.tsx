@@ -7,12 +7,16 @@ import { Icon, Spinner } from '../ui';
 import { FLAGS } from './flags';
 import { usePopover } from './usePopover';
 
-/** Cờ 4:3, viền mảnh để cờ nền trắng (Nhật, Phần Lan…) không lẫn vào nền. Trang trí thuần → alt rỗng. */
+/**
+ * Cờ 4:3, viền mảnh để cờ nền trắng (Nhật, Phần Lan…) không lẫn vào nền. Trang trí thuần → aria-hidden để trình đọc
+ * màn hình không đọc lặp tên ngôn ngữ; vẫn có alt cho công cụ kiểm tra SEO (ảnh thiếu alt).
+ */
 function Flag({ code, className = '' }: { code: LangCode; className?: string }) {
   return (
     <img
       src={FLAGS[code]}
-      alt=""
+      alt={findLanguage(code)?.name ?? code}
+      aria-hidden="true"
       width={20}
       height={15}
       loading="lazy"

@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const ro: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Elimină metadatele IA din imagini',
+    title: 'Curățare metadate gratuită – Metadate IA și etichete IA',
     description:
-      'Instrument gratuit pentru verificarea și eliminarea metadatelor IA (C2PA, EXIF, GPS, XMP, prompturi Midjourney, Stable Diffusion și ComfyUI) din imagini JPG, PNG, WebP și HEIC. Rulează în browser – fără încărcare, fără pierderi de calitate.',
+      'Instrument gratuit pentru eliminarea metadatelor IA (C2PA, EXIF, GPS, prompturi) din imagini JPG, PNG, WebP și HEIC. În browser – fără încărcare sau pierderi de calitate.',
   },
   header: {
     language: 'Limbă',
@@ -14,8 +14,8 @@ const ro: Messages = {
   },
   hero: {
     eyebrow: 'Suport pentru C2PA · EXIF · XMP · IPTC · prompturi IA',
-    title: 'Elimină metadatele IA din imagini',
-    titleAccent: 'în siguranță și fără pierderi de calitate',
+    title: 'Curățare gratuită a metadatelor IA',
+    titleAccent: 'și eliminarea etichetelor IA',
     subtitle:
       'Verifică și elimină Content Credentials (C2PA), EXIF, GPS, XMP și prompturile Midjourney, Stable Diffusion sau ComfyUI din imagini JPG, PNG, WebP, HEIC și AVIF – totul se procesează în browser, iar fotografiile tale nu părăsesc niciodată dispozitivul.',
     trust: {

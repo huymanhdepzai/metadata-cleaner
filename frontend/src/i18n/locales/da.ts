@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const da: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Fjern AI-metadata fra billeder',
+    title: 'Gratis metadata-renser – AI-metadata-renser & AI-tag-fjerner',
     description:
-      'Gratis værktøj til at gennemgå og fjerne AI-metadata (C2PA, EXIF, GPS, XMP, prompts fra Midjourney, Stable Diffusion og ComfyUI) fra JPG-, PNG-, WebP- og HEIC-billeder. Kører i din browser – ingen upload, intet kvalitetstab.',
+      'Gratis værktøj til at fjerne AI-metadata (C2PA, EXIF, GPS, prompts) fra JPG-, PNG-, WebP- og HEIC-billeder. Kører i browseren – ingen upload, intet kvalitetstab.',
   },
   header: {
     language: 'Sprog',
@@ -14,8 +14,8 @@ const da: Messages = {
   },
   hero: {
     eyebrow: 'Understøtter C2PA · EXIF · XMP · IPTC · AI-prompts',
-    title: 'Fjern AI-metadata fra billeder',
-    titleAccent: 'sikkert og uden kvalitetstab',
+    title: 'Gratis AI-metadata-renser',
+    titleAccent: '& AI-tag-fjerner',
     subtitle:
       'Gennemgå og fjern Content Credentials (C2PA), EXIF, GPS, XMP og prompts fra Midjourney, Stable Diffusion eller ComfyUI i JPG-, PNG-, WebP-, HEIC- og AVIF-billeder – alt behandles i din browser, og dine fotos forlader aldrig din enhed.',
     trust: {

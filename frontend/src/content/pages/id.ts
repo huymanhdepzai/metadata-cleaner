@@ -87,7 +87,7 @@ const pages: Pages = {
   terms: {
     title: 'Ketentuan Penggunaan',
     description:
-      'Ketentuan penggunaan All Metadata Cleaner: alat gratis yang disediakan apa adanya, tanggung jawab Anda atas penggunaan gambar yang dibersihkan, dan batas tanggung jawab kami.',
+      'Ketentuan penggunaan: alat gratis yang disediakan apa adanya, tanggung jawab Anda atas penggunaan gambar yang dibersihkan, dan batas tanggung jawab kami.',
     intro:
       'Dengan menggunakan All Metadata Cleaner, Anda menyetujui ketentuan ini. Bacalah bersama penafian di beranda dan Kebijakan Privasi kami.',
     sections: [

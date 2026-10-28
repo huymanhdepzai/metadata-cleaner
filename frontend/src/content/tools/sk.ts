@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Veľkosť metadát — koľko metadát je vo fotke?',
       description:
-        'Zmerajte, koľko metadát obrázok obsahuje: celkové bajty, podiel na súbore, najväčšie bloky EXIF, XMP, C2PA či promptov a úroveň rizika pre súkromie. Zadarmo, bez nahrávania.',
+        'Zmerajte, koľko metadát obrázok obsahuje: celkové bajty, podiel na súbore, najväčšie bloky EXIF, C2PA či promptov a úroveň rizika pre súkromie. Zadarmo, bez nahrávania.',
       intro:
         'Zistite, aká časť súboru sú metadáta, a nie obraz. Nástroj vypíše každý blok metadát podľa veľkosti — EXIF, XMP, C2PA, vložené náhľady, AI prompty a workflow — ukáže jeho podiel na súbore a ohodnotí riziko pre súkromie.',
       steps: [

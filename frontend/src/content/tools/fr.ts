@@ -4,7 +4,7 @@ const tools: ToolsContent = {
   hub: {
     title: 'Outils gratuits pour les métadonnées d’images',
     description:
-      'Outils gratuits dans le navigateur pour voir, analyser et supprimer les métadonnées d’images : lecteur EXIF, analyse de confidentialité, taille des métadonnées, suppression EXIF, GPS, C2PA.',
+      'Outils gratuits dans le navigateur pour voir, analyser et supprimer les métadonnées d’images : lecteur EXIF, analyse de confidentialité, taille des métadonnées.',
     intro:
       'Tous les outils fonctionnent dans votre navigateur avec le même moteur : vos images ne sont jamais envoyées et rien n’est recompressé. Choisissez ce dont vous avez besoin : regarder dans une photo, vérifier ce qu’elle révèle ou la nettoyer.',
   },
@@ -51,9 +51,9 @@ const tools: ToolsContent = {
       ],
     },
     'privacy-check': {
-      title: 'Analyse de confidentialité photo — trouver GPS et données personnelles',
+      title: 'Analyse de confidentialité photo — GPS et données personnelles',
       description:
-        'Vérifiez ce qu’une photo révèle avant de la partager : position GPS à ouvrir sur une carte, auteur, numéro de série, heure de prise de vue et données d’IA. Gratuit, sans envoi.',
+        'Vérifiez ce qu’une photo révèle avant de la partager : position GPS à ouvrir sur une carte, auteur, heure de prise de vue et données d’IA. Gratuit, sans envoi.',
       intro:
         'Découvrez ce qu’une photo dévoile avant de la publier. L’analyse indique si elle contient une position GPS (et où elle pointe), des données personnelles comme l’auteur ou le numéro de série de l’appareil, l’heure de prise de vue et des données de provenance IA, avec un niveau de risque simple.',
       steps: [

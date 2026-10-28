@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Metadatengröße prüfen – wie viele Metadaten hat ein Foto?',
       description:
-        'Messen Sie, wie viele Metadaten ein Bild enthält: Gesamtbytes, Anteil an der Datei, die größten EXIF-, XMP-, C2PA- oder Prompt-Blöcke und ein Datenschutzrisiko. Kostenlos, ohne Upload.',
+        'Messen Sie, wie viele Metadaten ein Bild enthält: Gesamtbytes, die größten EXIF-, C2PA- oder Prompt-Blöcke und ein Datenschutzrisiko. Kostenlos, ohne Upload.',
       intro:
         'Sehen Sie, wie viel einer Datei Metadaten statt Bild sind. Das Tool listet jeden Metadatenblock nach Größe – EXIF, XMP, C2PA, eingebettete Vorschauen, KI-Prompts und Workflows –, zeigt seinen Anteil an der Datei und bewertet das Datenschutzrisiko.',
       steps: [

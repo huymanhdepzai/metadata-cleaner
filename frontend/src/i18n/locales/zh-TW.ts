@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const zhTW: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | 移除圖片中的 AI 中繼資料',
+    title: '免費中繼資料清除 – AI 中繼資料清除與 AI 標籤移除',
     description:
       '免費工具，可檢查並移除 JPG、PNG、WebP 與 HEIC 圖片中的 AI 中繼資料（C2PA、EXIF、GPS、XMP，以及 Midjourney、Stable Diffusion、ComfyUI 提示詞）。在瀏覽器中執行，無須上傳，畫質不受影響。',
   },
@@ -14,8 +14,8 @@ const zhTW: Messages = {
   },
   hero: {
     eyebrow: '支援 C2PA · EXIF · XMP · IPTC · AI 提示詞',
-    title: '移除圖片中的 AI 中繼資料',
-    titleAccent: '安全且畫質零損失',
+    title: '免費 AI 中繼資料清除工具',
+    titleAccent: '與 AI 標籤移除',
     subtitle:
       '檢查並移除 JPG、PNG、WebP、HEIC 與 AVIF 圖片中的 Content Credentials（C2PA）、EXIF、GPS、XMP，以及 Midjourney、Stable Diffusion、ComfyUI 提示詞——全部在瀏覽器中處理，照片絕不會離開你的裝置。',
     trust: {

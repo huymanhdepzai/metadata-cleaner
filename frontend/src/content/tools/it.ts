@@ -4,7 +4,7 @@ const tools: ToolsContent = {
   hub: {
     title: 'Strumenti gratuiti per i metadati delle immagini',
     description:
-      'Strumenti gratuiti nel browser per vedere, analizzare e rimuovere i metadati delle immagini: visualizzatore EXIF, controllo privacy, peso dei metadati, rimozione EXIF, GPS e C2PA.',
+      'Strumenti gratuiti nel browser per vedere, analizzare e rimuovere i metadati delle immagini: visualizzatore EXIF, controllo privacy, peso dei metadati.',
     intro:
       'Tutti gli strumenti funzionano nel tuo browser con lo stesso motore: le immagini non vengono mai caricate e nulla viene ricompresso. Scegli ciò che ti serve: guardare dentro una foto, controllare cosa rivela o ripulirla.',
   },
@@ -53,7 +53,7 @@ const tools: ToolsContent = {
     'privacy-check': {
       title: 'Controllo privacy foto — trova GPS e dati personali',
       description:
-        'Controlla cosa rivela una foto prima di condividerla: posizione GPS da aprire sulla mappa, autore, numero di serie, ora dello scatto e dati IA. Gratis, privato, senza caricamenti.',
+        'Controlla cosa rivela una foto prima di condividerla: posizione GPS da aprire sulla mappa, autore, numero di serie, ora dello scatto e dati IA. Gratis, senza caricamenti.',
       intro:
         'Scopri cosa svela una foto prima di pubblicarla. Il controllo mostra se contiene una posizione GPS (e dove punta), dati personali come autore o numero di serie del dispositivo, l’ora dello scatto e dati di provenienza IA, con un livello di rischio semplice.',
       steps: [
@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Peso dei metadati — quanti metadati ha una foto?',
       description:
-        'Misura quanti metadati contiene un’immagine: byte totali, percentuale del file, i blocchi EXIF, XMP, C2PA o di prompt più grandi e il rischio privacy. Gratis, senza caricamenti.',
+        'Misura quanti metadati contiene un’immagine: byte totali, i blocchi EXIF, C2PA o di prompt più grandi e il rischio privacy. Gratis, senza caricamenti.',
       intro:
         'Scopri quanta parte di un file è costituita da metadati anziché dall’immagine. Lo strumento elenca ogni blocco di metadati per dimensione — EXIF, XMP, C2PA, anteprime incorporate, prompt e workflow IA —, mostra la percentuale sul file e valuta il rischio per la privacy.',
       steps: [

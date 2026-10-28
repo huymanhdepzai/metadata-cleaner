@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const hi: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | तस्वीरों से AI मेटाडेटा हटाएँ',
+    title: 'मुफ़्त मेटाडेटा क्लीनर – AI मेटाडेटा क्लीनर और AI टैग रिमूवर',
     description:
-      'JPG, PNG, WebP और HEIC तस्वीरों से AI मेटाडेटा (C2PA, EXIF, GPS, XMP, Midjourney, Stable Diffusion और ComfyUI प्रॉम्प्ट) जाँचने और हटाने का मुफ़्त टूल। आपके ब्राउज़र में चलता है — न कोई अपलोड, न गुणवत्ता में कमी।',
+      'JPG, PNG, WebP और HEIC तस्वीरों से AI मेटाडेटा (C2PA, EXIF, GPS, प्रॉम्प्ट) हटाने का मुफ़्त टूल। ब्राउज़र में चलता है — न कोई अपलोड, न गुणवत्ता में कमी।',
   },
   header: {
     language: 'भाषा',
@@ -14,8 +14,8 @@ const hi: Messages = {
   },
   hero: {
     eyebrow: 'C2PA · EXIF · XMP · IPTC · AI प्रॉम्प्ट समर्थित',
-    title: 'तस्वीरों से AI मेटाडेटा हटाएँ',
-    titleAccent: 'सुरक्षित रूप से, बिना गुणवत्ता खोए',
+    title: 'मुफ़्त AI मेटाडेटा क्लीनर',
+    titleAccent: 'और AI टैग रिमूवर',
     subtitle:
       'JPG, PNG, WebP, HEIC और AVIF तस्वीरों से Content Credentials (C2PA), EXIF, GPS, XMP और Midjourney, Stable Diffusion या ComfyUI प्रॉम्प्ट जाँचें और हटाएँ — सब कुछ आपके ब्राउज़र में होता है, आपकी तस्वीरें कभी आपके डिवाइस से बाहर नहीं जातीं।',
     trust: {

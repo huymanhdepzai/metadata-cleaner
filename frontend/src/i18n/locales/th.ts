@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const th: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | ลบเมทาดาทา AI ออกจากรูปภาพ',
+    title: 'ลบเมทาดาทาฟรี – ลบเมทาดาทา AI และแท็ก AI',
     description:
-      'เครื่องมือฟรีสำหรับตรวจสอบและลบเมทาดาทา AI (C2PA, EXIF, GPS, XMP และพรอมต์ของ Midjourney, Stable Diffusion, ComfyUI) ออกจากรูป JPG, PNG, WebP และ HEIC ทำงานในเบราว์เซอร์ของคุณ ไม่ต้องอัปโหลด และคุณภาพไม่ลดลง',
+      'เครื่องมือฟรีสำหรับลบเมทาดาทา AI (C2PA, EXIF, GPS และพรอมต์) ออกจากรูป JPG, PNG, WebP และ HEIC ทำงานในเบราว์เซอร์ ไม่ต้องอัปโหลด และคุณภาพไม่ลดลง',
   },
   header: {
     language: 'ภาษา',
@@ -14,8 +14,8 @@ const th: Messages = {
   },
   hero: {
     eyebrow: 'รองรับ C2PA · EXIF · XMP · IPTC · พรอมต์ AI',
-    title: 'ลบเมทาดาทา AI ออกจากรูปภาพ',
-    titleAccent: 'ปลอดภัยและไม่เสียคุณภาพ',
+    title: 'ลบเมทาดาทา AI ฟรี',
+    titleAccent: 'และลบแท็ก AI',
     subtitle:
       'ตรวจสอบและลบ Content Credentials (C2PA), EXIF, GPS, XMP รวมถึงพรอมต์ของ Midjourney, Stable Diffusion หรือ ComfyUI ออกจากรูป JPG, PNG, WebP, HEIC และ AVIF โดยประมวลผลในเบราว์เซอร์ทั้งหมด รูปของคุณจะไม่ออกจากอุปกรณ์เลย',
     trust: {

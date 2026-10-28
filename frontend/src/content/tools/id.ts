@@ -53,9 +53,9 @@ const tools: ToolsContent = {
     'privacy-check': {
       title: 'Cek privasi foto — temukan GPS dan data pribadi',
       description:
-        'Periksa apa yang diungkap foto sebelum dibagikan: lokasi GPS yang bisa dibuka di peta, pembuat, nomor seri perangkat, waktu pengambilan, dan data AI. Gratis, privat, tanpa unggah.',
+        'Periksa apa yang diungkap foto sebelum dibagikan: lokasi GPS yang bisa dibuka di peta, pembuat, nomor seri, waktu pengambilan, dan data AI. Gratis, tanpa unggah.',
       intro:
-        'Ketahui apa yang dibocorkan foto sebelum Anda mempostingnya. Pemeriksaan menunjukkan apakah foto berisi lokasi GPS (dan ke mana arahnya), data pribadi seperti pembuat atau nomor seri perangkat, waktu pengambilan, dan data asal AI — dengan tingkat risiko yang mudah dipahami.',
+        'Ketahui apa yang dibocorkan foto sebelum Anda mempostingnya. Pemeriksaan menunjukkan apakah foto berisi lokasi GPS (dan ke mana arahnya), data pribadi seperti pembuat atau nomor seri, waktu pengambilan, dan data asal AI — dengan tingkat risiko yang mudah dipahami.',
       steps: [
         'Jatuhkan foto yang akan Anda bagikan ke kotak di atas.',
         'Baca tingkat risiko serta informasi lokasi, pribadi, dan waktu yang ditemukan di setiap file.',

@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const pl: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Usuń metadane AI ze zdjęć',
+    title: 'Darmowe usuwanie metadanych – Metadane AI i tagi AI',
     description:
-      'Bezpłatne narzędzie do sprawdzania i usuwania metadanych AI (C2PA, EXIF, GPS, XMP, prompty Midjourney, Stable Diffusion i ComfyUI) z obrazów JPG, PNG, WebP i HEIC. Działa w przeglądarce — bez przesyłania i bez utraty jakości.',
+      'Bezpłatne narzędzie do usuwania metadanych AI (C2PA, EXIF, GPS, prompty) z obrazów JPG, PNG, WebP i HEIC. Działa w przeglądarce — bez przesyłania i utraty jakości.',
   },
   header: {
     language: 'Język',
@@ -14,8 +14,8 @@ const pl: Messages = {
   },
   hero: {
     eyebrow: 'Obsługa C2PA · EXIF · XMP · IPTC · promptów AI',
-    title: 'Usuń metadane AI ze zdjęć',
-    titleAccent: 'bezpiecznie i bez utraty jakości',
+    title: 'Darmowe usuwanie metadanych AI',
+    titleAccent: 'i tagów AI',
     subtitle:
       'Sprawdź i usuń Content Credentials (C2PA), EXIF, GPS, XMP oraz prompty Midjourney, Stable Diffusion lub ComfyUI z obrazów JPG, PNG, WebP, HEIC i AVIF — wszystko dzieje się w przeglądarce, a zdjęcia nigdy nie opuszczają Twojego urządzenia.',
     trust: {

@@ -41,5 +41,12 @@ describe('Bản dịch', () => {
       compare(en, modules[`./locales/${code}.ts`]?.default, code, errors);
       expect(errors).toEqual([]);
     });
+
+    it(`${code}: <title> trang chủ bắt đầu bằng từ khóa bản địa, description ≤ 170 ký tự`, () => {
+      const { meta } = (modules[`./locales/${code}.ts`]!.default as typeof en);
+      // Google cắt tiêu đề ~60 ký tự: phần đầu phải là truy vấn của người dùng ngôn ngữ đó, không phải cụm tiếng Anh.
+      if (code !== 'en') expect(meta.title, meta.title).not.toMatch(/^Free AI/);
+      expect([...meta.description].length, meta.description).toBeLessThanOrEqual(170);
+    });
   }
 });

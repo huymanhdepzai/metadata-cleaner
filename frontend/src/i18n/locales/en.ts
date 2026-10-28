@@ -6,7 +6,7 @@ const en = {
   meta: {
     title: 'Free Metadata Cleaner – AI Metadata Cleaner & AI Tag Remover',
     description:
-      'Free AI metadata cleaner & AI tag remover: strip EXIF, GPS, C2PA and Midjourney, Stable Diffusion or ComfyUI prompts from JPG, PNG, WebP, HEIC. No uploads.',
+      'Free AI metadata cleaner & AI tag remover: strip EXIF, GPS, C2PA and Midjourney, Stable Diffusion or ComfyUI prompts from JPG, PNG, WebP and HEIC images. No uploads.',
   },
   header: {
     language: 'Language',

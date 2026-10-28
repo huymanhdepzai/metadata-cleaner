@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Mida de les metadades — quantes metadades té una foto?',
       description:
-        'Mesura quantes metadades porta una imatge: bytes totals, percentatge del fitxer, els blocs EXIF, XMP, C2PA o de prompts més grans i el risc de privadesa. Gratuït, sense pujar res.',
+        'Mesura quantes metadades porta una imatge: bytes totals, els blocs EXIF, C2PA o de prompts més grans i el risc de privadesa. Gratuït, sense pujar res.',
       intro:
         'Descobreix quina part d’un fitxer són metadades i no imatge. L’eina llista cada bloc de metadades per mida —EXIF, XMP, C2PA, previsualitzacions incrustades, prompts i fluxos d’IA—, mostra el seu percentatge del fitxer i valora el risc de privadesa.',
       steps: [

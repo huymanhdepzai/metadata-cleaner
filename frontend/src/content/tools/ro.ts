@@ -4,7 +4,7 @@ const tools: ToolsContent = {
   hub: {
     title: 'Instrumente gratuite pentru metadatele imaginilor',
     description:
-      'Instrumente gratuite în browser pentru a vedea, analiza și elimina metadatele imaginilor: vizualizator EXIF, verificare a confidențialității, mărimea metadatelor, eliminare EXIF, GPS și C2PA.',
+      'Instrumente gratuite în browser pentru a vedea, analiza și elimina metadatele imaginilor: vizualizator EXIF, verificare a confidențialității, mărimea metadatelor.',
     intro:
       'Toate instrumentele rulează în browser cu același motor: imaginile nu sunt încărcate niciodată și nimic nu este recomprimat. Alege ce îți trebuie — privește în interiorul unei fotografii, verifică ce dezvăluie sau curăț-o.',
   },
@@ -51,9 +51,9 @@ const tools: ToolsContent = {
       ],
     },
     'privacy-check': {
-      title: 'Verificarea confidențialității foto — găsește GPS și date personale',
+      title: 'Verificarea confidențialității foto — GPS și date personale',
       description:
-        'Verifică ce dezvăluie o fotografie înainte s-o distribui: locația GPS de deschis pe hartă, autorul, numărul de serie, ora fotografierii și datele AI. Gratuit, fără încărcare.',
+        'Verifică ce dezvăluie o fotografie înainte s-o distribui: locația GPS de deschis pe hartă, autorul, ora fotografierii și datele AI. Gratuit, fără încărcare.',
       intro:
         'Află ce trădează o fotografie înainte s-o publici. Verificarea arată dacă are o locație GPS (și unde indică), date personale precum autorul sau numărul de serie al dispozitivului, ora fotografierii și date despre originea AI — cu un nivel de risc simplu.',
       steps: [
@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Mărimea metadatelor — câte metadate are o fotografie?',
       description:
-        'Măsoară câte metadate conține o imagine: total octeți, ponderea în fișier, cele mai mari blocuri EXIF, XMP, C2PA sau de prompturi și riscul de confidențialitate. Gratuit, fără încărcare.',
+        'Măsoară câte metadate conține o imagine: total octeți, cele mai mari blocuri EXIF, C2PA sau de prompturi și riscul de confidențialitate. Gratuit, fără încărcare.',
       intro:
         'Vezi ce parte dintr-un fișier sunt metadate și nu imagine. Instrumentul listează fiecare bloc de metadate după mărime — EXIF, XMP, C2PA, previzualizări încorporate, prompturi și fluxuri AI —, arată ponderea în fișier și evaluează riscul de confidențialitate.',
       steps: [

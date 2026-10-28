@@ -4,7 +4,7 @@ const pages: Pages = {
   about: {
     title: 'À propos de All Metadata Cleaner',
     description:
-      'All Metadata Cleaner est un outil gratuit et respectueux de la vie privée pour afficher et supprimer EXIF, GPS, XMP, IPTC, C2PA et prompts d’IA des images, dans votre navigateur.',
+      'All Metadata Cleaner est un outil gratuit et respectueux de la vie privée pour afficher et supprimer EXIF, GPS, C2PA et prompts d’IA des images, dans votre navigateur.',
     intro:
       'All Metadata Cleaner est un outil web gratuit pour voir et supprimer les informations cachées dans les fichiers image : EXIF et position GPS, XMP, IPTC, Content Credentials (C2PA) ainsi que les prompts ou workflows intégrés par les générateurs d’IA.',
     sections: [
@@ -87,7 +87,7 @@ const pages: Pages = {
   terms: {
     title: 'Conditions d’utilisation',
     description:
-      'Conditions d’utilisation de All Metadata Cleaner : un outil gratuit fourni tel quel, votre responsabilité quant à l’usage des images nettoyées et les limites de notre responsabilité.',
+      'Conditions d’utilisation : un outil gratuit fourni tel quel, votre responsabilité quant à l’usage des images nettoyées et les limites de notre responsabilité.',
     intro:
       'En utilisant All Metadata Cleaner, vous acceptez ces conditions. Lisez-les avec l’avertissement de la page d’accueil et notre Politique de confidentialité.',
     sections: [

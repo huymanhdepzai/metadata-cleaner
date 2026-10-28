@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const hu: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | MI-metaadatok eltávolítása képekről',
+    title: 'Ingyenes metaadat-tisztító – MI-metaadatok és MI-címkék törlése',
     description:
-      'Ingyenes eszköz MI-metaadatok (C2PA, EXIF, GPS, XMP, Midjourney-, Stable Diffusion- és ComfyUI-promptok) ellenőrzésére és eltávolítására JPG, PNG, WebP és HEIC képekről. A böngészőben fut – nincs feltöltés, nincs minőségromlás.',
+      'Ingyenes eszköz MI-metaadatok (C2PA, EXIF, GPS, promptok) eltávolítására JPG, PNG, WebP és HEIC képekről. A böngészőben fut – nincs feltöltés, nincs minőségromlás.',
   },
   header: {
     language: 'Nyelv',
@@ -14,8 +14,8 @@ const hu: Messages = {
   },
   hero: {
     eyebrow: 'C2PA · EXIF · XMP · IPTC · MI-promptok támogatása',
-    title: 'MI-metaadatok eltávolítása képekről',
-    titleAccent: 'biztonságosan, minőségromlás nélkül',
+    title: 'Ingyenes MI-metaadat-tisztító',
+    titleAccent: 'és MI-címke-eltávolító',
     subtitle:
       'Ellenőrizze és távolítsa el a Content Credentials (C2PA), EXIF, GPS, XMP adatokat, valamint a Midjourney-, Stable Diffusion- vagy ComfyUI-promptokat JPG, PNG, WebP, HEIC és AVIF képekről – minden a böngészőben történik, a fotói soha nem hagyják el az eszközt.',
     trust: {

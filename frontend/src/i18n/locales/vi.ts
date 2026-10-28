@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const vi: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Xóa Metadata AI khỏi Ảnh',
+    title: 'Xóa Metadata Miễn Phí – Xóa Metadata AI & Gỡ Nhãn AI',
     description:
-      'Công cụ miễn phí kiểm tra và xóa metadata AI (C2PA, EXIF, GPS, XMP, prompt Midjourney, Stable Diffusion, ComfyUI) khỏi ảnh JPG, PNG, WebP, HEIC. Xử lý trên trình duyệt, không tải ảnh lên, không giảm chất lượng.',
+      'Công cụ miễn phí xóa metadata AI (C2PA, EXIF, GPS, prompt Midjourney, ComfyUI) khỏi ảnh JPG, PNG, WebP, HEIC. Xử lý trên trình duyệt, không tải ảnh lên.',
   },
   header: {
     language: 'Ngôn ngữ',
@@ -14,8 +14,8 @@ const vi: Messages = {
   },
   hero: {
     eyebrow: 'Hỗ trợ C2PA · EXIF · XMP · IPTC · Prompt AI',
-    title: 'Xóa metadata AI khỏi ảnh',
-    titleAccent: 'an toàn & không giảm chất lượng',
+    title: 'Xóa Metadata AI miễn phí',
+    titleAccent: '& gỡ nhãn AI',
     subtitle:
       'Kiểm tra và gỡ bỏ Content Credentials (C2PA), EXIF, GPS, XMP cùng prompt Midjourney, Stable Diffusion, ComfyUI khỏi ảnh JPG, PNG, WebP, HEIC, AVIF — xử lý ngay trên trình duyệt, ảnh không bao giờ rời khỏi máy bạn.',
     trust: {

@@ -87,7 +87,7 @@ const pages: Pages = {
   terms: {
     title: 'Condicions d’ús',
     description:
-      'Condicions d’ús de All Metadata Cleaner: una eina gratuïta oferta tal com és, la teva responsabilitat sobre l’ús de les imatges netes i els límits de la nostra responsabilitat.',
+      'Condicions d’ús: una eina gratuïta oferta tal com és, la teva responsabilitat sobre l’ús de les imatges netes i els límits de la nostra responsabilitat.',
     intro:
       'En utilitzar All Metadata Cleaner acceptes aquestes condicions. Llegeix-les juntament amb l’avís legal de la pàgina d’inici i la nostra Política de privadesa.',
     sections: [

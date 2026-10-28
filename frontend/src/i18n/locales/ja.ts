@@ -2,7 +2,7 @@ import type { Messages } from './en';
 
 const ja: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | 画像からAIメタデータを削除',
+    title: '無料メタデータ削除 – AIメタデータ・AIタグ削除',
     description:
       'JPG・PNG・WebP・HEIC画像からAIメタデータ（C2PA、EXIF、GPS、XMP、Midjourney・Stable Diffusion・ComfyUIのプロンプト）を確認・削除できる無料ツール。ブラウザ内で処理するため、アップロード不要で画質も劣化しません。',
   },
@@ -14,8 +14,8 @@ const ja: Messages = {
   },
   hero: {
     eyebrow: 'C2PA · EXIF · XMP · IPTC · AIプロンプトに対応',
-    title: '画像からAIメタデータを削除',
-    titleAccent: '安全に、画質を落とさずに',
+    title: '無料AIメタデータ削除',
+    titleAccent: '＆AIタグ削除ツール',
     subtitle:
       'JPG・PNG・WebP・HEIC・AVIF画像から、Content Credentials（C2PA）、EXIF、GPS、XMP、Midjourney・Stable Diffusion・ComfyUIのプロンプトを確認して削除します。処理はすべてブラウザ内で行われ、写真がデバイスの外に出ることはありません。',
     trust: {

@@ -2,9 +2,9 @@ import type { Messages } from './en';
 
 const el: Messages = {
   meta: {
-    title: 'Free AI Metadata Cleaner & AI Tag Remover | Αφαίρεση μεταδεδομένων ΤΝ από εικόνες',
+    title: 'Δωρεάν καθαρισμός μεταδεδομένων – Μεταδεδομένα ΤΝ & ετικέτες ΤΝ',
     description:
-      'Δωρεάν εργαλείο για έλεγχο και αφαίρεση μεταδεδομένων ΤΝ (C2PA, EXIF, GPS, XMP, prompts του Midjourney, του Stable Diffusion και του ComfyUI) από εικόνες JPG, PNG, WebP και HEIC. Λειτουργεί στο πρόγραμμα περιήγησης – χωρίς μεταφόρτωση, χωρίς απώλεια ποιότητας.',
+      'Δωρεάν εργαλείο αφαίρεσης μεταδεδομένων ΤΝ (C2PA, EXIF, GPS, prompts) από εικόνες JPG, PNG, WebP και HEIC. Χωρίς μεταφόρτωση, χωρίς απώλεια ποιότητας.',
   },
   header: {
     language: 'Γλώσσα',
@@ -14,8 +14,8 @@ const el: Messages = {
   },
   hero: {
     eyebrow: 'Υποστήριξη C2PA · EXIF · XMP · IPTC · prompts ΤΝ',
-    title: 'Αφαιρέστε τα μεταδεδομένα ΤΝ από τις εικόνες',
-    titleAccent: 'με ασφάλεια και χωρίς απώλεια ποιότητας',
+    title: 'Δωρεάν καθαρισμός μεταδεδομένων ΤΝ',
+    titleAccent: '& αφαίρεση ετικετών ΤΝ',
     subtitle:
       'Ελέγξτε και αφαιρέστε Content Credentials (C2PA), EXIF, GPS, XMP και prompts του Midjourney, του Stable Diffusion ή του ComfyUI από εικόνες JPG, PNG, WebP, HEIC και AVIF – η επεξεργασία γίνεται στο πρόγραμμα περιήγησης και οι φωτογραφίες σας δεν φεύγουν ποτέ από τη συσκευή σας.',
     trust: {

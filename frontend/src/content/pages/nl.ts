@@ -87,7 +87,7 @@ const pages: Pages = {
   terms: {
     title: 'Gebruiksvoorwaarden',
     description:
-      'Gebruiksvoorwaarden van All Metadata Cleaner: een gratis tool zonder garantie, jouw verantwoordelijkheid voor opgeschoonde afbeeldingen en de grenzen van onze aansprakelijkheid.',
+      'Gebruiksvoorwaarden: een gratis tool zonder garantie, jouw verantwoordelijkheid voor opgeschoonde afbeeldingen en de grenzen van onze aansprakelijkheid.',
     intro:
       'Door All Metadata Cleaner te gebruiken ga je akkoord met deze voorwaarden. Lees ze samen met de disclaimer op de startpagina en ons privacybeleid.',
     sections: [

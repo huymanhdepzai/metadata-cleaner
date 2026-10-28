@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Rozmiar metadanych — ile metadanych ma zdjęcie?',
       description:
-        'Zmierz, ile metadanych zawiera obraz: łączna liczba bajtów, udział w pliku, największe bloki EXIF, XMP, C2PA lub promptów i ryzyko dla prywatności. Za darmo, bez wysyłania.',
+        'Zmierz, ile metadanych zawiera obraz: łączna liczba bajtów, udział w pliku, największe bloki EXIF, C2PA lub promptów i ryzyko dla prywatności. Za darmo, bez wysyłania.',
       intro:
         'Zobacz, jaka część pliku to metadane, a nie obraz. Narzędzie wymienia każdy blok metadanych według rozmiaru — EXIF, XMP, C2PA, osadzone podglądy, prompty i workflow AI — pokazuje jego udział w pliku i ocenia ryzyko dla prywatności.',
       steps: [

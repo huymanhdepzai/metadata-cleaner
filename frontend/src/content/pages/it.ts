@@ -87,7 +87,7 @@ const pages: Pages = {
   terms: {
     title: 'Termini di utilizzo',
     description:
-      'Termini di utilizzo di All Metadata Cleaner: uno strumento gratuito fornito così com’è, la tua responsabilità sull’uso delle immagini pulite e i limiti della nostra responsabilità.',
+      'Termini di utilizzo: uno strumento gratuito fornito così com’è, la tua responsabilità sull’uso delle immagini pulite e i limiti della nostra responsabilità.',
     intro:
       'Usando All Metadata Cleaner accetti questi termini. Leggili insieme all’esclusione di responsabilità nella home page e alla nostra Informativa sulla privacy.',
     sections: [

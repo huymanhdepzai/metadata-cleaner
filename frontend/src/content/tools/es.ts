@@ -51,9 +51,9 @@ const tools: ToolsContent = {
       ],
     },
     'privacy-check': {
-      title: 'Análisis de privacidad de fotos — encuentra GPS y datos personales',
+      title: 'Análisis de privacidad de fotos — GPS y datos personales',
       description:
-        'Comprueba qué revela una foto antes de compartirla: ubicación GPS que puedes abrir en un mapa, autor, número de serie, hora de captura y datos de IA. Gratis y sin subir nada.',
+        'Comprueba qué revela una foto antes de compartirla: ubicación GPS que puedes abrir en un mapa, autor, hora de captura y datos de IA. Gratis, sin subidas.',
       intro:
         'Descubre qué delata una foto antes de publicarla. El análisis muestra si contiene una ubicación GPS (y adónde apunta), datos personales como el autor o el número de serie del dispositivo, la hora de captura y datos de procedencia de IA, con un nivel de riesgo sencillo.',
       steps: [
@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Tamaño de metadatos — ¿cuántos metadatos tiene una foto?',
       description:
-        'Mide cuántos metadatos lleva una imagen: bytes totales, porcentaje del archivo, los bloques EXIF, XMP, C2PA o de prompts más grandes y el riesgo de privacidad. Gratis, sin subir nada.',
+        'Mide cuántos metadatos lleva una imagen: bytes totales, los bloques EXIF, C2PA o de prompts más grandes y el riesgo de privacidad. Gratis, sin subir nada.',
       intro:
         'Descubre qué parte de un archivo son metadatos y no imagen. La herramienta lista cada bloque de metadatos por tamaño —EXIF, XMP, C2PA, vistas previas incrustadas, prompts y flujos de IA—, muestra su porcentaje del archivo y valora el riesgo de privacidad.',
       steps: [

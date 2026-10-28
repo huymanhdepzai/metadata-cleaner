@@ -79,7 +79,7 @@ const tools: ToolsContent = {
     'metadata-size': {
       title: 'Metadatagrootte meten — hoeveel metadata zit er in een foto?',
       description:
-        'Meet hoeveel metadata een afbeelding bevat: totaal aantal bytes, aandeel in het bestand, de grootste EXIF-, XMP-, C2PA- of promptblokken en een privacyrisico. Gratis, zonder upload.',
+        'Meet hoeveel metadata een afbeelding bevat: totaal aantal bytes, de grootste EXIF-, C2PA- of promptblokken en een privacyrisico. Gratis, zonder upload.',
       intro:
         'Zie hoeveel van een bestand metadata is in plaats van beeld. De tool toont elk metadatablok op grootte — EXIF, XMP, C2PA, ingesloten voorbeelden, AI-prompts en workflows — met het aandeel in het bestand en een inschatting van het privacyrisico.',
       steps: [
