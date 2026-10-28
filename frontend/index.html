@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!--
+      Thẻ SEO theo trang/ngôn ngữ (title, description, robots, canonical, hreflang, Open Graph) được chèn vào đây
+      lúc prerender (scripts/prerender.mjs) và cập nhật phía client khi điều hướng (src/seo/head.ts).
+      Tên miền lấy từ SITE.origin trong src/content/seo.ts.
+    -->
+    <!--app-head-->
+
+    <!-- Áp dụng chế độ Sáng/Tối trước khi vẽ trang để tránh nháy nền trắng (logic đầy đủ ở src/theme.ts). -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme');
+          var dark = t === 'dark' || ((!t || t === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Font (Inter, Sora, Playfair Display) được tự host qua @fontsource và nạp trong src/main.tsx — không còn request tới Google Fonts. -->
+    <!-- Dữ liệu có cấu trúc (JSON-LD) theo trang/ngôn ngữ: src/components/seo/StructuredData.tsx. -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      All Metadata Cleaner needs JavaScript to inspect and remove AI metadata (C2PA, EXIF, XMP, prompts) from images in your browser.
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
