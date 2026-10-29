@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Standort aus Fotos entfernen (GPS) – gratis, ohne Upload',
   description:
     'Handyfotos verraten oft Standort, Gerät und Aufnahmezeit. Welche EXIF-Felder riskant sind, wo sie durchsickern und wie Sie GPS-Daten ohne Qualitätsverlust löschen.',
   answer:

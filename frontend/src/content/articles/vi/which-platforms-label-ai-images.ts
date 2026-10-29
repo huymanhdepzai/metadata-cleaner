@@ -68,7 +68,7 @@ const article: Article = {
       paragraphs: [
         'Chỉ một chỉnh sửa có AI hỗ trợ — xóa vật thể bằng công cụ tạo sinh, nới rộng nền hay dùng công cụ tẩy AI trên điện thoại — cũng có thể đánh dấu cả bức ảnh là nội dung ghép có AI trong metadata. Nền tảng đọc khai báo đó mà không đánh giá chỉnh sửa lớn hay nhỏ.',
       ],
-      related: ['turn-off-content-credentials-photoshop-lightroom'],
+      related: ['made-with-ai-label', 'turn-off-content-credentials-photoshop-lightroom'],
     },
     {
       heading: 'Cách kiểm tra ảnh trước khi đăng',

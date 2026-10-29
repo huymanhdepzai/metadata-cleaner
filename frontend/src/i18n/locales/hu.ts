@@ -205,6 +205,7 @@ const hu: Messages = {
   },
   tools: {
     eyebrow: 'Ingyenes eszközök',
+    crumb: 'Eszközök',
     open: 'Megnyitás',
     more: 'További ingyenes eszközök',
     howTitle: 'Használat',
@@ -288,6 +289,10 @@ const hu: Messages = {
     guides: {
       eyebrow: 'Útmutatók',
       title: 'Az MI-képek metaadatainak megértése',
+      description:
+        'Útmutatók az MI-képek metaadatairól: mit árul el a C2PA, az EXIF és a prompt, miért kapnak a fotók MI-címkét, és hogyan törölhetők biztonságosan.',
+      intro:
+        'Gyakorlati útmutatók a képeidben rejlő adatokról: mit árulnak el a C2PA Content Credentials, az EXIF és az MI-promptok, hogyan használják őket a platformok, és hogyan távolíthatod el őket minőségromlás nélkül. Minden útmutatóban benne van az eszköz, így azonnal kipróbálhatod.',
       related: 'Kapcsolódó témák',
       quickAnswer: 'Gyors válasz',
       onThisPage: 'Ezen az oldalon',

@@ -205,6 +205,7 @@ const fi: Messages = {
   },
   tools: {
     eyebrow: 'Ilmaiset työkalut',
+    crumb: 'Työkalut',
     open: 'Avaa',
     more: 'Lisää ilmaisia työkaluja',
     howTitle: 'Näin käytät sitä',
@@ -288,6 +289,10 @@ const fi: Messages = {
     guides: {
       eyebrow: 'Oppaat',
       title: 'Tekoälykuvien metatiedot tutuiksi',
+      description:
+        'Oppaat tekoälykuvien metatiedoista: mitä C2PA, EXIF ja kehotteet paljastavat, miksi kuvat saavat tekoälymerkinnän ja miten metatiedot poistetaan.',
+      intro:
+        'Käytännön oppaita kuviesi piilotetuista tiedoista: mitä C2PA Content Credentials, EXIF ja tekoälykehotteet paljastavat, miten alustat niitä käyttävät ja miten ne poistetaan laatua heikentämättä. Jokaisessa oppaassa on työkalu, joten voit kokeilla heti.',
       related: 'Aiheeseen liittyvää',
       quickAnswer: 'Lyhyt vastaus',
       onThisPage: 'Tällä sivulla',

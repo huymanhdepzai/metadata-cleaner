@@ -59,7 +59,7 @@ const article: Article = {
         'Review the report, then tap “Remove AI metadata”.',
         'Save the cleaned photos, or download them all as a ZIP.',
       ],
-      related: ['remove-exif', 'remove-gps-location-from-photos', 'batch-remove-metadata'],
+      related: ['remove-exif', 'remove-gps-location-from-photos', 'remove-metadata-windows-mac'],
     },
     {
       heading: 'iPhone HEIC photos stay HEIC',

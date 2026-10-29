@@ -205,6 +205,7 @@ const fr: Messages = {
   },
   tools: {
     eyebrow: 'Outils gratuits',
+    crumb: 'Outils',
     open: 'Ouvrir',
     more: 'Autres outils gratuits',
     howTitle: 'Comment l’utiliser',
@@ -288,6 +289,10 @@ const fr: Messages = {
     guides: {
       eyebrow: 'Guides',
       title: 'Comprendre les métadonnées des images IA',
+      description:
+        'Guides sur les métadonnées d’images IA : ce que révèlent C2PA, EXIF et prompts, pourquoi des photos reçoivent un label IA et comment les supprimer.',
+      intro:
+        'Des guides pratiques sur les données cachées dans vos images : ce que révèlent les Content Credentials C2PA, l’EXIF et les prompts IA, comment les plateformes les utilisent et comment les supprimer sans perte de qualité. Chaque guide intègre l’outil pour l’essayer tout de suite.',
       related: 'Sujets associés',
       quickAnswer: 'Réponse rapide',
       onThisPage: 'Sur cette page',
@@ -314,14 +319,14 @@ const fr: Messages = {
           ],
         },
         {
-          title: 'Masquer les prompts Midjourney et DALL·E avant de partager',
+          title: 'Supprimer prompts et métadonnées des images Midjourney et ChatGPT avant de partager',
           paragraphs: [
             'Les images issues de Midjourney, DALL·E ou Firefly peuvent contenir le prompt, l’identifiant de tâche, le nom du compte et une déclaration d’origine IA dans XMP, EXIF ou le texte PNG. Pour beaucoup de créateurs et de prompt engineers, c’est une recette à garder secrète.',
             'Importez l’image, examinez les champs marqués « IA » et « Personnel », puis supprimez-les tous en un seul clic.',
           ],
         },
         {
-          title: 'Que sont C2PA / Content Credentials ?',
+          title: 'Qu’est-ce que C2PA ? Les Content Credentials expliqués',
           paragraphs: [
             'C2PA (Coalition for Content Provenance and Authenticity) est une norme qui associe à une image un historique de provenance signé numériquement : quel outil l’a créée, ce qui a été modifié et si l’IA a été utilisée. Le manifeste est stocké dans un conteneur JUMBF (JPEG APP11, PNG caBX, boîte uuid HEIC/AVIF).',
             'Le rapport affiche le générateur (claim generator), les actions c2pa.* et la valeur DigitalSourceType lorsqu’ils existent. Le nettoyage retire l’intégralité du manifeste du fichier.',

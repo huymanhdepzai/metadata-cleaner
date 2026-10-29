@@ -123,7 +123,7 @@ export function StructuredData() {
       const toolsUrl = absoluteUrl(pathFor(lang, TOOLS_INDEX));
       const crumbs = [
         { '@type': 'ListItem', position: 1, name: seo.guides.home, item: homeUrl },
-        { '@type': 'ListItem', position: 2, name: m.header.nav.tools, item: toolsUrl },
+        { '@type': 'ListItem', position: 2, name: m.tools.crumb, item: toolsUrl },
       ];
       if (route.name === 'tools') {
         return [

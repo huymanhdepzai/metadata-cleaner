@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Xóa vị trí GPS khỏi ảnh — miễn phí, không tải lên',
   description:
     'Ảnh chụp bằng điện thoại có thể làm lộ vị trí, thiết bị và thời gian chụp. Xem trường EXIF nào nguy hiểm, bị lộ ở đâu và cách xóa vị trí GPS không giảm chất lượng.',
   answer:

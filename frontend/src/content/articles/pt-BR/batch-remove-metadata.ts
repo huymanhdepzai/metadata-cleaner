@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Remover metadados de fotos em lote — grátis, sem upload',
   description:
     'Remova metadados de até 50 imagens de uma vez no navegador — JPG, PNG, WebP, GIF, HEIC, AVIF — e baixe tudo em um ZIP. Sem perdas, grátis e sem upload.',
   answer:

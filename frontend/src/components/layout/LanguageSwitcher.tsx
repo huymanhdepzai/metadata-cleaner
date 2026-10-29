@@ -51,7 +51,8 @@ export function LanguageSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label={t.header.language}
+        // Tên truy cập phải chứa chữ đang hiển thị (WCAG 2.5.3) để người dùng điều khiển bằng giọng nói gọi đúng nút.
+        aria-label={`${t.header.language}: ${findLanguage(lang)?.name}`}
         className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-surface px-2.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
       >
         <Flag code={lang} />

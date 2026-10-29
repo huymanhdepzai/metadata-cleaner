@@ -68,7 +68,7 @@ const article: Article = {
       paragraphs: [
         'Une seule retouche assistée par IA — supprimer un objet avec un outil génératif, agrandir un arrière-plan ou utiliser une gomme IA sur un téléphone — peut marquer toute la photo comme contenu composite IA dans ses métadonnées. Les plateformes lisent cette déclaration sans évaluer l’ampleur de la retouche.',
       ],
-      related: ['turn-off-content-credentials-photoshop-lightroom'],
+      related: ['made-with-ai-label', 'turn-off-content-credentials-photoshop-lightroom'],
     },
     {
       heading: 'Vérifier une photo avant de la publier',

@@ -6,7 +6,7 @@ const article: Article = {
     'Some AI images carry two kinds of markers: metadata stored next to the image, and an invisible watermark woven into the pixels themselves. Google’s SynthID is the best-known example of the second kind.',
     'This guide explains how invisible watermarks differ from C2PA and EXIF, how they are detected, and why no honest metadata tool can remove them.',
   ],
-  seoTitle: 'SynthID & Invisible AI Watermarks Explained',
+  seoTitle: 'SynthID Explained: Can AI Watermarks Be Removed?',
   description:
     'What SynthID and other invisible AI watermarks are, how they differ from C2PA metadata, how they are detected and why metadata cleaners cannot remove them.',
   answer:

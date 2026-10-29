@@ -104,13 +104,12 @@ export function GuidePage({ slug }: { slug: GuideSlug }) {
       <div className="border-b border-slate-200 bg-gradient-to-b from-indigo-50 to-slate-50">
         <div className="mx-auto max-w-3xl px-4 pt-8 pb-10 sm:pt-12">
           <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
-            <ol className="flex flex-wrap items-center gap-1.5">
+            <ol className="flex flex-wrap items-center gap-1.5 [&>li+li]:before:me-1.5 [&>li+li]:before:text-slate-400 [&>li+li]:before:content-['/']">
               <li>
                 <Link to={home} className="hover:text-indigo-600">
                   {t.seo.guides.home}
                 </Link>
               </li>
-              <li aria-hidden="true">/</li>
               <li>
                 <Link to={guidesIndex} className="hover:text-indigo-600">
                   {t.seo.guides.eyebrow}

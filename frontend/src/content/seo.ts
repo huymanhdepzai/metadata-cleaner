@@ -148,6 +148,10 @@ export const BASE_GUIDE_SLUGS = [
  * src/content/articles/<mã>.ts. Đặt bài mới nhất lên đầu.
  */
 export const EXTRA_GUIDE_SLUGS = [
+  // Khoảng trống từ khóa (2026-10-29): xóa metadata trên máy tính, metadata ảnh ChatGPT, chụp màn hình có xóa metadata không.
+  'remove-metadata-windows-mac',
+  'chatgpt-image-metadata',
+  'does-screenshot-remove-metadata',
   // Landing page theo việc cần làm (truy vấn "remove C2PA", "EXIF remover"): công cụ nhúng sẵn ở đầu trang.
   'remove-c2pa',
   'remove-exif',
@@ -181,6 +185,10 @@ export type ExtraGuideSlug = (typeof EXTRA_GUIDE_SLUGS)[number];
  */
 const FULL: readonly LangCode[] = ['en', 'vi', 'ja', 'es', 'de', 'fr', 'pt-BR'];
 export const ARTICLE_LANGS: Record<GuideSlug, readonly LangCode[]> = {
+  // Bài mới: en + vi trước, các ngôn ngữ còn lại thêm sau.
+  'remove-metadata-windows-mac': ['en', 'vi'],
+  'chatgpt-image-metadata': ['en', 'vi'],
+  'does-screenshot-remove-metadata': ['en', 'vi'],
   'made-with-ai-label': FULL,
   'remove-stable-diffusion-comfyui-metadata': FULL,
   'hide-midjourney-dalle-prompts': FULL,
@@ -205,6 +213,9 @@ export const ARTICLE_LANGS: Record<GuideSlug, readonly LangCode[]> = {
 
 /** Thẻ chủ đề (tag đỏ) trên thẻ bài viết — dùng tên riêng / thuật ngữ kỹ thuật nên giống nhau ở mọi ngôn ngữ. */
 export const GUIDE_TAGS: Record<GuideSlug, string> = {
+  'remove-metadata-windows-mac': 'Windows · macOS',
+  'chatgpt-image-metadata': 'ChatGPT · C2PA',
+  'does-screenshot-remove-metadata': 'Screenshot · EXIF',
   'made-with-ai-label': 'Facebook · Instagram',
   'remove-stable-diffusion-comfyui-metadata': 'Stable Diffusion · ComfyUI',
   'hide-midjourney-dalle-prompts': 'Midjourney · DALL·E',
@@ -234,6 +245,9 @@ export const GUIDE_TAGS: Record<GuideSlug, string> = {
  */
 const INITIAL = { published: '2026-10-16', updated: '2026-10-16' };
 export const GUIDE_DATES: Record<GuideSlug, { published: string; updated: string }> = {
+  'remove-metadata-windows-mac': { published: '2026-10-29', updated: '2026-10-29' },
+  'chatgpt-image-metadata': { published: '2026-10-29', updated: '2026-10-29' },
+  'does-screenshot-remove-metadata': { published: '2026-10-29', updated: '2026-10-29' },
   'remove-c2pa': { published: '2026-10-20', updated: '2026-10-20' },
   'remove-exif': { published: '2026-10-20', updated: '2026-10-20' },
   'remove-metadata-from-jpg': INITIAL,
@@ -250,8 +264,8 @@ export const GUIDE_DATES: Record<GuideSlug, { published: string; updated: string
   'what-is-exif-data': INITIAL,
   'made-with-ai-label': INITIAL,
   'remove-stable-diffusion-comfyui-metadata': INITIAL,
-  'hide-midjourney-dalle-prompts': INITIAL,
-  'what-is-c2pa-content-credentials': INITIAL,
+  'hide-midjourney-dalle-prompts': { published: '2026-10-16', updated: '2026-10-29' },
+  'what-is-c2pa-content-credentials': { published: '2026-10-16', updated: '2026-10-29' },
   'remove-gps-location-from-photos': INITIAL,
   'batch-remove-metadata': INITIAL,
 };

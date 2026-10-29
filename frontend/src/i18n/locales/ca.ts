@@ -205,6 +205,7 @@ const ca: Messages = {
   },
   tools: {
     eyebrow: 'Eines gratuïtes',
+    crumb: 'Eines',
     open: 'Obre',
     more: 'Més eines gratuïtes',
     howTitle: 'Com fer-la servir',
@@ -288,6 +289,10 @@ const ca: Messages = {
     guides: {
       eyebrow: 'Guies',
       title: 'Entendre les metadades de les imatges d’IA',
+      description:
+        'Guies sobre metadades d’imatges d’IA: què revelen C2PA, EXIF i els prompts, per què les fotos reben etiquetes d’IA i com eliminar-les amb seguretat.',
+      intro:
+        'Guies pràctiques sobre les dades amagades a les teves imatges: què revelen les Content Credentials C2PA, l’EXIF i els prompts d’IA, com les fan servir les plataformes i com eliminar-les sense perdre qualitat. Cada guia inclou l’eina perquè la provis de seguida.',
       related: 'Temes relacionats',
       quickAnswer: 'Resposta ràpida',
       onThisPage: 'En aquesta pàgina',

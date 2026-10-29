@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Bulk Remove Metadata from Photos — Batch, Free, No Upload',
   description:
     'Batch remove metadata from up to 50 images at once in your browser — JPG, PNG, WebP, GIF, HEIC, AVIF — then download one ZIP. Lossless, free, no upload.',
   answer:

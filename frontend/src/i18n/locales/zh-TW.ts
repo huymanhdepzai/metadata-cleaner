@@ -204,6 +204,7 @@ const zhTW: Messages = {
   },
   tools: {
     eyebrow: '免費工具',
+    crumb: '工具',
     open: '開啟',
     more: '更多免費工具',
     howTitle: '使用方式',
@@ -287,6 +288,10 @@ const zhTW: Messages = {
     guides: {
       eyebrow: '指南',
       title: '認識 AI 圖片中繼資料',
+      description:
+        'AI 圖片中繼資料指南：C2PA、EXIF 與 AI 提示詞會透露什麼、照片為何被加上 AI 標籤，以及如何安全移除中繼資料。',
+      intro:
+        '關於圖片中隱藏資料的實用指南：C2PA 內容憑證、EXIF 與 AI 提示詞會透露哪些資訊、各平台如何使用它們，以及如何在不損失畫質的情況下移除。每篇指南都內建工具，可以立即試用。',
       related: '相關主題',
       quickAnswer: '快速解答',
       onThisPage: '本頁內容',

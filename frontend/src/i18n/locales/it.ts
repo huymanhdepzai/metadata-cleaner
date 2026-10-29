@@ -205,6 +205,7 @@ const it: Messages = {
   },
   tools: {
     eyebrow: 'Strumenti gratuiti',
+    crumb: 'Strumenti',
     open: 'Apri',
     more: 'Altri strumenti gratuiti',
     howTitle: 'Come si usa',
@@ -288,6 +289,10 @@ const it: Messages = {
     guides: {
       eyebrow: 'Guide',
       title: 'Capire i metadati delle immagini IA',
+      description:
+        'Guide sui metadati delle immagini IA: cosa rivelano C2PA, EXIF e prompt, perché le foto ricevono etichette IA e come rimuovere i metadati.',
+      intro:
+        'Guide pratiche sui dati nascosti nelle tue immagini: cosa rivelano le Content Credentials C2PA, l’EXIF e i prompt IA, come li usano le piattaforme e come rimuoverli senza perdita di qualità. Ogni guida include lo strumento per provarlo subito.',
       related: 'Argomenti correlati',
       quickAnswer: 'Risposta rapida',
       onThisPage: 'In questa pagina',

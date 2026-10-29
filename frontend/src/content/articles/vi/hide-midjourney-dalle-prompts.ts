@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Xóa metadata ảnh Midjourney, ChatGPT — giấu prompt',
   description:
     'Ảnh từ Midjourney, ChatGPT/DALL·E và Firefly có thể chứa prompt, job ID và dữ liệu nguồn gốc AI. Xem những gì được nhúng và cách xóa trước khi chia sẻ.',
   answer:

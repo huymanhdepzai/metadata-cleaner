@@ -205,6 +205,7 @@ const id: Messages = {
   },
   tools: {
     eyebrow: 'Alat gratis',
+    crumb: 'Alat',
     open: 'Buka',
     more: 'Alat gratis lainnya',
     howTitle: 'Cara menggunakan',
@@ -288,6 +289,10 @@ const id: Messages = {
     guides: {
       eyebrow: 'Panduan',
       title: 'Memahami metadata gambar AI',
+      description:
+        'Panduan metadata gambar AI: apa yang diungkap C2PA, EXIF, dan prompt AI, mengapa foto diberi label AI, dan cara menghapus metadata dengan aman.',
+      intro:
+        'Panduan praktis tentang data tersembunyi di gambar Anda: apa yang diungkap C2PA Content Credentials, EXIF, dan prompt AI, bagaimana platform menggunakannya, dan cara menghapusnya tanpa penurunan kualitas. Setiap panduan dilengkapi alatnya sehingga Anda bisa langsung mencoba.',
       related: 'Topik terkait',
       quickAnswer: 'Jawaban singkat',
       onThisPage: 'Di halaman ini',

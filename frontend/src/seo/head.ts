@@ -1,5 +1,5 @@
 import { guideContent } from '../content/guideContent';
-import { availableGuides, guidePageCount, guidesOnPage, SITE } from '../content/seo';
+import { availableGuides, guidePageCount, SITE } from '../content/seo';
 import { isRtl, type LanguageBundle } from '../i18n';
 import { DEFAULT_LANG, findLanguage } from '../i18n/languages';
 import { absoluteUrl, isIndexable, languagesFor, pathFor, type Route } from '../router';
@@ -55,12 +55,11 @@ export function buildHead({ lang, m, articles, pages, tools }: Omit<LanguageBund
       description = articles?.[route.slug]?.description ?? truncate(guide.summary[0]);
     }
   } else if (route.name === 'guides') {
-    const slugs = availableGuides(lang);
-    const total = guidePageCount(slugs.length);
-    const pageSuffix = total > 1 ? ` (${route.page}/${total})` : '';
+    // Trang 1 không có hậu tố "(1/n)"; các trang sau có số trang trong tiêu đề và mô tả để không trùng nhau.
+    const total = guidePageCount(availableGuides(lang).length);
+    const pageSuffix = route.page > 1 ? ` (${route.page}/${total})` : '';
     title = withSiteName(`${m.seo.guides.title}${pageSuffix}`);
-    const titles = guidesOnPage(route.page, slugs).map((slug) => guideContent({ m, articles }, slug)?.title ?? '');
-    description = truncate(`${m.seo.guides.title}: ${titles.filter(Boolean).join(' · ')}`);
+    description = `${m.seo.guides.description}${pageSuffix}`;
   }
 
   // hreflang chỉ liệt kê ngôn ngữ thật sự có trang này và được lập chỉ mục; trang noindex không tham gia nhóm hreflang.

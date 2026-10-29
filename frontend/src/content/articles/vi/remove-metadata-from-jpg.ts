@@ -24,7 +24,7 @@ const article: Article = {
           ['COM, APP2 MPF, dữ liệu sau EOI', 'Chú thích, ảnh xem trước, phần video của ảnh chuyển động'],
         ],
       },
-      related: ['what-is-exif-data', 'what-is-c2pa-content-credentials'],
+      related: ['remove-exif', 'what-is-exif-data', 'what-is-c2pa-content-credentials'],
     },
     {
       heading: 'Cách xóa metadata ảnh JPG trong ba bước',

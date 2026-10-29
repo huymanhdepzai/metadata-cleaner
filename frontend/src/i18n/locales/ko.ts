@@ -205,6 +205,7 @@ const ko: Messages = {
   },
   tools: {
     eyebrow: '무료 도구',
+    crumb: '도구',
     open: '열기',
     more: '다른 무료 도구',
     howTitle: '사용 방법',
@@ -288,6 +289,10 @@ const ko: Messages = {
     guides: {
       eyebrow: '가이드',
       title: 'AI 이미지 메타데이터 이해하기',
+      description:
+        'AI 이미지 메타데이터 가이드: C2PA·EXIF·AI 프롬프트가 무엇을 드러내는지, 사진에 AI 라벨이 붙는 이유, 메타데이터를 안전하게 제거하는 방법.',
+      intro:
+        '이미지 속에 숨은 데이터에 관한 실용 가이드입니다. C2PA 콘텐츠 자격 증명, EXIF, AI 프롬프트가 무엇을 드러내는지, 플랫폼이 이를 어떻게 활용하는지, 화질 손실 없이 제거하는 방법을 알려 드립니다. 모든 가이드에 도구가 들어 있어 바로 사용해 볼 수 있습니다.',
       related: '관련 주제',
       quickAnswer: '간단한 답변',
       onThisPage: '이 페이지의 내용',

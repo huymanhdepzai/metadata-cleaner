@@ -6,7 +6,7 @@ const article: Article = {
     'Manche KI-Bilder tragen zwei Arten von Markierungen: Metadaten, die neben dem Bild gespeichert sind, und ein unsichtbares Wasserzeichen, das in die Pixel selbst eingewoben ist. SynthID von Google ist das bekannteste Beispiel für die zweite Art.',
     'Dieser Ratgeber erklärt, wie sich unsichtbare Wasserzeichen von C2PA und EXIF unterscheiden, wie sie erkannt werden und warum kein seriöses Metadaten-Tool sie entfernen kann.',
   ],
-  seoTitle: 'SynthID & unsichtbare KI-Wasserzeichen erklärt',
+  seoTitle: 'SynthID erklärt: Lassen sich KI-Wasserzeichen entfernen?',
   description:
     'Was SynthID und andere unsichtbare KI-Wasserzeichen sind, wie sie sich von C2PA-Metadaten unterscheiden, wie man sie erkennt und warum Cleaner sie nicht entfernen.',
   answer:

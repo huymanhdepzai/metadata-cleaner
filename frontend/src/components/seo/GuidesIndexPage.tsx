@@ -20,13 +20,12 @@ export function GuidesIndexPage({ page }: { page: number }) {
       <div className="border-b border-slate-200 bg-gradient-to-b from-indigo-50 to-slate-50">
         <div className="mx-auto max-w-6xl px-4 pt-8 pb-10 sm:pt-12">
           <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
-            <ol className="flex flex-wrap items-center gap-1.5">
+            <ol className="flex flex-wrap items-center gap-1.5 [&>li+li]:before:me-1.5 [&>li+li]:before:text-slate-400 [&>li+li]:before:content-['/']">
               <li>
                 <Link to={home} className="hover:text-indigo-600">
                   {guides.home}
                 </Link>
               </li>
-              <li aria-hidden="true">/</li>
               <li aria-current="page" className="text-slate-700">
                 {guides.eyebrow}
               </li>
@@ -34,6 +33,8 @@ export function GuidesIndexPage({ page }: { page: number }) {
           </nav>
           <p className="mt-6 text-sm font-semibold tracking-wide text-indigo-600 uppercase">{guides.eyebrow}</p>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{guides.title}</h1>
+          {/* Đoạn giới thiệu chỉ ở trang 1 — các trang sau không lặp lại cùng một đoạn văn. */}
+          {page === 1 && <p className="mt-4 max-w-3xl text-lg leading-relaxed text-slate-700">{guides.intro}</p>}
           {total > 1 && (
             <p className="mt-2 text-sm text-slate-500">
               {page} / {total}

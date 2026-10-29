@@ -6,7 +6,7 @@ const article: Article = {
     'Một số ảnh AI mang hai loại dấu hiệu: metadata nằm cạnh ảnh, và thủy ấn vô hình được dệt vào chính điểm ảnh. SynthID của Google là ví dụ nổi tiếng nhất của loại thứ hai.',
     'Bài này giải thích thủy ấn vô hình khác C2PA và EXIF thế nào, được phát hiện ra sao, và vì sao không công cụ metadata trung thực nào có thể xóa chúng.',
   ],
-  seoTitle: 'SynthID và thủy ấn AI vô hình là gì?',
+  seoTitle: 'SynthID là gì? Có xóa được thủy ấn AI không?',
   description:
     'SynthID và các thủy ấn AI vô hình là gì, khác metadata C2PA thế nào, được phát hiện ra sao và vì sao công cụ làm sạch metadata không thể xóa chúng.',
   answer:

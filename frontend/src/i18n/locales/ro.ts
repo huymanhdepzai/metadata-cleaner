@@ -205,6 +205,7 @@ const ro: Messages = {
   },
   tools: {
     eyebrow: 'Instrumente gratuite',
+    crumb: 'Instrumente',
     open: 'Deschide',
     more: 'Mai multe instrumente gratuite',
     howTitle: 'Cum se folosește',
@@ -288,6 +289,10 @@ const ro: Messages = {
     guides: {
       eyebrow: 'Ghiduri',
       title: 'Înțelegerea metadatelor imaginilor IA',
+      description:
+        'Ghiduri despre metadatele imaginilor IA: ce dezvăluie C2PA, EXIF și prompturile, de ce fotografiile primesc etichete IA și cum ștergi metadatele.',
+      intro:
+        'Ghiduri practice despre datele ascunse din imaginile tale: ce dezvăluie C2PA Content Credentials, EXIF și prompturile IA, cum le folosesc platformele și cum le elimini fără pierderi de calitate. Fiecare ghid include instrumentul, ca să îl încerci imediat.',
       related: 'Subiecte conexe',
       quickAnswer: 'Răspuns rapid',
       onThisPage: 'Pe această pagină',

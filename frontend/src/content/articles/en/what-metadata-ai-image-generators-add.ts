@@ -42,7 +42,7 @@ const article: Article = {
       paragraphs: [
         'Images created with OpenAI’s image generation carry C2PA Content Credentials that identify OpenAI as the source, so they can be recognized by C2PA-aware viewers and platforms. The manifest can be lost when the image is screenshotted or re-saved by an app that does not preserve it.',
       ],
-      related: ['what-is-c2pa-content-credentials'],
+      related: ['chatgpt-image-metadata', 'what-is-c2pa-content-credentials'],
     },
     {
       heading: 'Adobe Firefly and generative features in Photoshop',

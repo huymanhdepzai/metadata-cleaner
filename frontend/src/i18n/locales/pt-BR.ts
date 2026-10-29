@@ -205,6 +205,7 @@ const ptBR: Messages = {
   },
   tools: {
     eyebrow: 'Ferramentas grátis',
+    crumb: 'Ferramentas',
     open: 'Abrir',
     more: 'Mais ferramentas grátis',
     howTitle: 'Como usar',
@@ -288,6 +289,10 @@ const ptBR: Messages = {
     guides: {
       eyebrow: 'Guias',
       title: 'Entendendo os metadados de imagens de IA',
+      description:
+        'Guias sobre metadados de imagens com IA: o que C2PA, EXIF e prompts revelam, por que fotos recebem rótulos de IA e como removê-los com segurança.',
+      intro:
+        'Guias práticos sobre os dados ocultos nas suas imagens: o que as Content Credentials C2PA, o EXIF e os prompts de IA revelam, como as plataformas os usam e como removê-los sem perder qualidade. Cada guia inclui a ferramenta para você testar na hora.',
       related: 'Tópicos relacionados',
       quickAnswer: 'Resposta rápida',
       onThisPage: 'Nesta página',
@@ -314,14 +319,14 @@ const ptBR: Messages = {
           ],
         },
         {
-          title: 'Ocultar prompts do Midjourney e do DALL·E antes de compartilhar',
+          title: 'Remover prompts e metadados de imagens do Midjourney e do ChatGPT antes de compartilhar',
           paragraphs: [
             'Imagens do Midjourney, DALL·E ou Firefly podem conter o prompt, o ID do job, o nome da conta e uma declaração de origem por IA em XMP, EXIF ou texto PNG. Para muitos criadores e prompt engineers, essa é uma receita que vale manter em segredo.',
             'Envie a imagem, confira os campos marcados como “IA” e “Pessoal” e remova tudo com um único clique.',
           ],
         },
         {
-          title: 'O que são C2PA / Content Credentials?',
+          title: 'O que é C2PA? Content Credentials explicadas',
           paragraphs: [
             'C2PA (Coalition for Content Provenance and Authenticity) é um padrão que anexa à imagem um registro de procedência com assinatura digital: qual ferramenta a criou, o que foi editado e se houve uso de IA. O manifesto fica em um contêiner JUMBF (JPEG APP11, PNG caBX, caixa uuid do HEIC/AVIF).',
             'O relatório mostra o gerador (claim generator), as ações c2pa.* e o valor DigitalSourceType quando existem. A limpeza remove o manifesto inteiro do arquivo.',

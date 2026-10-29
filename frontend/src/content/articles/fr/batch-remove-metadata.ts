@@ -1,7 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
-  seoTitle: 'Supprimer les métadonnées par lot (50 images, sans envoi)',
+  seoTitle: 'Supprimer les métadonnées de photos par lot — gratuit',
   description:
     'Supprimez les métadonnées de 50 images à la fois dans votre navigateur — JPG, PNG, WebP, GIF, HEIC, AVIF — puis téléchargez un seul ZIP. Sans perte, gratuit, sans envoi.',
   answer:

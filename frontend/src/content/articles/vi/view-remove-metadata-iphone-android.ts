@@ -59,7 +59,7 @@ const article: Article = {
         'Xem báo cáo, rồi chạm “Xóa metadata AI”.',
         'Lưu các ảnh đã làm sạch, hoặc tải tất cả dưới dạng ZIP.',
       ],
-      related: ['remove-exif', 'remove-gps-location-from-photos', 'batch-remove-metadata'],
+      related: ['remove-exif', 'remove-gps-location-from-photos', 'remove-metadata-windows-mac'],
     },
     {
       heading: 'Ảnh HEIC của iPhone vẫn là HEIC',

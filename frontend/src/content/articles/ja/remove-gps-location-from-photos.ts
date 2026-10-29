@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: '写真の位置情報（GPS）を削除｜無料・アップロード不要',
   description:
     'スマホ写真からは正確な撮影場所、端末、撮影日時がわかってしまいます。危険なEXIFの項目と漏れやすい経路、画質を落とさずに写真の位置情報を消す方法を解説。',
   answer:

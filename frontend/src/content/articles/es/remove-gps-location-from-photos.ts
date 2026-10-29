@@ -1,7 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
-  seoTitle: 'Borrar la ubicación GPS de tus fotos del móvil',
+  seoTitle: 'Quitar la ubicación de una foto (GPS) — gratis, sin subir',
   description:
     'Las fotos del móvil pueden revelar tu ubicación exacta, tu dispositivo y la hora. Descubre qué campos EXIF son peligrosos y cómo borrar el GPS sin perder calidad.',
   answer:

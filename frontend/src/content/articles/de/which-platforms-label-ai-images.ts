@@ -68,7 +68,7 @@ const article: Article = {
       paragraphs: [
         'Eine einzige KI-gestützte Bearbeitung – ein Objekt mit einem generativen Werkzeug entfernen, einen Hintergrund erweitern oder auf dem Smartphone einen KI-Radierer nutzen – kann das ganze Foto in seinen Metadaten als KI-Komposit ausweisen. Plattformen lesen diese Angabe aus, ohne zu bewerten, wie groß die Bearbeitung war.',
       ],
-      related: ['turn-off-content-credentials-photoshop-lightroom'],
+      related: ['made-with-ai-label', 'turn-off-content-credentials-photoshop-lightroom'],
     },
     {
       heading: 'So prüfen Sie ein Foto vor dem Posten',

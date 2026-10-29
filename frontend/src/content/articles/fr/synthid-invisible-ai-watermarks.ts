@@ -6,7 +6,7 @@ const article: Article = {
     'Certaines images IA portent deux types de marqueurs : des métadonnées stockées à côté de l’image, et un filigrane invisible tissé dans les pixels eux-mêmes. SynthID de Google est l’exemple le plus connu de la seconde catégorie.',
     'Ce guide explique en quoi les filigranes invisibles diffèrent de C2PA et de l’EXIF, comment ils sont détectés, et pourquoi aucun outil de métadonnées honnête ne peut les supprimer.',
   ],
-  seoTitle: 'SynthID et filigranes IA invisibles : explications',
+  seoTitle: 'SynthID expliqué : peut-on supprimer un filigrane IA ?',
   description:
     'SynthID et autres filigranes IA invisibles : en quoi ils diffèrent des métadonnées C2PA, comment on les détecte et pourquoi un nettoyeur ne peut pas les retirer.',
   answer:

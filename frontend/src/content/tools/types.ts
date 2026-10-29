@@ -19,8 +19,8 @@ export interface ToolPageContent {
 
 export interface ToolsContent {
   hub: { title: string; description: string; intro: string };
-  /** Tên và mô tả ngắn của từng thẻ trên trang tổng hợp. */
-  cards: Record<ToolCardId, { name: string; text: string }>;
+  /** Tên, mô tả ngắn và một câu chi tiết (chỉ hiện trên trang tổng hợp /tools/) của từng thẻ. */
+  cards: Record<ToolCardId, { name: string; text: string; detail: string }>;
   /** Tiêu đề và một câu mô tả cho từng nhóm thẻ trên trang tổng hợp. */
   groups: Record<ToolGroupId, { title: string; text: string }>;
   tools: Record<ToolSlug, ToolPageContent>;

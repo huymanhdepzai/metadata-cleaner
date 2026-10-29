@@ -72,6 +72,7 @@ const article: Article = {
       paragraphs: [
         'Chụp màn hình và các mẹo “lưu cho web” cũng làm mất metadata, nhưng chúng nén lại ảnh, giảm độ phân giải và có thể làm lệch màu — mỗi lần làm là một lần giảm chất lượng. Làm sạch ở mức byte chỉ bỏ các khối metadata và chép nguyên dữ liệu ảnh nén, nên chất lượng không đổi chút nào.',
       ],
+      related: ['does-screenshot-remove-metadata'],
     },
     {
       heading: 'Nếu nhãn vẫn còn sau khi làm sạch',

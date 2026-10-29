@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Remove Location from Photos (GPS) — Free, No Upload',
   description:
     'Phone photos can reveal your exact location, device and capture time. See which EXIF fields are risky, where they leak and how to remove GPS without quality loss.',
   answer:

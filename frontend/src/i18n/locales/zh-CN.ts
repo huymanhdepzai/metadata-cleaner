@@ -204,6 +204,7 @@ const zhCN: Messages = {
   },
   tools: {
     eyebrow: '免费工具',
+    crumb: '工具',
     open: '打开',
     more: '更多免费工具',
     howTitle: '使用方法',
@@ -287,6 +288,10 @@ const zhCN: Messages = {
     guides: {
       eyebrow: '指南',
       title: '了解 AI 图片元数据',
+      description:
+        'AI 图片元数据指南：C2PA、EXIF 和 AI 提示词会暴露什么，照片为何被打上 AI 标签，以及如何安全删除元数据。',
+      intro:
+        '关于图片中隐藏数据的实用指南：C2PA 内容凭证、EXIF 和 AI 提示词会暴露哪些信息，各平台如何使用它们，以及如何在不损失画质的情况下删除。每篇指南都内置了工具，可以立即试用。',
       related: '相关主题',
       quickAnswer: '快速回答',
       onThisPage: '本页内容',

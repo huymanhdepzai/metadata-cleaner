@@ -205,6 +205,7 @@ const de: Messages = {
   },
   tools: {
     eyebrow: 'Kostenlose Tools',
+    crumb: 'Tools',
     open: 'Öffnen',
     more: 'Weitere kostenlose Tools',
     howTitle: 'So funktioniert’s',
@@ -288,6 +289,10 @@ const de: Messages = {
     guides: {
       eyebrow: 'Ratgeber',
       title: 'KI-Bildmetadaten verstehen',
+      description:
+        'Ratgeber zu KI-Bildmetadaten: Was C2PA, EXIF und KI-Prompts verraten, warum Fotos KI-Labels erhalten und wie Sie Metadaten sicher entfernen.',
+      intro:
+        'Praktische Ratgeber zu den versteckten Daten in Ihren Bildern: was C2PA-Content-Credentials, EXIF und KI-Prompts verraten, wie Plattformen sie nutzen und wie Sie sie ohne Qualitätsverlust entfernen. Jeder Ratgeber enthält das Tool, damit Sie es sofort ausprobieren können.',
       related: 'Verwandte Themen',
       quickAnswer: 'Kurze Antwort',
       onThisPage: 'Auf dieser Seite',
@@ -314,14 +319,14 @@ const de: Messages = {
           ],
         },
         {
-          title: 'Midjourney- und DALL·E-Prompts vor dem Teilen verbergen',
+          title: 'Prompts und Metadaten aus Midjourney- und ChatGPT-Bildern vor dem Teilen entfernen',
           paragraphs: [
             'Bilder aus Midjourney, DALL·E oder Firefly können den Prompt, die Job-ID, den Kontonamen und eine KI-Herkunftsangabe in XMP, EXIF oder PNG-Text enthalten. Für viele Kreative und Prompt Engineers ist das ein Rezept, das privat bleiben soll.',
             'Laden Sie das Bild hoch, prüfen Sie die als „KI“ und „Persönlich“ markierten Felder und entfernen Sie alle mit einem Klick.',
           ],
         },
         {
-          title: 'Was sind C2PA / Content Credentials?',
+          title: 'Was ist C2PA? Content Credentials einfach erklärt',
           paragraphs: [
             'C2PA (Coalition for Content Provenance and Authenticity) ist ein Standard, der einem Bild einen digital signierten Herkunftsnachweis beifügt: welches Tool es erstellt hat, was bearbeitet wurde und ob KI im Spiel war. Das Manifest liegt in einem JUMBF-Container (JPEG APP11, PNG caBX, uuid-Box bei HEIC/AVIF).',
             'Der Bericht zeigt – sofern vorhanden – den Claim Generator, die c2pa.*-Aktionen und den DigitalSourceType-Wert. Beim Bereinigen wird das gesamte Manifest aus der Datei entfernt.',

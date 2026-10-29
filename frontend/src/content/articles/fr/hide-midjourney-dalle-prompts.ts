@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Supprimer les métadonnées d’images Midjourney et ChatGPT',
   description:
     'Les images Midjourney, ChatGPT/DALL·E et Firefly peuvent contenir votre prompt, un ID de tâche et des données de provenance IA. Supprimez-les avant de partager.',
   answer:

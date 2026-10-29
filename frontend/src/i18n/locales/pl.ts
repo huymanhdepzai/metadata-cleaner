@@ -205,6 +205,7 @@ const pl: Messages = {
   },
   tools: {
     eyebrow: 'Darmowe narzędzia',
+    crumb: 'Narzędzia',
     open: 'Otwórz',
     more: 'Więcej darmowych narzędzi',
     howTitle: 'Jak używać',
@@ -288,6 +289,10 @@ const pl: Messages = {
     guides: {
       eyebrow: 'Poradniki',
       title: 'Metadane obrazów AI — co warto wiedzieć',
+      description:
+        'Poradniki o metadanych obrazów AI: co ujawniają C2PA, EXIF i prompty, dlaczego zdjęcia dostają etykiety AI i jak bezpiecznie usunąć metadane.',
+      intro:
+        'Praktyczne poradniki o ukrytych danych w Twoich obrazach: co ujawniają C2PA Content Credentials, EXIF i prompty AI, jak wykorzystują je platformy i jak je usunąć bez utraty jakości. Każdy poradnik zawiera narzędzie, więc możesz od razu spróbować.',
       related: 'Powiązane tematy',
       quickAnswer: 'Krótka odpowiedź',
       onThisPage: 'Na tej stronie',

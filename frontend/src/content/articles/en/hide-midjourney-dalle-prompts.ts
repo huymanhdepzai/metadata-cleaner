@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Remove Metadata from Midjourney & ChatGPT Images',
   description:
     'Images from Midjourney, ChatGPT/DALL·E and Firefly can carry your prompt, job ID and AI provenance data. See what is embedded and remove it before sharing.',
   answer:

@@ -205,6 +205,7 @@ const nl: Messages = {
   },
   tools: {
     eyebrow: 'Gratis tools',
+    crumb: 'Tools',
     open: 'Openen',
     more: 'Meer gratis tools',
     howTitle: 'Zo gebruik je het',
@@ -288,6 +289,10 @@ const nl: Messages = {
     guides: {
       eyebrow: 'Gidsen',
       title: 'Metadata van AI-afbeeldingen begrijpen',
+      description:
+        'Gidsen over AI-metadata in afbeeldingen: wat C2PA, EXIF en AI-prompts prijsgeven, waarom foto’s een AI-label krijgen en hoe je metadata verwijdert.',
+      intro:
+        'Praktische gidsen over de verborgen gegevens in je afbeeldingen: wat C2PA Content Credentials, EXIF en AI-prompts prijsgeven, hoe platforms ze gebruiken en hoe je ze verwijdert zonder kwaliteitsverlies. Elke gids bevat de tool, zodat je hem meteen kunt proberen.',
       related: 'Gerelateerde onderwerpen',
       quickAnswer: 'Kort antwoord',
       onThisPage: 'Op deze pagina',

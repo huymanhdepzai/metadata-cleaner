@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'MidjourneyとChatGPT画像のメタデータ・プロンプトを削除',
   description:
     'Midjourney、ChatGPT/DALL·E、Fireflyの画像には、プロンプトやジョブID、AIの来歴データが含まれることがあります。埋め込まれた情報を確認し、共有前に削除しましょう。',
   answer:

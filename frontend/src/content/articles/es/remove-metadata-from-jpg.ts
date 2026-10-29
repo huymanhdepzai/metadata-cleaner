@@ -24,7 +24,7 @@ const article: Article = {
           ['COM, APP2 MPF, datos tras EOI', 'Comentarios, vistas previas, la parte de vídeo de las fotos en movimiento'],
         ],
       },
-      related: ['what-is-exif-data', 'what-is-c2pa-content-credentials'],
+      related: ['remove-exif', 'what-is-exif-data', 'what-is-c2pa-content-credentials'],
     },
     {
       heading: 'Cómo eliminar los metadatos de un JPG en tres pasos',

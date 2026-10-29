@@ -205,6 +205,7 @@ const ja: Messages = {
   },
   tools: {
     eyebrow: '無料ツール',
+    crumb: 'ツール',
     open: '開く',
     more: 'その他の無料ツール',
     howTitle: '使い方',
@@ -288,6 +289,10 @@ const ja: Messages = {
     guides: {
       eyebrow: 'ガイド',
       title: 'AI画像のメタデータを理解する',
+      description:
+        'AI画像メタデータのガイド。C2PA・EXIF・AIプロンプトから何がわかるか、写真にAIラベルが付く理由、メタデータを安全に削除する方法を解説。',
+      intro:
+        '画像に隠れたデータについての実践ガイドです。C2PA（コンテンツクレデンシャル）、EXIF、AIプロンプトから何がわかるのか、各プラットフォームがそれをどう使うのか、画質を落とさずに削除する方法を解説します。各ガイドにツールを組み込んでいるので、すぐに試せます。',
       related: '関連トピック',
       quickAnswer: '簡単な答え',
       onThisPage: 'このページの内容',
@@ -314,14 +319,14 @@ const ja: Messages = {
           ],
         },
         {
-          title: '共有前にMidjourneyやDALL·Eのプロンプトを隠す',
+          title: '共有前にMidjourneyやChatGPT画像のプロンプトとメタデータを削除',
           paragraphs: [
             'Midjourney、DALL·E、Fireflyの画像には、プロンプト、ジョブID、アカウント名、AIソースの宣言がXMP、EXIF、PNGテキストに含まれている場合があります。多くのクリエイターやプロンプトエンジニアにとって、それは秘密にしておきたいレシピです。',
             '画像をアップロードし、「AI」「個人情報」と表示されたフィールドを確認して、ワンクリックですべて削除しましょう。',
           ],
         },
         {
-          title: 'C2PA / Content Credentialsとは？',
+          title: 'C2PAとは？Content Credentials（コンテンツ認証情報）を解説',
           paragraphs: [
             'C2PA（Coalition for Content Provenance and Authenticity）は、デジタル署名付きの来歴情報を画像に付与する規格です。どのツールで作成したか、何を編集したか、AIを使ったかが記録されます。マニフェストはJUMBFコンテナ（JPEG APP11、PNG caBX、HEIC/AVIFのuuidボックス）に格納されます。',
             'レポートには、存在する場合は生成ツール（claim generator）、c2pa.*アクション、DigitalSourceTypeの値が表示されます。クリーニングするとマニフェスト全体がファイルから削除されます。',

@@ -68,7 +68,7 @@ const article: Article = {
       paragraphs: [
         'A single AI-assisted edit — removing an object with a generative tool, extending a background, or using an AI eraser on a phone — can mark the whole photo as composite AI content in its metadata. Platforms read that declaration without judging how large the edit was.',
       ],
-      related: ['turn-off-content-credentials-photoshop-lightroom'],
+      related: ['made-with-ai-label', 'turn-off-content-credentials-photoshop-lightroom'],
     },
     {
       heading: 'How to check a photo before you post',

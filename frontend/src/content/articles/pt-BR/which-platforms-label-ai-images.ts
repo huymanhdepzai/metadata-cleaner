@@ -68,7 +68,7 @@ const article: Article = {
       paragraphs: [
         'Uma única edição com ajuda de IA — remover um objeto com uma ferramenta generativa, ampliar o fundo ou usar uma borracha com IA no celular — pode marcar a foto inteira como conteúdo de composição com IA nos metadados. As plataformas leem essa declaração sem avaliar o tamanho da edição.',
       ],
-      related: ['turn-off-content-credentials-photoshop-lightroom'],
+      related: ['made-with-ai-label', 'turn-off-content-credentials-photoshop-lightroom'],
     },
     {
       heading: 'Como verificar uma foto antes de postar',

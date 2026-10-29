@@ -68,7 +68,7 @@ const article: Article = {
       paragraphs: [
         'Una sola edición asistida por IA (borrar un objeto con una herramienta generativa, ampliar un fondo o usar un borrador con IA en el móvil) puede marcar toda la foto como contenido compuesto con IA en sus metadatos. Las plataformas leen esa declaración sin valorar el tamaño de la edición.',
       ],
-      related: ['turn-off-content-credentials-photoshop-lightroom'],
+      related: ['made-with-ai-label', 'turn-off-content-credentials-photoshop-lightroom'],
     },
     {
       heading: 'Cómo comprobar una foto antes de publicarla',

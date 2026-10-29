@@ -35,21 +35,29 @@
 
 | Trang (`/guides/…`) | Nhóm truy vấn mục tiêu |
 | --- | --- |
-| `remove-metadata-from-jpg` | remove metadata from JPG online, remove EXIF from JPEG, xóa metadata ảnh JPG |
+| `remove-metadata-from-jpg` | remove metadata from JPG online, JPEG metadata remover, xóa metadata ảnh JPG (truy vấn “EXIF” → `remove-exif`) |
 | `remove-metadata-from-png` | remove metadata from PNG, remove ComfyUI workflow from PNG, xóa metadata PNG |
-| `remove-metadata-from-heic` | remove metadata from HEIC, remove location from iPhone photo, xóa metadata ảnh iPhone |
+| `remove-metadata-from-heic` | remove metadata from HEIC, HEIC/HEIF metadata remover, xóa metadata ảnh HEIC (truy vấn “location/GPS” → `remove-gps-location-from-photos`) |
 | `remove-metadata-from-webp` | remove metadata from WebP, WebP EXIF remover |
 | `made-with-ai-label` | remove “Made with AI” / “AI info” label, xóa nhãn Made with AI, false positive |
 | `remove-stable-diffusion-comfyui-metadata` | remove Stable Diffusion metadata PNG, remove ComfyUI workflow, strip generation data |
-| `hide-midjourney-dalle-prompts` | hide Midjourney prompt, giấu prompt Midjourney, remove AI prompt from image |
+| `hide-midjourney-dalle-prompts` | remove metadata from Midjourney / ChatGPT images, hide Midjourney prompt, xóa metadata ảnh ChatGPT |
 | `/tools/view-metadata/` | view image metadata, EXIF viewer online, metadata viewer, xem metadata ảnh |
 | `/tools/privacy-check/` | photo privacy check, check photo location, where was this photo taken, kiểm tra GPS ảnh |
 | `/tools/metadata-size/` | metadata size, how much metadata in photo, image metadata analyzer |
 | `remove-c2pa` | remove C2PA, C2PA remover, remove Content Credentials, xóa C2PA |
-| `remove-exif` | EXIF remover, remove EXIF data online, delete EXIF, xóa EXIF ảnh |
-| `what-is-c2pa-content-credentials` | what is C2PA, Content Credentials explained |
-| `remove-gps-location-from-photos` | remove GPS from photo, remove location from photo, clean metadata online no upload |
-| `batch-remove-metadata` | batch remove AI metadata, lossless metadata cleaner, free AI metadata cleaner |
+| `remove-exif` | EXIF remover, remove EXIF data online, remove EXIF from JPEG, delete EXIF, xóa EXIF ảnh |
+| `what-is-c2pa-content-credentials` | what is C2PA, Content Credentials explained, C2PA là gì |
+| `remove-gps-location-from-photos` | remove location from photo, remove GPS from photo, remove location from iPhone photo, xóa vị trí ảnh |
+| `batch-remove-metadata` | bulk / batch remove metadata from photos, remove metadata from multiple images, xóa metadata hàng loạt |
+| `made-with-ai-label` ↔ `which-platforms-label-ai-images` | “why real photos get labeled” thuộc `made-with-ai-label`; bài platforms chỉ tóm tắt một đoạn và dẫn link sang |
+| `synthid-invisible-ai-watermarks` | what is SynthID, can SynthID be removed, remove AI watermark (trả lời trung thực: công cụ metadata không xóa được) |
+| `view-remove-metadata-iphone-android` | view photo metadata on iPhone / Android, xem metadata ảnh trên điện thoại |
+| `remove-metadata-windows-mac` (en, vi) | remove metadata from photos Windows 11 / Mac, remove EXIF Windows, Preview remove location, xóa metadata ảnh trên máy tính |
+| `chatgpt-image-metadata` (en, vi) | does ChatGPT add metadata to images, ChatGPT image C2PA, remove metadata from ChatGPT image, ảnh ChatGPT có metadata không |
+| `does-screenshot-remove-metadata` (en, vi) | does a screenshot remove metadata / EXIF / GPS, chụp màn hình có xóa metadata không |
+
+**Mỗi truy vấn chỉ giao cho một trang** (tránh các trang tự cạnh tranh nhau); trang khác nhắc tới chủ đề đó thì dẫn link sang trang được giao.
 
 Định hướng nội dung: quyền riêng tư, bảo vệ prompt và sửa nhãn AI gắn nhầm; luôn nêu rõ giới hạn
 (nền tảng có tín hiệu khác, SynthID, Durable Content Credentials) và nghĩa vụ công khai ảnh do AI tạo.

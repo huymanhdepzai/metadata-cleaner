@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Xóa metadata ảnh hàng loạt — miễn phí, không tải lên',
   description:
     'Xóa metadata hàng loạt tối đa 50 ảnh cùng lúc ngay trên trình duyệt — JPG, PNG, WebP, GIF, HEIC, AVIF — rồi tải một tệp ZIP. Không mất chất lượng, miễn phí.',
   answer:

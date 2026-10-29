@@ -205,6 +205,7 @@ const da: Messages = {
   },
   tools: {
     eyebrow: 'Gratis værktøjer',
+    crumb: 'Værktøjer',
     open: 'Åbn',
     more: 'Flere gratis værktøjer',
     howTitle: 'Sådan bruger du det',
@@ -288,6 +289,10 @@ const da: Messages = {
     guides: {
       eyebrow: 'Guides',
       title: 'Forstå metadata i AI-billeder',
+      description:
+        'Guides om AI-metadata i billeder: hvad C2PA, EXIF og AI-prompts afslører, hvorfor fotos får AI-mærker, og hvordan du fjerner metadata sikkert.',
+      intro:
+        'Praktiske guides om de skjulte data i dine billeder: hvad C2PA Content Credentials, EXIF og AI-prompts afslører, hvordan platforme bruger dem, og hvordan du fjerner dem uden kvalitetstab. Hver guide indeholder værktøjet, så du kan prøve det med det samme.',
       related: 'Relaterede emner',
       quickAnswer: 'Kort svar',
       onThisPage: 'På denne side',

@@ -68,7 +68,7 @@ const article: Article = {
       paragraphs: [
         '生成ツールで物を消す、背景を広げる、スマホのAI消しゴムを使うといった、AIを使った編集を1回するだけで、メタデータ上は写真全体がAIを含む合成コンテンツとして記録されることがあります。プラットフォームはその宣言を読み取るだけで、編集の大きさまでは判断しません。',
       ],
-      related: ['turn-off-content-credentials-photoshop-lightroom'],
+      related: ['made-with-ai-label', 'turn-off-content-credentials-photoshop-lightroom'],
     },
     {
       heading: '投稿前に写真をチェックする方法',

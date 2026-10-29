@@ -42,7 +42,7 @@ const article: Article = {
       paragraphs: [
         'Ảnh tạo bằng tính năng tạo ảnh của OpenAI mang Content Credentials (C2PA) xác định OpenAI là nguồn, nên trình xem và nền tảng hỗ trợ C2PA nhận ra được. Bản kê khai có thể mất khi ảnh bị chụp màn hình hoặc lưu lại bằng ứng dụng không giữ nó.',
       ],
-      related: ['what-is-c2pa-content-credentials'],
+      related: ['chatgpt-image-metadata', 'what-is-c2pa-content-credentials'],
     },
     {
       heading: 'Adobe Firefly và tính năng tạo sinh trong Photoshop',

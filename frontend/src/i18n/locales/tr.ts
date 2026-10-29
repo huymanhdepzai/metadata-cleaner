@@ -205,6 +205,7 @@ const tr: Messages = {
   },
   tools: {
     eyebrow: 'Ücretsiz araçlar',
+    crumb: 'Araçlar',
     open: 'Aç',
     more: 'Diğer ücretsiz araçlar',
     howTitle: 'Nasıl kullanılır',
@@ -288,6 +289,10 @@ const tr: Messages = {
     guides: {
       eyebrow: 'Rehberler',
       title: 'Yapay zekâ görsellerinin meta verilerini anlamak',
+      description:
+        'Yapay zekâ görsel meta verileri rehberi: C2PA, EXIF ve promptların neyi açığa çıkardığı, fotoğraflara neden AI etiketi eklendiği ve nasıl silineceği.',
+      intro:
+        'Görsellerinizdeki gizli veriler hakkında pratik rehberler: C2PA Content Credentials, EXIF ve yapay zekâ promptlarının neyi açığa çıkardığı, platformların bunları nasıl kullandığı ve kalite kaybı olmadan nasıl kaldırılacağı. Her rehberde araç yer alır, hemen deneyebilirsiniz.',
       related: 'İlgili konular',
       quickAnswer: 'Kısa yanıt',
       onThisPage: 'Bu sayfada',

@@ -205,6 +205,7 @@ const ptPT: Messages = {
   },
   tools: {
     eyebrow: 'Ferramentas gratuitas',
+    crumb: 'Ferramentas',
     open: 'Abrir',
     more: 'Mais ferramentas gratuitas',
     howTitle: 'Como utilizar',
@@ -288,6 +289,10 @@ const ptPT: Messages = {
     guides: {
       eyebrow: 'Guias',
       title: 'Compreender os metadados das imagens de IA',
+      description:
+        'Guias sobre metadados de imagens com IA: o que C2PA, EXIF e prompts revelam, porque é que as fotografias recebem rótulos de IA e como removê-los.',
+      intro:
+        'Guias práticos sobre os dados ocultos nas suas imagens: o que as Content Credentials C2PA, o EXIF e os prompts de IA revelam, como as plataformas os utilizam e como removê-los sem perder qualidade. Cada guia inclui a ferramenta para a experimentar de imediato.',
       related: 'Tópicos relacionados',
       quickAnswer: 'Resposta rápida',
       onThisPage: 'Nesta página',

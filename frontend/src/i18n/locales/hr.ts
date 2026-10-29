@@ -205,6 +205,7 @@ const hr: Messages = {
   },
   tools: {
     eyebrow: 'Besplatni alati',
+    crumb: 'Alati',
     open: 'Otvori',
     more: 'Više besplatnih alata',
     howTitle: 'Kako se koristi',
@@ -288,6 +289,10 @@ const hr: Messages = {
     guides: {
       eyebrow: 'Vodiči',
       title: 'Razumijevanje metapodataka AI slika',
+      description:
+        'Vodiči o metapodacima AI slika: što otkrivaju C2PA, EXIF i promptovi, zašto fotografije dobivaju AI oznake i kako sigurno ukloniti metapodatke.',
+      intro:
+        'Praktični vodiči o skrivenim podacima u vašim slikama: što otkrivaju C2PA Content Credentials, EXIF i AI promptovi, kako ih platforme koriste i kako ih ukloniti bez gubitka kvalitete. Svaki vodič sadrži alat pa ga možete odmah isprobati.',
       related: 'Povezane teme',
       quickAnswer: 'Kratki odgovor',
       onThisPage: 'Na ovoj stranici',

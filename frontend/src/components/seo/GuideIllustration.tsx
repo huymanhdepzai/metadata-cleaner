@@ -24,6 +24,22 @@ const SCENES: Record<
     ext?: string;
   }
 > = {
+  'remove-metadata-windows-mac': {
+    hue: 'sky',
+    badge: 'dots',
+    chips: [{ text: 'GPSLatitude' }, { text: 'Make / Model' }, { text: 'DateTimeOriginal' }],
+  },
+  'chatgpt-image-metadata': {
+    hue: 'emerald',
+    badge: 'cr',
+    chips: [{ text: 'C2PA: OpenAI' }, { text: 'trainedAlgorithmic…' }, { text: 'Pixels: byte-identical', kept: true }],
+  },
+  // Khối giữ lại = thứ ảnh chụp màn hình không xóa được.
+  'does-screenshot-remove-metadata': {
+    hue: 'amber',
+    badge: 'search',
+    chips: [{ text: 'GPS (original)' }, { text: 'C2PA (original)' }, { text: 'Invisible watermark', kept: true }],
+  },
   'made-with-ai-label': {
     hue: 'rose',
     badge: 'ai',

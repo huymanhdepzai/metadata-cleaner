@@ -6,7 +6,7 @@ const article: Article = {
     'Algumas imagens de IA carregam dois tipos de marcador: metadados guardados ao lado da imagem e uma marca d’água invisível embutida nos próprios pixels. O SynthID, do Google, é o exemplo mais conhecido do segundo tipo.',
     'Este guia explica como as marcas d’água invisíveis diferem do C2PA e do EXIF, como elas são detectadas e por que nenhuma ferramenta de metadados honesta consegue removê-las.',
   ],
-  seoTitle: 'SynthID e marcas d’água invisíveis de IA: o que são',
+  seoTitle: 'O que é SynthID? Dá para remover marca d’água de IA?',
   description:
     'O que são o SynthID e outras marcas d’água invisíveis de IA, como diferem dos metadados C2PA, como são detectadas e por que limpadores de metadados não as removem.',
   answer:

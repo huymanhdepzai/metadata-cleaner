@@ -1,7 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
-  seoTitle: 'Esconder prompts do Midjourney e DALL·E nas imagens',
+  seoTitle: 'Remover metadados de imagens do Midjourney e ChatGPT',
   description:
     'Imagens do Midjourney, ChatGPT/DALL·E e Firefly podem levar seu prompt, ID do job e dados de procedência. Veja o que está embutido e remova antes de postar.',
   answer:

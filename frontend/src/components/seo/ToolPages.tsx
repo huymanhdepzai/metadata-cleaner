@@ -32,8 +32,9 @@ const CARD_BY_ID = new Map(TOOL_CARDS.map((c) => [c.id as ToolCardId, c]));
 /**
  * Một công cụ dạng hàng ngang: biểu tượng · tên + mô tả · mũi tên. Cả hàng bấm được (link phủ bằng `after:`).
  * `framed`: hàng có viền riêng (lưới "Công cụ khác"); không thì hàng nằm trong danh sách có đường kẻ chung.
+ * `detailed`: thêm câu mô tả chi tiết (trang tổng hợp /tools/); lưới "Công cụ khác" chỉ cần câu ngắn.
  */
-function ToolRow({ id, framed = false }: { id: ToolCardId; framed?: boolean }) {
+function ToolRow({ id, framed = false, detailed = false }: { id: ToolCardId; framed?: boolean; detailed?: boolean }) {
   const lang = useI18n((s) => s.lang);
   const text = useI18n((s) => s.tools?.cards[id]);
   const card = CARD_BY_ID.get(id)!;
@@ -53,7 +54,10 @@ function ToolRow({ id, framed = false }: { id: ToolCardId; framed?: boolean }) {
             {text.name}
           </Link>
         </h3>
-        <p className="mt-1 text-sm leading-relaxed text-slate-600">{text.text}</p>
+        <p className="mt-1 text-sm leading-relaxed text-slate-600">
+          {text.text}
+          {detailed && <> {text.detail}</>}
+        </p>
       </div>
       <Icon
         name="chevron"
@@ -83,7 +87,9 @@ function FeaturedTool() {
               {text.name}
             </Link>
           </h2>
-          <p className="mt-1.5 max-w-2xl text-white/85">{text.text}</p>
+          <p className="mt-1.5 max-w-2xl text-white/85">
+            {text.text} {text.detail}
+          </p>
         </div>
         <span className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-xl bg-white px-5 py-3 text-sm font-bold text-slate-900 shadow-sm transition group-hover:shadow-md sm:self-auto">
           {t.seo.guides.tryTool}
@@ -113,28 +119,22 @@ function Breadcrumb({ current }: { current?: string }) {
   const toolsIndex = useHref(TOOLS_INDEX);
   return (
     <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
-      <ol className="flex flex-wrap items-center gap-1.5">
+      <ol className="flex flex-wrap items-center gap-1.5 [&>li+li]:before:me-1.5 [&>li+li]:before:text-slate-400 [&>li+li]:before:content-['/']">
         <li>
           <Link to={home} className="hover:text-indigo-600">
             {t.seo.guides.home}
           </Link>
         </li>
-        <li aria-hidden="true">/</li>
         <li aria-current={current ? undefined : 'page'}>
           {current ? (
             <Link to={toolsIndex} className="hover:text-indigo-600">
-              {t.header.nav.tools}
+              {t.tools.crumb}
             </Link>
           ) : (
-            t.header.nav.tools
+            t.tools.crumb
           )}
         </li>
-        {current && (
-          <>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page">{current}</li>
-          </>
-        )}
+        {current && <li aria-current="page">{current}</li>}
       </ol>
     </nav>
   );
@@ -169,7 +169,7 @@ export function ToolsIndexPage() {
             <ul className="divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-surface shadow-sm lg:col-span-8">
               {g.cards.map((id) => (
                 <li key={id}>
-                  <ToolRow id={id} />
+                  <ToolRow id={id} detailed />
                 </li>
               ))}
             </ul>

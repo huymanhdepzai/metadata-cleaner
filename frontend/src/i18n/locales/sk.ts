@@ -205,6 +205,7 @@ const sk: Messages = {
   },
   tools: {
     eyebrow: 'Bezplatné nástroje',
+    crumb: 'Nástroje',
     open: 'Otvoriť',
     more: 'Ďalšie bezplatné nástroje',
     howTitle: 'Ako ho použiť',
@@ -288,6 +289,10 @@ const sk: Messages = {
     guides: {
       eyebrow: 'Návody',
       title: 'Metadáta obrázkov z AI – čo treba vedieť',
+      description:
+        'Návody k metadátam AI obrázkov: čo prezrádzajú C2PA, EXIF a prompty, prečo fotky dostávajú štítky AI a ako metadáta bezpečne odstrániť.',
+      intro:
+        'Praktické návody o skrytých dátach vo vašich obrázkoch: čo prezrádzajú C2PA Content Credentials, EXIF a AI prompty, ako ich využívajú platformy a ako ich odstrániť bez straty kvality. Každý návod obsahuje nástroj, takže ho môžete hneď vyskúšať.',
       related: 'Súvisiace témy',
       quickAnswer: 'Rýchla odpoveď',
       onThisPage: 'Na tejto stránke',

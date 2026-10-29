@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: '写真のメタデータを一括削除（無料・アップロード不要）',
   description:
     '最大50枚の画像のメタデータをブラウザ上で一括削除。JPG・PNG・WebP・GIF・HEIC・AVIFに対応し、まとめてZIPでダウンロード。画質劣化なし・無料・アップロード不要。',
   answer:

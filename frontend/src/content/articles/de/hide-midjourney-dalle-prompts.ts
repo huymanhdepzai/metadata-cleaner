@@ -1,6 +1,7 @@
 import type { Article } from '../types';
 
 const article: Article = {
+  seoTitle: 'Metadaten aus Midjourney- & ChatGPT-Bildern entfernen',
   description:
     'Bilder aus Midjourney, ChatGPT/DALL·E und Firefly können Prompt, Job-ID und KI-Herkunftsdaten enthalten. Sehen Sie, was eingebettet ist, und entfernen Sie es.',
   answer:

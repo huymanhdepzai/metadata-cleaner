@@ -74,6 +74,7 @@ const article: Article = {
       paragraphs: [
         'Screenshots and “save for web” tricks also drop metadata, but they re-compress the image, lower the resolution and can shift colors — every time you do it. Byte-level cleaning removes only the metadata blocks and copies the compressed image data exactly, so there is no quality loss at all.',
       ],
+      related: ['does-screenshot-remove-metadata'],
     },
     {
       heading: 'If the label stays after cleaning',

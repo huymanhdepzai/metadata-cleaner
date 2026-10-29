@@ -209,6 +209,7 @@ const en = {
   /** Nhãn giao diện trang công cụ (/tools/); văn bản từng trang ở src/content/tools. */
   tools: {
     eyebrow: 'Free tools',
+    crumb: 'Tools',
     open: 'Open',
     more: 'More free tools',
     howTitle: 'How to use it',
@@ -293,6 +294,10 @@ const en = {
     guides: {
       eyebrow: 'Guides',
       title: 'Understanding AI image metadata',
+      description:
+        'Guides on AI image metadata: what C2PA, EXIF and AI prompts reveal, why photos get AI labels, and how to remove metadata safely.',
+      intro:
+        'Practical guides to the hidden data inside your images: what C2PA Content Credentials, EXIF and AI prompts reveal, how platforms use them, and how to remove them without losing quality. Each guide includes the cleaner, so you can try it right away.',
       related: 'Related guides',
       quickAnswer: 'Quick answer',
       onThisPage: 'On this page',
@@ -319,14 +324,14 @@ const en = {
           ],
         },
         {
-          title: 'Hide Midjourney and DALL·E prompts before sharing',
+          title: 'Remove prompts and metadata from Midjourney and ChatGPT images',
           paragraphs: [
             'Images from Midjourney, DALL·E or Firefly may contain the prompt, job ID, account name and an AI source declaration in XMP, EXIF or PNG text. For many creators and prompt engineers, that is a recipe worth keeping private.',
             'Upload the image, review the fields marked “AI” and “Personal”, then remove them all with a single click.',
           ],
         },
         {
-          title: 'What are C2PA / Content Credentials?',
+          title: 'What is C2PA? Content Credentials explained',
           paragraphs: [
             'C2PA (Coalition for Content Provenance and Authenticity) is a standard that attaches a digitally signed provenance record to an image: which tool created it, what was edited and whether AI was used. The manifest lives in a JUMBF container (JPEG APP11, PNG caBX, HEIC/AVIF uuid box).',
             'The report shows the claim generator, the c2pa.* actions and the DigitalSourceType value when present. Cleaning removes the whole manifest from the file.',

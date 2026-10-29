@@ -205,6 +205,7 @@ const vi: Messages = {
   },
   tools: {
     eyebrow: 'Công cụ miễn phí',
+    crumb: 'Công cụ',
     open: 'Mở',
     more: 'Công cụ miễn phí khác',
     howTitle: 'Cách sử dụng',
@@ -288,6 +289,10 @@ const vi: Messages = {
     guides: {
       eyebrow: 'Hướng dẫn',
       title: 'Kiến thức về metadata ảnh AI',
+      description:
+        'Hướng dẫn về metadata ảnh AI: C2PA, EXIF và prompt AI để lộ gì, vì sao ảnh bị gắn nhãn AI và cách xóa metadata an toàn.',
+      intro:
+        'Hướng dẫn thực tế về dữ liệu ẩn trong ảnh của bạn: C2PA (Content Credentials), EXIF và prompt AI để lộ gì, các nền tảng dùng chúng ra sao, và cách xóa chúng mà không giảm chất lượng. Mỗi bài đều có sẵn công cụ để bạn thử ngay.',
       related: 'Bài hướng dẫn liên quan',
       quickAnswer: 'Trả lời nhanh',
       onThisPage: 'Trong bài này',
@@ -314,14 +319,14 @@ const vi: Messages = {
           ],
         },
         {
-          title: 'Ẩn prompt Midjourney, DALL·E trước khi chia sẻ ảnh',
+          title: 'Xóa prompt và metadata khỏi ảnh Midjourney, ChatGPT trước khi chia sẻ',
           paragraphs: [
             'Ảnh tải về từ Midjourney, DALL·E hay Firefly có thể chứa prompt, Job ID, tên tài khoản và khai báo nguồn AI trong XMP, EXIF hoặc PNG text. Đây là “công thức” mà nhiều creator và prompt engineer muốn giữ kín.',
             'Tải ảnh lên, xem các trường được đánh dấu “AI” và “Cá nhân”, sau đó xóa toàn bộ chỉ với một cú nhấp.',
           ],
         },
         {
-          title: 'C2PA / Content Credentials là gì?',
+          title: 'C2PA là gì? Giải thích Content Credentials',
           paragraphs: [
             'C2PA (Coalition for Content Provenance and Authenticity) là tiêu chuẩn gắn “chứng nhận nguồn gốc” có chữ ký số vào ảnh: công cụ nào tạo ra ảnh, đã chỉnh sửa những gì, có dùng AI hay không. Manifest được lưu trong khối JUMBF (JPEG APP11, PNG caBX, box uuid của HEIC/AVIF).',
             'Báo cáo hiển thị trình tạo (claim generator), các hành động c2pa.* và giá trị DigitalSourceType nếu có. Khi xóa, toàn bộ manifest được loại bỏ khỏi tệp.',

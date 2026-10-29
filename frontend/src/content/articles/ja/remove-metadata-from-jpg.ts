@@ -24,7 +24,7 @@ const article: Article = {
           ['COM、APP2 MPF、EOI以降のデータ', 'コメント、プレビュー画像、モーションフォトの動画部分'],
         ],
       },
-      related: ['what-is-exif-data', 'what-is-c2pa-content-credentials'],
+      related: ['remove-exif', 'what-is-exif-data', 'what-is-c2pa-content-credentials'],
     },
     {
       heading: '3ステップでJPGのメタデータを削除する方法',
