@@ -6,6 +6,7 @@ import { SITE, type GuideSlug } from './content/seo';
 import { loadBundle, useI18n } from './i18n';
 import { DEFAULT_LANG, LANGUAGES } from './i18n/languages';
 import { absoluteUrl, allRoutes, contentNeeds, HOME, languagesFor, lastModified, pathFor, useRouter } from './router';
+import { fontPreloadHtml } from './seo/fontPreload';
 import { buildHead, headToHtml } from './seo/head';
 
 /**
@@ -31,7 +32,7 @@ export async function render(path: string): Promise<{ html: string; head: string
     </StrictMode>,
   );
   const head = buildHead(bundle, entry.route);
-  return { html, head: headToHtml(head), htmlAttrs: `lang="${head.lang}" dir="${head.dir}"` };
+  return { html, head: `${fontPreloadHtml(entry.lang)}\n    ${headToHtml(head)}`, htmlAttrs: `lang="${head.lang}" dir="${head.dir}"` };
 }
 
 /**

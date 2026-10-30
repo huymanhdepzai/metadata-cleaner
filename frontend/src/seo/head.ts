@@ -1,5 +1,5 @@
 import { guideContent } from '../content/guideContent';
-import { availableGuides, guidePageCount, SITE } from '../content/seo';
+import { SITE } from '../content/seo';
 import { isRtl, type LanguageBundle } from '../i18n';
 import { DEFAULT_LANG, findLanguage } from '../i18n/languages';
 import { absoluteUrl, isIndexable, languagesFor, pathFor, type Route } from '../router';
@@ -37,7 +37,7 @@ const withSiteName = (title: string) => {
 
 const truncate = (s: string, max = 158) => (s.length <= max ? s : `${s.slice(0, max - 1).replace(/\s+\S*$/, '')}…`);
 
-export function buildHead({ lang, m, articles, pages, tools }: Omit<LanguageBundle, 'bodies'>, route: Route): HeadData {
+export function buildHead({ lang, m, articles, pages, tools }: Omit<LanguageBundle, 'bodies' | 'hub'>, route: Route): HeadData {
   let title = m.meta.title;
   let description = m.meta.description;
   if (route.name === 'tools' || route.name === 'tool') {
@@ -55,11 +55,8 @@ export function buildHead({ lang, m, articles, pages, tools }: Omit<LanguageBund
       description = articles?.[route.slug]?.description ?? truncate(guide.summary[0]);
     }
   } else if (route.name === 'guides') {
-    // Trang 1 không có hậu tố "(1/n)"; các trang sau có số trang trong tiêu đề và mô tả để không trùng nhau.
-    const total = guidePageCount(availableGuides(lang).length);
-    const pageSuffix = route.page > 1 ? ` (${route.page}/${total})` : '';
-    title = withSiteName(`${m.seo.guides.title}${pageSuffix}`);
-    description = `${m.seo.guides.description}${pageSuffix}`;
+    title = withSiteName(m.seo.guides.title);
+    description = m.seo.guides.description;
   }
 
   // hreflang chỉ liệt kê ngôn ngữ thật sự có trang này và được lập chỉ mục; trang noindex không tham gia nhóm hreflang.

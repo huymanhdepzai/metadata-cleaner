@@ -10,8 +10,9 @@ import { usePopover } from './usePopover';
 /**
  * Cờ 4:3, viền mảnh để cờ nền trắng (Nhật, Phần Lan…) không lẫn vào nền. Trang trí thuần → aria-hidden để trình đọc
  * màn hình không đọc lặp tên ngôn ngữ; vẫn có alt cho công cụ kiểm tra SEO (ảnh thiếu alt).
+ * `eager`: cờ trên header nằm ngay màn hình đầu → tải ngay, không để trình duyệt hoãn (làm tăng Speed Index).
  */
-function Flag({ code, className = '' }: { code: LangCode; className?: string }) {
+function Flag({ code, className = '', eager = false }: { code: LangCode; className?: string; eager?: boolean }) {
   return (
     <img
       src={FLAGS[code]}
@@ -19,7 +20,7 @@ function Flag({ code, className = '' }: { code: LangCode; className?: string }) 
       aria-hidden="true"
       width={20}
       height={15}
-      loading="lazy"
+      loading={eager ? 'eager' : 'lazy'}
       decoding="async"
       className={`h-[15px] w-5 shrink-0 rounded-[3px] object-cover ring-1 ring-slate-900/10 ${className}`}
     />
@@ -55,7 +56,7 @@ export function LanguageSwitcher() {
         aria-label={`${t.header.language}: ${findLanguage(lang)?.name}`}
         className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-surface px-2.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
       >
-        <Flag code={lang} />
+        <Flag code={lang} eager />
         <span className="max-w-28 truncate">{findLanguage(lang)?.name}</span>
         <Icon name="chevron" className={`h-3.5 w-3.5 text-slate-400 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>

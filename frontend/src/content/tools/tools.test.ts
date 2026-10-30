@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { LANGUAGES } from '../../i18n/languages';
-import { FEATURED_TOOL_CARD, TOOL_CARDS, TOOL_GROUPS, TOOL_SLUGS } from '../seo';
+import { FEATURED_TOOL_CARD, FULL_CONTENT_LANGS, TOOL_CARDS, TOOL_GROUPS, TOOL_SLUGS } from '../seo';
 import en from './en';
-import type { ToolsContent } from './types';
+import { toolFaq, type ToolPageContent, type ToolsContent } from './types';
 
 const modules = import.meta.glob<{ default: ToolsContent }>(['./*.ts', '!./types.ts', '!./*.test.ts'], { eager: true });
 
@@ -43,10 +43,12 @@ describe('Trang công cụ', () => {
   });
 
   for (const { code } of LANGUAGES) {
+    const full = FULL_CONTENT_LANGS.includes(code);
     it(`${code}: cùng cấu trúc với tiếng Anh, tiêu đề và mô tả vừa độ dài`, () => {
       const content = modules[`./${code}.ts`]!.default;
       const errors: string[] = [];
-      compare(en, content, code, errors);
+      // Ngôn ngữ đầy đủ: so cả mục guide; ngôn ngữ khác: không được có guide (trang chỉ có khung cơ bản).
+      compare(full ? en : withoutGuides(en), content, code, errors);
       expect(errors).toEqual([]);
       for (const page of [content.hub, ...TOOL_SLUGS.map((s) => content.tools[s])]) {
         expect(page.title.length, `${code} title: ${page.title}`).toBeLessThanOrEqual(70);
@@ -54,5 +56,36 @@ describe('Trang công cụ', () => {
         expect(page.description.length, `${code} description`).toBeLessThanOrEqual(200);
       }
     });
+
+    if (full) {
+      it(`${code}: mục guide đủ dài và không lặp lại giữa các công cụ (tránh trang mỏng / trùng mẫu)`, () => {
+        const content = modules[`./${code}.ts`]!.default;
+        const seen = new Set<string>();
+        for (const slug of TOOL_SLUGS) {
+          const page = content.tools[slug];
+          const texts = guideTexts(page);
+          expect(words(code, [page.intro, ...page.steps, ...toolFaq(page).flatMap((f) => [f.q, f.a]), ...texts].join(' ')), `${code}/${slug}`).toBeGreaterThanOrEqual(550);
+          expect(toolFaq(page).length, `${code}/${slug} faq`).toBeGreaterThanOrEqual(6);
+          for (const text of texts) {
+            expect(seen.has(text), `${code}/${slug} lặp đoạn: ${text.slice(0, 60)}`).toBe(false);
+            seen.add(text);
+          }
+        }
+      });
+    }
   }
 });
+
+function withoutGuides(content: ToolsContent): ToolsContent {
+  const tools = Object.fromEntries(Object.entries(content.tools).map(([slug, { guide: _, ...page }]) => [slug, page]));
+  return { ...content, tools: tools as ToolsContent['tools'] };
+}
+
+const guideTexts = (page: ToolPageContent) =>
+  (page.guide?.sections ?? []).flatMap((s) => [s.text, ...(s.items ?? []).map((i) => i.text)]);
+
+/** Số từ; tiếng Nhật không có khoảng trắng → đếm từ bằng Intl.Segmenter (giống test bài viết). */
+function words(lang: string, text: string): number {
+  const segmenter = new Intl.Segmenter(lang, { granularity: 'word' });
+  return [...segmenter.segment(text)].filter((s) => s.isWordLike).length;
+}

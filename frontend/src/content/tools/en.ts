@@ -50,6 +50,45 @@ const tools: ToolsContent = {
           a: 'No. Files are read by your browser and never leave your device.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'What each metadata group tells you',
+            text: 'The viewer groups every field by where it is stored in the file. Each group is written by a different program for a different purpose, so knowing the source tells you how much to trust a value and how sensitive it is.',
+            items: [
+              { term: 'EXIF', text: 'Written by the camera or phone: make and model, lens, exposure, capture date and time zone offset. It can also contain the owner name, a body serial number and a MakerNote with vendor-specific data.' },
+              { term: 'EXIF · GPS', text: 'Latitude and longitude, often accurate to a few meters, plus altitude and sometimes the direction the camera was pointing. This is the field most people want to check before sharing.' },
+              { term: 'XMP', text: 'Added by editing software such as Lightroom or Photoshop: the tool used, edit history, ratings and keywords. AI tools also use XMP to declare that an image was generated.' },
+              { term: 'IPTC', text: 'Captions, creator, credit line and copyright notice, mostly used by news agencies and stock sites.' },
+              { term: 'C2PA', text: 'Content Credentials: a signed manifest recording which app or AI model created the image and which edits were made. Platforms read it to show “AI info” labels.' },
+              { term: 'PNG text', text: 'Free text chunks. Stable Diffusion stores the prompt, seed and model here; ComfyUI stores the full node workflow as JSON.' },
+              { term: 'ICC', text: 'The color profile. It contains no personal data and is needed to show colors correctly.' },
+            ],
+          },
+          {
+            title: 'How to read the report',
+            text: 'Each file opens with a privacy summary that lists location, personal and time fields found. Below it, the AI section gives one of three verdicts: “AI signals detected” when the metadata names an AI tool, contains a prompt or declares AI generation; “Needs a closer look” when Content Credentials are present without an explicit AI statement; and “No AI signals” when nothing was found. The full table comes last. Use the search box to jump to what matters — typing “GPS”, “Serial”, “Software” or “prompt” is usually faster than scrolling through a hundred fields.',
+          },
+          {
+            title: 'When checking metadata is useful',
+            text: 'Look inside a photo before you post it publicly or send it to someone you do not know, when a marketplace seller or a stranger sends you an image, when a platform labels your real photo as AI and you want to see why, and after cleaning a file to confirm that nothing is left — just drop the cleaned copy into the viewer. Keep in mind that metadata can be edited or removed by anyone, so it is a clue, not proof.',
+          },
+        ],
+        faq: [
+          {
+            q: 'Can metadata prove when or where a photo was taken?',
+            a: 'Not on its own. Dates and GPS values in EXIF can be changed with free tools. C2PA manifests are signed and harder to fake, but they are easy to remove, so a missing manifest proves nothing either.',
+          },
+          {
+            q: 'Why does my photo show almost no metadata?',
+            a: 'Most social networks and messaging apps remove EXIF when you upload a photo, and screenshots never had camera data to begin with. A file downloaded from such a platform is usually already stripped.',
+          },
+          {
+            q: 'Which formats can I inspect?',
+            a: 'JPG, PNG, WebP and HEIC/HEIF photos, including iPhone pictures. You can drop several files at once and open each report separately.',
+          },
+        ],
+      },
     },
     'privacy-check': {
       title: 'Photo Privacy Check — Find GPS & Personal Data',
@@ -76,6 +115,42 @@ const tools: ToolsContent = {
           a: 'Metadata is only one source. What is visible in the picture — street signs, landmarks, reflections — can also reveal a place, and this check cannot detect that.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'What the check looks for',
+            text: 'The check sorts the metadata it finds into four kinds of exposure. Each one answers a different question someone could ask about you from a single file.',
+            items: [
+              { term: 'Location', text: 'GPS latitude, longitude and altitude. A phone photo taken at home can point to your front door, which is why any location makes the result high risk.' },
+              { term: 'Personal & device', text: 'Camera make and model, author and copyright fields, owner name, body serial number, unique image ID, comments and vendor MakerNote data. A serial number can link photos you post under different accounts to the same camera.' },
+              { term: 'Time', text: 'Original capture date, sub-second time and the time zone offset. Together they show when you were somewhere and roughly which part of the world you live in.' },
+              { term: 'AI & provenance', text: 'Content Credentials, AI tool names and generation prompts. They are not personal in the usual sense, but they reveal how an image was made and can trigger AI labels.' },
+            ],
+          },
+          {
+            title: 'What to do with each risk level',
+            text: 'High: the photo contains a location — remove it before sharing anywhere public, and open the map first if you want to see how precise it is. Medium: no location, but the file carries device, personal, time or AI data — fine for friends, worth cleaning before posting publicly or sending to strangers. Low: no sensitive metadata was found, so the file itself does not give you away; what the picture shows still might.',
+          },
+          {
+            title: 'Where metadata survives sharing',
+            text: 'Many large social networks strip GPS when you post, but plenty of channels do not: email attachments, cloud storage and file-sharing links, AirDrop and Nearby Share, photos sent “as a file” or “as a document” in chat apps, forums and small websites. When you are not sure how a photo will travel, check it here and clean it before it leaves your device.',
+          },
+        ],
+        faq: [
+          {
+            q: 'How do I stop my phone from adding location to photos?',
+            a: 'On iPhone, go to Settings → Privacy & Security → Location Services → Camera and choose Never. On Android, open the camera app settings and turn off location tags (the name varies by brand). Photos you already took keep their location until you remove it.',
+          },
+          {
+            q: 'Does a low risk result mean the photo is safe to share?',
+            a: 'It means the metadata is clean. Faces, house numbers, car plates, documents on a desk or a reflection in a window can still reveal more than you intend, so give the picture itself a quick look too.',
+          },
+          {
+            q: 'Can I check photos that someone sent me?',
+            a: 'Yes. The check only reads the file, so it is a quick way to see whether a received photo still has a location or device data — for example before you forward it to others.',
+          },
+        ],
+      },
     },
     'metadata-size': {
       title: 'Metadata Size Checker — How Much Metadata Is in a Photo?',
@@ -102,6 +177,44 @@ const tools: ToolsContent = {
           a: 'No. Only metadata blocks are removed; the image data is copied unchanged, so the file gets smaller without any loss in quality.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'What usually takes up the space',
+            text: 'Metadata size varies far more than most people expect. A plain EXIF block is tiny, while a single embedded preview or workflow can be larger than the image of a small web graphic. These are the blocks the checker typically finds, from small to large:',
+            items: [
+              { term: 'ICC color profile', text: 'From a few hundred bytes to a few kilobytes. Shown as kept, because colors depend on it.' },
+              { term: 'EXIF', text: 'Usually a few kilobytes of camera settings, dates and GPS, plus an EXIF thumbnail that often adds 5–20 KB more.' },
+              { term: 'XMP', text: 'Under a kilobyte for simple files, but Photoshop and Lightroom can write edit history and document lists that grow to hundreds of kilobytes.' },
+              { term: 'C2PA manifest', text: 'Often tens of kilobytes: certificates, signatures and sometimes thumbnails of the source images.' },
+              { term: 'PNG prompts & workflows', text: 'Stable Diffusion parameters take one or two kilobytes; a ComfyUI workflow with many nodes can reach tens or hundreds of kilobytes.' },
+              { term: 'Data after the image', text: 'Some phones append extra data to JPG files: MPF secondary images, larger previews or the short video of a Motion Photo, which can add several megabytes.' },
+            ],
+          },
+          {
+            title: 'Why metadata size matters',
+            text: 'On a website, every kilobyte is multiplied by every visitor and every image on the page, so stripping a few dozen kilobytes per image adds up — and unlike re-compressing, it costs nothing in quality. Size is also a privacy hint: the largest blocks are often the most revealing ones, such as a full edit history, a generation workflow or a second hidden image. For archives of thousands of photos, the savings are measurable in storage too.',
+          },
+          {
+            title: 'How to read the result',
+            text: 'The headline shows the total metadata that would be removed and its share of the file; the bar under it makes that share visible at a glance. Each block is then listed from largest to smallest with its own bar, so outliers stand out immediately. The color profile appears in green as kept and is not counted in the total. A share of a few percent is typical for large camera photos, while small PNGs and AI images often reach much higher values.',
+          },
+        ],
+        faq: [
+          {
+            q: 'How much smaller will my file get?',
+            a: 'By roughly the metadata total shown. The cleaner removes those blocks and copies the image data as it is, so the clean file is the original size minus the removed metadata.',
+          },
+          {
+            q: 'Does removing metadata replace image compression?',
+            a: 'No. It removes only what is not part of the picture. To make photos much smaller you still need resizing or re-compression, which changes pixels; metadata removal is the free step you can do first without any quality loss.',
+          },
+          {
+            q: 'Why does a small AI image show a high metadata share?',
+            a: 'Generators and editors attach the same prompts, workflows or Content Credentials regardless of image size, so on a small file they can make up a large part of the total bytes.',
+          },
+        ],
+      },
     },
   },
 };

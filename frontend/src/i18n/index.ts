@@ -1,6 +1,7 @@
 import { create } from '../store/create';
 import type { Article, ArticleMetas, Articles } from '../content/articles/types';
 import type { GuideSlug } from '../content/seo';
+import type { GuidesHubContent } from '../content/hub/types';
 import type { Pages } from '../content/pages/types';
 import type { ToolsContent } from '../content/tools/types';
 import type { Msg } from '../types';
@@ -29,6 +30,8 @@ const pageLoaders = import.meta.glob<{ default: Pages }>([
 ]);
 
 /** Văn bản trang công cụ (/tools/) — chỉ tải khi mở trang tổng hợp hoặc một công cụ. */
+/** Văn bản riêng của trang tổng hợp /guides/ (nhóm chủ đề) — chỉ có ở ngôn ngữ có bài chuyên sâu, chỉ tải khi mở trang đó. */
+const hubLoaders = import.meta.glob<{ default: GuidesHubContent }>(['../content/hub/*.ts', '!../content/hub/types.ts', '!../content/hub/*.test.ts']);
 const toolLoaders = import.meta.glob<{ default: ToolsContent }>([
   '../content/tools/*.ts',
   '!../content/tools/types.ts',
@@ -48,30 +51,35 @@ export interface LanguageBundle {
   pages: Pages | null;
   /** null khi chưa cần (trang hiện tại không phải trang công cụ). */
   tools: ToolsContent | null;
+  /** null khi chưa cần hoặc ngôn ngữ không có bài chuyên sâu (trang tổng hợp hiện lưới thẻ không chia nhóm). */
+  hub: GuidesHubContent | null;
 }
 
 /** Phần nội dung cần thêm cho trang sắp hiển thị: trang thông tin, trang công cụ, hoặc nội dung đầy đủ của một bài. */
 export interface ContentNeeds {
   pages?: boolean;
   tools?: boolean;
+  hub?: boolean;
   guide?: GuideSlug;
 }
 
 const loadPages = (lang: LangCode) => pageLoaders[`../content/pages/${lang}.ts`]?.().then((mod) => mod.default) ?? Promise.resolve(null);
 const loadTools = (lang: LangCode) => toolLoaders[`../content/tools/${lang}.ts`]?.().then((mod) => mod.default) ?? Promise.resolve(null);
+const loadHub = (lang: LangCode) => hubLoaders[`../content/hub/${lang}.ts`]?.().then((mod) => mod.default) ?? Promise.resolve(null);
 const loadBody = (lang: LangCode, slug: GuideSlug) => bodyLoader(lang, slug)?.().then((mod) => mod.default) ?? Promise.resolve(null);
 
 export async function loadBundle(lang: LangCode, needs: ContentNeeds = {}): Promise<LanguageBundle> {
   const msgLoader = messageLoaders[`./locales/${lang}.ts`];
   const artLoader = articleLoaders[`../content/articles/${lang}.ts`];
-  const [m, articles, pages, tools, body] = await Promise.all([
+  const [m, articles, pages, tools, hub, body] = await Promise.all([
     lang === 'en' || !msgLoader ? en : msgLoader().then((mod) => mod.default),
     artLoader ? artLoader().then((mod) => mod.default) : null,
     needs.pages ? loadPages(lang) : null,
     needs.tools ? loadTools(lang) : null,
+    needs.hub ? loadHub(lang) : null,
     needs.guide ? loadBody(lang, needs.guide) : null,
   ]);
-  return { lang, m, articles, pages, tools, bodies: body && needs.guide ? { [needs.guide]: body } : {} };
+  return { lang, m, articles, pages, tools, hub, bodies: body && needs.guide ? { [needs.guide]: body } : {} };
 }
 
 interface I18nState extends LanguageBundle {}
@@ -83,6 +91,7 @@ export const useI18n = create<I18nState>()(() => ({
   bodies: {},
   pages: null,
   tools: null,
+  hub: null,
 }));
 
 /** Hook lấy bộ thông điệp của ngôn ngữ hiện tại. */
@@ -103,14 +112,16 @@ export async function setLanguage(lang: LangCode, needs: ContentNeeds = {}): Pro
   }
   const s = useI18n.getState();
   const { guide } = needs;
-  const [pages, tools, body] = await Promise.all([
+  const [pages, tools, hub, body] = await Promise.all([
     needs.pages && !s.pages ? loadPages(lang) : null,
     needs.tools && !s.tools ? loadTools(lang) : null,
+    needs.hub && !s.hub ? loadHub(lang) : null,
     guide && !s.bodies[guide] ? loadBody(lang, guide) : null,
   ]);
   if (loadedLang !== lang) return; // người dùng đã đổi ngôn ngữ trong lúc chờ
   if (pages) useI18n.setState({ pages });
   if (tools) useI18n.setState({ tools });
+  if (hub) useI18n.setState({ hub });
   if (body && guide) useI18n.setState((st) => ({ bodies: { ...st.bodies, [guide]: body } }));
 }
 

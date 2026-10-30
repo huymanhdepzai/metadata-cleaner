@@ -21,4 +21,15 @@ describe('cấu hình Nginx', () => {
     for (const cc of Object.keys(COUNTRY_LANG)) expect(conf).toMatch(new RegExp(`^ {4}${cc} `, 'm'));
     expect(conf).not.toMatch(/undefined|workers\.dev/);
   });
+
+  it('chuyển trang phân trang cũ /guides/page/N/ về /guides/ cùng ngôn ngữ', () => {
+    const m = nginxConf().match(/rewrite "([^"]+)" \$1\/guides\/ permanent;/);
+    expect(m).not.toBeNull();
+    const re = new RegExp(m![1]);
+    const target = (path: string) => path.replace(re, '$1/guides/');
+    expect(target('/guides/page/2/')).toBe('/guides/');
+    expect(target('/vi/guides/page/4/')).toBe('/vi/guides/');
+    expect(target('/pt-br/guides/page/3')).toBe('/pt-br/guides/');
+    for (const p of ['/guides/', '/vi/guides/remove-exif/', '/guides/page/']) expect(re.test(p), p).toBe(false);
+  });
 });

@@ -103,3 +103,17 @@
   src: url(../node_modules/@fontsource/sora/files/sora-latin-800-normal.woff2) format('woff2');
   unicode-range: U+0000-00FF;
 }
+
+/*
+ * Font dự phòng có cùng kích thước với Inter (Arial được chỉnh size-adjust/ascent/descent theo số đo của Inter):
+ * trong lúc Inter chưa tải xong, chữ hiển thị bằng Arial đã chỉnh nên khi đổi sang Inter, dòng chữ gần như không
+ * đổi độ rộng → không xuống dòng lại (giảm CLS và Speed Index). Máy không có Arial (Android) bỏ qua và dùng font kế tiếp.
+ */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('ArialMT');
+  size-adjust: 107.12%;
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+}

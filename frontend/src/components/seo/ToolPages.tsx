@@ -6,6 +6,7 @@ import {
   TOOL_CARDS,
   TOOL_GROUPS,
   type ToolCardId, type ToolCardTarget, type ToolSlug } from '../../content/seo';
+import { toolFaq } from '../../content/tools/types';
 import { fmt, tr, useI18n, useT } from '../../i18n';
 import type { LangCode } from '../../i18n/languages';
 import { HOME, pathFor, TOOLS_INDEX, useHref } from '../../router';
@@ -394,12 +395,31 @@ export function ToolPage({ slug }: { slug: ToolSlug }) {
         </ol>
       </section>
 
+      {content.guide?.sections.map((s, i) => (
+        <section key={i} aria-labelledby={`guide-${i}`} className="mx-auto max-w-4xl px-4 py-8">
+          <h2 id={`guide-${i}`} className="text-2xl font-bold tracking-tight text-slate-900">
+            {s.title}
+          </h2>
+          <p className="mt-4 leading-relaxed text-slate-700">{s.text}</p>
+          {s.items && (
+            <dl className="mt-5 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-surface">
+              {s.items.map((item) => (
+                <div key={item.term} className="grid gap-1 px-5 py-4 sm:grid-cols-[12rem_1fr] sm:gap-6">
+                  <dt className="font-semibold text-slate-900">{item.term}</dt>
+                  <dd className="text-sm leading-relaxed text-slate-600">{item.text}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+        </section>
+      ))}
+
       <section aria-labelledby="faq" className="mx-auto max-w-4xl px-4 py-8">
         <h2 id="faq" className="text-2xl font-bold tracking-tight text-slate-900">
           {t.tools.faqTitle}
         </h2>
         <div className="mt-5 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-surface">
-          {content.faq.map((f) => (
+          {toolFaq(content).map((f) => (
             <details key={f.q} className="group px-5 py-4">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-slate-900">
                 <h3>{f.q}</h3>

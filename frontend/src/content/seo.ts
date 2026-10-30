@@ -62,7 +62,7 @@ export const TOOL_GROUPS = [
 export type ToolGroupId = (typeof TOOL_GROUPS)[number]['id'];
 
 /** Ngày sửa nội dung trang tổng hợp và các trang công cụ (lastmod). */
-export const TOOLS_UPDATED = '2026-10-28';
+export const TOOLS_UPDATED = '2026-10-30';
 
 /** Trang thông tin đang hoạt động (Contact cần SITE.contactEmail). */
 export const activePages = (): PageSlug[] => PAGE_SLUGS.filter((s) => s !== 'contact' || SITE.contactEmail !== '');
@@ -184,6 +184,8 @@ export type ExtraGuideSlug = (typeof EXTRA_GUIDE_SLUGS)[number];
  * Dịch thêm một bài sang ngôn ngữ mới: thêm bài vào tệp ngôn ngữ đó rồi thêm mã ngôn ngữ vào đây.
  */
 const FULL: readonly LangCode[] = ['en', 'vi', 'ja', 'es', 'de', 'fr', 'pt-BR'];
+/** Ngôn ngữ có nội dung chuyên sâu: bài nền tảng đầy đủ và mục `guide` của trang công cụ (src/content/tools). */
+export const FULL_CONTENT_LANGS = FULL;
 export const ARTICLE_LANGS: Record<GuideSlug, readonly LangCode[]> = {
   // Bài mới: en + vi trước, các ngôn ngữ còn lại thêm sau.
   'remove-metadata-windows-mac': ['en', 'vi'],
@@ -288,15 +290,60 @@ export function isGuideAvailable(slug: GuideSlug, lang: LangCode): boolean {
 /** Bài viết có ở ngôn ngữ `lang`, theo thứ tự hiển thị. */
 export const availableGuides = (lang: LangCode): GuideSlug[] => GUIDE_SLUGS.filter((s) => isGuideAvailable(s, lang));
 
-/** Số bài mỗi trang ở trang tổng hợp /guides/ và số bài mới nhất hiển thị trên trang chủ. */
-export const GUIDES_PER_PAGE = 6;
-export const HOME_GUIDE_COUNT = 9;
+/**
+ * Số bài mới nhất hiển thị trên trang chủ. Giữ nhỏ: trang tổng hợp /guides/ hiện mọi bài, trang chủ hiện quá
+ * nhiều thẻ thì hai trang gần trùng nội dung.
+ */
+export const HOME_GUIDE_COUNT = 6;
 
-export const guidePageCount = (total: number, perPage = GUIDES_PER_PAGE) => Math.max(1, Math.ceil(total / perPage));
+/**
+ * Nhóm chủ đề trên trang tổng hợp /guides/ (một trang duy nhất, không phân trang). Mỗi bài thuộc đúng một nhóm
+ * (có test kiểm tra); trong nhóm, bài xếp theo thứ tự GUIDE_SLUGS. Tiêu đề + đoạn mô tả nhóm nằm trong
+ * src/content/hub/<mã>.ts — chỉ có ở ngôn ngữ có bài chuyên sâu; ngôn ngữ khác hiện lưới thẻ không chia nhóm.
+ */
+export const GUIDE_GROUPS = [
+  {
+    id: 'formats',
+    guides: [
+      'remove-metadata-from-jpg',
+      'remove-metadata-from-png',
+      'remove-metadata-from-heic',
+      'remove-metadata-from-webp',
+      'remove-metadata-windows-mac',
+      'view-remove-metadata-iphone-android',
+      'batch-remove-metadata',
+    ],
+  },
+  {
+    id: 'ai-labels',
+    guides: [
+      'made-with-ai-label',
+      'what-is-c2pa-content-credentials',
+      'remove-c2pa',
+      'which-platforms-label-ai-images',
+      'turn-off-content-credentials-photoshop-lightroom',
+      'how-to-check-if-image-is-ai-generated',
+      'synthid-invisible-ai-watermarks',
+    ],
+  },
+  {
+    id: 'ai-prompts',
+    guides: ['chatgpt-image-metadata', 'what-metadata-ai-image-generators-add', 'remove-stable-diffusion-comfyui-metadata', 'hide-midjourney-dalle-prompts'],
+  },
+  {
+    id: 'privacy',
+    guides: ['remove-exif', 'what-is-exif-data', 'remove-gps-location-from-photos', 'which-platforms-strip-photo-metadata', 'does-screenshot-remove-metadata'],
+  },
+] as const satisfies readonly { id: string; guides: readonly GuideSlug[] }[];
+export type GuideGroupId = (typeof GUIDE_GROUPS)[number]['id'];
 
-/** Các bài thuộc trang `page` (đánh số từ 1) của trang tổng hợp. */
-export function guidesOnPage<T>(page: number, items: readonly T[], perPage = GUIDES_PER_PAGE): T[] {
-  return items.slice((page - 1) * perPage, page * perPage);
+/** Các nhóm có bài ở ngôn ngữ `lang`, mỗi nhóm kèm bài có sẵn theo thứ tự hiển thị (bỏ nhóm rỗng). */
+export function guideGroups(lang: LangCode): { id: GuideGroupId; slugs: GuideSlug[] }[] {
+  const available = availableGuides(lang);
+  return GUIDE_GROUPS.map((g) => ({
+    id: g.id,
+    slugs: available.filter((s) => (g.guides as readonly GuideSlug[]).includes(s)),
+  })).filter((g) => g.slugs.length > 0);
 }
 
 /**

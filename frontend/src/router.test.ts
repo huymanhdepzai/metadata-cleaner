@@ -5,6 +5,7 @@ import {
   activePages,
   ARTICLE_LANGS,
   availableGuides,
+  FULL_CONTENT_LANGS,
   GUIDE_DATES,
   PAGE_SLUGS,
   PAGE_UPDATED,
@@ -14,9 +15,9 @@ import {
   BASE_GUIDE_SLUGS,
   baseGuideIndex,
   EXTRA_GUIDE_SLUGS,
+  GUIDE_GROUPS,
   GUIDE_SLUGS,
-  guidePageCount,
-  guidesOnPage,
+  guideGroups,
   type GuideSlug,
 } from './content/seo';
 import { LANGUAGES } from './i18n/languages';
@@ -25,7 +26,6 @@ import {
   contentNeeds,
   GUIDES_INDEX,
   HOME,
-  indexPageCount,
   isIndexable,
   languagesFor,
   lastModified,
@@ -48,14 +48,20 @@ const metaModules = import.meta.glob<{ default: ArticleMetas }>(
   { eager: true },
 );
 
-describe('Phân trang bài viết', () => {
-  it('chia đúng số trang và bài trên từng trang', () => {
-    const items = Array.from({ length: 14 }, (_, i) => i + 1);
-    expect(guidePageCount(14, 6)).toBe(3);
-    expect(guidePageCount(6, 6)).toBe(1);
-    expect(guidePageCount(0, 6)).toBe(1);
-    expect(guidesOnPage(1, items, 6)).toEqual([1, 2, 3, 4, 5, 6]);
-    expect(guidesOnPage(3, items, 6)).toEqual([13, 14]);
+describe('Nhóm chủ đề trên trang tổng hợp', () => {
+  it('mỗi bài thuộc đúng một nhóm', () => {
+    const grouped = GUIDE_GROUPS.flatMap((g) => g.guides as readonly GuideSlug[]);
+    expect([...grouped].sort()).toEqual([...GUIDE_SLUGS].sort());
+    expect(new Set(grouped).size).toBe(grouped.length);
+  });
+
+  it('mỗi ngôn ngữ hiện đủ bài có sẵn, theo thứ tự hiển thị, không có nhóm rỗng', () => {
+    for (const { code } of LANGUAGES) {
+      const groups = guideGroups(code);
+      expect(groups.every((g) => g.slugs.length > 0)).toBe(true);
+      expect(groups.flatMap((g) => g.slugs).sort()).toEqual([...availableGuides(code)].sort());
+      for (const g of groups) expect(g.slugs).toEqual(availableGuides(code).filter((s) => g.slugs.includes(s)));
+    }
   });
 
   it('mỗi ngôn ngữ có đủ bài nền tảng; bài mở rộng chỉ ở ngôn ngữ đã khai báo', () => {
@@ -153,17 +159,19 @@ describe('Lập chỉ mục (noindex trang mỏng)', () => {
 });
 
 describe('Đường dẫn trang tổng hợp và bài viết', () => {
-  it('tạo URL theo ngôn ngữ và số trang', () => {
-    expect(pathFor('en', { name: 'guides', page: 1 })).toBe('/guides/');
-    expect(pathFor('vi', { name: 'guides', page: 1 })).toBe('/vi/guides/');
-    expect(pathFor('pt-BR', { name: 'guides', page: 2 })).toBe('/pt-br/guides/page/2/');
+  it('tạo URL theo ngôn ngữ', () => {
+    expect(pathFor('en', GUIDES_INDEX)).toBe('/guides/');
+    expect(pathFor('vi', GUIDES_INDEX)).toBe('/vi/guides/');
+    expect(pathFor('pt-BR', GUIDES_INDEX)).toBe('/pt-br/guides/');
+    expect(contentNeeds('vi', GUIDES_INDEX)).toEqual({ hub: true });
   });
 
   it('đọc URL trang tổng hợp, bài viết và trang không hợp lệ', () => {
-    expect(parsePath('/vi/guides/')).toMatchObject({ lang: 'vi', route: { name: 'guides', page: 1 }, known: true });
+    expect(parsePath('/vi/guides/')).toMatchObject({ lang: 'vi', route: GUIDES_INDEX, known: true });
     expect(parsePath(`/ja/guides/${BASE_GUIDE_SLUGS[0]}/`)).toMatchObject({ lang: 'ja', route: { name: 'guide' }, known: true });
-    expect(parsePath('/guides/page/1/')).toMatchObject({ route: { name: 'guides', page: 1 }, known: false });
-    expect(parsePath(`/vi/guides/page/${indexPageCount('vi') + 1}/`)).toMatchObject({ route: { name: 'guides', page: 1 }, known: false });
+    // Trang phân trang cũ (đã bỏ) → về trang tổng hợp duy nhất; Nginx trả 301 cho cùng các URL này.
+    expect(parsePath('/guides/page/2/')).toMatchObject({ lang: 'en', route: GUIDES_INDEX, known: false });
+    expect(parsePath('/vi/guides/page/4/')).toMatchObject({ lang: 'vi', route: GUIDES_INDEX, known: false });
   });
 
   it('bài chưa có bản dịch → chuyển về trang tổng hợp của ngôn ngữ đó', () => {
@@ -172,7 +180,6 @@ describe('Đường dẫn trang tổng hợp và bài viết', () => {
     expect(localizeRoute('ko', extra)).toEqual(GUIDES_INDEX);
     expect(localizeRoute('vi', extra)).toEqual(extra);
     expect(languagesFor(extra).map((l) => l.code)).toEqual(LANGUAGES.map((l) => l.code).filter((c) => ARTICLE_LANGS[extra.slug].includes(c)));
-    expect(localizeRoute('ko', { name: 'guides', page: 3 })).toEqual({ name: 'guides', page: indexPageCount('ko') });
   });
 
   it('prerender đúng số trang cho từng ngôn ngữ', () => {
@@ -180,9 +187,10 @@ describe('Đường dẫn trang tổng hợp và bài viết', () => {
     for (const { code } of LANGUAGES) {
       const own = routes.filter((r) => r.lang === code);
       const guides = availableGuides(code).length;
-      expect(own).toHaveLength(1 + indexPageCount(code) + guides + 1 + TOOL_SLUGS.length + activePages().length);
+      expect(own).toHaveLength(1 + 1 + guides + 1 + TOOL_SLUGS.length + activePages().length);
     }
-    expect(routes.map((r) => r.path)).toContain('/vi/guides/page/2/');
+    expect(routes.map((r) => r.path)).toContain('/vi/guides/');
+    expect(routes.some((r) => r.path.includes('/guides/page/'))).toBe(false);
     expect(routes.map((r) => r.path)).not.toContain(`/ko/guides/${EXTRA_GUIDE_SLUGS[0]}/`);
   });
 });
@@ -196,10 +204,15 @@ describe('Trang công cụ', () => {
     expect(parsePath('/tools/no-such-tool/')).toMatchObject({ route: TOOLS_INDEX, known: false });
   });
 
-  it('có ở mọi ngôn ngữ, được index và nạp văn bản công cụ', () => {
+  it('có ở mọi ngôn ngữ, chỉ index ở ngôn ngữ có nội dung chuyên sâu, nạp văn bản công cụ', () => {
     const tool = { name: 'tool', slug: 'view-metadata' } as const;
     expect(isIndexable('ja', tool)).toBe(true);
-    expect(languagesFor(TOOLS_INDEX)).toHaveLength(LANGUAGES.length);
+    expect(isIndexable('it', tool)).toBe(false);
+    expect(isIndexable('ko', TOOLS_INDEX)).toBe(false);
+    expect(languagesFor(TOOLS_INDEX).map((l) => l.code).sort()).toEqual([...FULL_CONTENT_LANGS].sort());
+    expect(languagesFor(tool)).toHaveLength(FULL_CONTENT_LANGS.length);
+    expect(allRoutes().find((r) => r.lang === 'it' && r.route.name === 'tool')).toMatchObject({ indexable: false });
+    expect(contentNeeds('it', tool)).toEqual({ tools: true });
     expect(contentNeeds('ja', tool)).toEqual({ tools: true });
     expect(lastModified('en', tool)).toBe(TOOLS_UPDATED);
   });

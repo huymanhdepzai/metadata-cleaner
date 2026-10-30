@@ -49,6 +49,45 @@ const tools: ToolsContent = {
           a: 'Non. Votre navigateur lit les fichiers, qui ne quittent jamais votre appareil.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'Ce que révèle chaque groupe de métadonnées',
+            text: 'Le visualiseur classe chaque champ selon l’endroit où il est stocké dans le fichier. Chaque groupe est écrit par un programme différent, dans un but différent : connaître la source aide à juger du degré de confiance à accorder à une valeur et de sa sensibilité.',
+            items: [
+              { term: 'EXIF', text: 'Écrit par l’appareil photo ou le smartphone : marque et modèle, objectif, exposition, date de prise de vue et fuseau horaire. On peut aussi y trouver le nom du propriétaire, le numéro de série du boîtier et une MakerNote contenant des données propres au fabricant.' },
+              { term: 'EXIF · GPS', text: 'Latitude et longitude, souvent précises à quelques mètres, ainsi que l’altitude et parfois la direction vers laquelle pointait l’appareil. C’est le champ que la plupart des gens veulent vérifier avant de partager.' },
+              { term: 'XMP', text: 'Ajouté par les logiciels de retouche comme Lightroom ou Photoshop : outil utilisé, historique des modifications, notes et mots-clés. Les outils d’IA utilisent aussi XMP pour déclarer qu’une image a été générée.' },
+              { term: 'IPTC', text: 'Légendes, auteur, ligne de crédit et mention de copyright, surtout utilisés par les agences de presse et les banques d’images.' },
+              { term: 'C2PA', text: 'Content Credentials : un manifeste signé qui indique quelle application ou quel modèle d’IA a créé l’image et quelles modifications ont été faites. Les plateformes le lisent pour afficher les étiquettes « Infos IA ».' },
+              { term: 'PNG text', text: 'Des blocs de texte libre. Stable Diffusion y enregistre le prompt, la seed et le modèle ; ComfyUI y stocke le workflow complet des nœuds au format JSON.' },
+              { term: 'ICC', text: 'Le profil colorimétrique. Il ne contient aucune donnée personnelle et sert à afficher correctement les couleurs.' },
+            ],
+          },
+          {
+            title: 'Comment lire le rapport',
+            text: 'Chaque fichier s’ouvre sur un résumé de confidentialité qui liste les champs de localisation, personnels et horaires trouvés. Juste en dessous, la section IA donne l’un de trois verdicts : « Indices d’IA détectés » lorsque les métadonnées citent un outil d’IA, contiennent un prompt ou déclarent une génération par IA ; « À vérifier » lorsque des Content Credentials sont présents sans mention explicite de l’IA ; et « Aucun indice d’IA » lorsque rien n’a été trouvé. Le tableau complet vient en dernier. Utilisez la recherche pour aller droit à l’essentiel : taper « GPS », « Serial », « Software » ou « prompt » est souvent bien plus rapide que de faire défiler une centaine de champs.',
+          },
+          {
+            title: 'Quand vérifier les métadonnées',
+            text: 'Regardez à l’intérieur d’une photo avant de la publier ou de l’envoyer à un inconnu, quand un vendeur de petites annonces ou un inconnu vous envoie une image, quand une plateforme étiquette une vraie photo comme IA et que vous voulez comprendre pourquoi, et après un nettoyage pour confirmer qu’il ne reste rien : il suffit de déposer la copie nettoyée dans le visualiseur. Gardez en tête que n’importe qui peut modifier ou effacer des métadonnées : c’est un indice, pas une preuve.',
+          },
+        ],
+        faq: [
+          {
+            q: 'Les métadonnées peuvent-elles prouver quand ou où une photo a été prise ?',
+            a: 'Pas à elles seules. Les dates et les coordonnées GPS de l’EXIF se modifient avec des outils gratuits. Les manifestes C2PA sont signés et plus difficiles à falsifier, mais faciles à supprimer : l’absence de manifeste ne prouve donc rien non plus.',
+          },
+          {
+            q: 'Pourquoi ma photo n’affiche-t-elle presque aucune métadonnée ?',
+            a: 'La plupart des réseaux sociaux et des messageries suppriment l’EXIF à l’envoi, et les captures d’écran n’ont jamais contenu de données d’appareil. Un fichier téléchargé depuis ces plateformes est généralement déjà nettoyé.',
+          },
+          {
+            q: 'Quels formats puis-je inspecter ?',
+            a: 'Les photos JPG, PNG, WebP et HEIC/HEIF, y compris celles de l’iPhone. Vous pouvez déposer plusieurs fichiers à la fois et ouvrir le rapport de chacun séparément.',
+          },
+        ],
+      },
     },
     'privacy-check': {
       title: 'Analyse de confidentialité photo — GPS et données personnelles',
@@ -75,6 +114,42 @@ const tools: ToolsContent = {
           a: 'Les métadonnées ne sont qu’une source. Ce qui est visible sur l’image — panneaux, monuments, reflets — peut aussi révéler un lieu, et cette analyse ne peut pas le détecter.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'Ce que l’analyse recherche',
+            text: 'L’analyse range les métadonnées trouvées en quatre types d’exposition. Chacun répond à une question différente que quelqu’un pourrait se poser sur vous à partir d’un seul fichier.',
+            items: [
+              { term: 'Localisation', text: 'Latitude, longitude et altitude GPS. Une photo prise chez vous avec un téléphone peut mener jusqu’à votre porte : c’est pourquoi toute localisation place le résultat en risque élevé.' },
+              { term: 'Personnel et appareil', text: 'Marque et modèle de l’appareil, champs auteur et copyright, nom du propriétaire, numéro de série du boîtier, identifiant unique de l’image, commentaires et données MakerNote du fabricant. Un numéro de série peut relier à un même appareil des photos publiées depuis des comptes différents.' },
+              { term: 'Date et heure', text: 'Date de prise de vue d’origine, fractions de seconde et fuseau horaire. Ensemble, ils montrent quand vous étiez quelque part et, approximativement, dans quelle région du monde vous vivez.' },
+              { term: 'IA et provenance', text: 'Content Credentials, noms d’outils d’IA et prompts de génération. Ce ne sont pas des données personnelles au sens habituel, mais elles révèlent comment l’image a été faite et peuvent déclencher des étiquettes IA.' },
+            ],
+          },
+          {
+            title: 'Que faire selon le niveau de risque',
+            text: 'Élevé : la photo contient une localisation. Supprimez-la avant tout partage public et, si vous voulez voir sa précision, ouvrez d’abord la carte. Moyen : pas de localisation, mais le fichier contient des données d’appareil, personnelles, horaires ou d’IA ; aucun souci pour des proches, mais un nettoyage s’impose avant une publication ou un envoi à des inconnus. Faible : aucune métadonnée sensible n’a été trouvée, le fichier lui-même ne vous trahit donc pas ; ce que montre l’image, peut-être encore.',
+          },
+          {
+            title: 'Là où les métadonnées survivent au partage',
+            text: 'Beaucoup de grands réseaux sociaux suppriment le GPS à la publication, mais bien d’autres canaux non : pièces jointes d’e-mails, stockage en ligne et liens de partage de fichiers, AirDrop et Nearby Share, photos envoyées « en tant que fichier » ou « en tant que document » dans les messageries, forums et petits sites web. Si vous ne savez pas par où une photo va passer, vérifiez-la ici et nettoyez-la avant qu’elle ne quitte votre appareil.',
+          },
+        ],
+        faq: [
+          {
+            q: 'Comment empêcher mon téléphone d’ajouter la localisation aux photos ?',
+            a: 'Sur iPhone, allez dans Réglages → Confidentialité et sécurité → Service de localisation → Appareil photo et choisissez Jamais. Sur Android, ouvrez les réglages de l’appli appareil photo et désactivez les balises de localisation (le nom varie selon la marque). Les photos déjà prises gardent leur localisation tant que vous ne la supprimez pas.',
+          },
+          {
+            q: 'Un risque faible signifie-t-il que la photo peut être partagée sans danger ?',
+            a: 'Cela signifie que les métadonnées sont propres. Des visages, un numéro de rue, une plaque d’immatriculation, des documents sur un bureau ou un reflet dans une vitre peuvent en révéler plus que prévu : jetez aussi un œil à l’image elle-même.',
+          },
+          {
+            q: 'Puis-je vérifier des photos que l’on m’a envoyées ?',
+            a: 'Oui. L’analyse se contente de lire le fichier : c’est un moyen rapide de savoir si une photo reçue contient encore une localisation ou des données d’appareil, par exemple avant de la transférer.',
+          },
+        ],
+      },
     },
     'metadata-size': {
       title: 'Taille des métadonnées — combien de métadonnées dans une photo ?',
@@ -101,6 +176,44 @@ const tools: ToolsContent = {
           a: 'Non. Seuls les blocs de métadonnées sont supprimés ; les données de l’image sont copiées telles quelles, le fichier s’allège sans perte de qualité.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'Ce qui prend généralement de la place',
+            text: 'La taille des métadonnées varie bien plus qu’on ne l’imagine. Un bloc EXIF ordinaire est minuscule, alors qu’un seul aperçu ou workflow intégré peut peser plus que l’image d’un petit visuel web. Voici les blocs que l’outil trouve le plus souvent, du plus petit au plus gros :',
+            items: [
+              { term: 'Profil ICC', text: 'De quelques centaines d’octets à quelques kilo-octets. Indiqué comme conservé, car les couleurs en dépendent.' },
+              { term: 'EXIF', text: 'En général quelques kilo-octets de réglages, de dates et de GPS, plus une miniature EXIF qui ajoute souvent 5 à 20 Ko.' },
+              { term: 'XMP', text: 'Moins d’un kilo-octet pour un fichier simple, mais Photoshop et Lightroom peuvent écrire des historiques de modification et des listes de documents qui atteignent des centaines de kilo-octets.' },
+              { term: 'Manifeste C2PA', text: 'Souvent des dizaines de kilo-octets : certificats, signatures et parfois miniatures des images sources.' },
+              { term: 'Prompts et workflows PNG', text: 'Les paramètres Stable Diffusion occupent un ou deux kilo-octets ; un workflow ComfyUI comptant beaucoup de nœuds peut atteindre des dizaines ou des centaines de kilo-octets.' },
+              { term: 'Données après l’image', text: 'Certains téléphones ajoutent des données à la fin des JPG : images secondaires MPF, aperçus plus grands ou la courte vidéo d’une Motion Photo, ce qui peut représenter plusieurs mégaoctets.' },
+            ],
+          },
+          {
+            title: 'Pourquoi la taille des métadonnées compte',
+            text: 'Sur un site web, chaque kilo-octet est multiplié par chaque visiteur et chaque image de la page : retirer quelques dizaines de kilo-octets par image finit par compter, et contrairement à une recompression, cela ne coûte rien en qualité. La taille est aussi un indice de confidentialité : les plus gros blocs sont souvent les plus révélateurs, comme un historique complet de retouches, un workflow de génération ou une seconde image cachée. Pour des archives de milliers de photos, le gain se voit aussi sur le stockage.',
+          },
+          {
+            title: 'Comment lire le résultat',
+            text: 'L’en-tête affiche le total des métadonnées qui seraient supprimées et leur part dans le fichier ; la barre en dessous rend cette part visible d’un coup d’œil. Chaque bloc est ensuite listé du plus gros au plus petit avec sa propre barre, pour que les valeurs anormales sautent aux yeux. Le profil colorimétrique apparaît en vert comme conservé et n’est pas compté dans le total. Quelques pour cent est habituel pour de grandes photos d’appareil, alors que les petits PNG et les images d’IA atteignent souvent des valeurs bien plus élevées.',
+          },
+        ],
+        faq: [
+          {
+            q: 'De combien mon fichier va-t-il diminuer ?',
+            a: 'D’environ le total de métadonnées affiché. Le nettoyeur supprime ces blocs et copie les données d’image telles quelles : le fichier nettoyé pèse donc la taille d’origine moins les métadonnées retirées.',
+          },
+          {
+            q: 'Supprimer les métadonnées remplace-t-il la compression d’image ?',
+            a: 'Non. Cela retire seulement ce qui ne fait pas partie de l’image. Pour réduire fortement une photo, il faut toujours la redimensionner ou la recompresser, ce qui modifie les pixels ; supprimer les métadonnées est l’étape gratuite à faire d’abord, sans aucune perte de qualité.',
+          },
+          {
+            q: 'Pourquoi une petite image d’IA affiche-t-elle une part de métadonnées élevée ?',
+            a: 'Les générateurs et les logiciels de retouche ajoutent les mêmes prompts, workflows ou Content Credentials quelle que soit la taille de l’image : sur un petit fichier, ils peuvent donc représenter une grande partie du total.',
+          },
+        ],
+      },
     },
   },
 };

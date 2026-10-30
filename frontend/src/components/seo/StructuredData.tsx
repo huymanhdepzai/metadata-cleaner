@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { guideContent } from '../../content/guideContent';
-import { availableGuides, GUIDE_DATES, GUIDES_PER_PAGE, guidesOnPage, HOME_SECTIONS, PAGE_UPDATED, SITE, TOOL_SLUGS } from '../../content/seo';
+import { availableGuides, GUIDE_DATES, HOME_SECTIONS, PAGE_UPDATED, SITE, TOOL_SLUGS } from '../../content/seo';
+import { toolFaq } from '../../content/tools/types';
 import { useI18n } from '../../i18n';
 import { absoluteUrl, GUIDES_INDEX, HOME, pathFor, TOOLS_INDEX, useRouter } from '../../router';
 import { OG_SIZE, ogImagePath } from '../../seo/head';
@@ -89,7 +90,7 @@ export function StructuredData() {
 
     if (route.name === 'guides') {
       const url = absoluteUrl(pathFor(lang, route));
-      const slugs = guidesOnPage(route.page, availableGuides(lang));
+      const slugs = availableGuides(lang);
       return [
         {
           '@context': 'https://schema.org',
@@ -101,7 +102,7 @@ export function StructuredData() {
             '@type': 'ItemList',
             itemListElement: slugs.map((slug, i) => ({
               '@type': 'ListItem',
-              position: (route.page - 1) * GUIDES_PER_PAGE + i + 1,
+              position: i + 1,
               url: absoluteUrl(pathFor(lang, { name: 'guide', slug })),
               name: guideContent({ m, articles }, slug)?.title,
             })),
@@ -167,7 +168,7 @@ export function StructuredData() {
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
           inLanguage: lang,
-          mainEntity: tool.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+          mainEntity: toolFaq(tool).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
         },
         {
           '@context': 'https://schema.org',

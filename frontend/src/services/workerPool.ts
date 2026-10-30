@@ -40,7 +40,7 @@ export class WorkerPool {
     if (index >= 0) this.queue.splice(index, 1)[0].reject(new CancelledError());
   }
 
-  cancelAll(): void {
+  cancelAll(): void { 
     for (const task of this.queue.splice(0)) task.reject(new CancelledError());
   }
 

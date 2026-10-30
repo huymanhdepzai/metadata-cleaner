@@ -49,6 +49,45 @@ const tools: ToolsContent = {
           a: 'Não. O navegador lê os arquivos, que nunca saem do seu dispositivo.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'O que cada grupo de metadados revela',
+            text: 'O visualizador agrupa cada campo conforme o lugar do arquivo em que ele está gravado. Cada grupo é escrito por um programa diferente, com um propósito diferente, então saber a origem ajuda a entender o quanto confiar em um valor e o quão sensível ele é.',
+            items: [
+              { term: 'EXIF', text: 'Gravado pela câmera ou pelo celular: marca e modelo, lente, exposição, data da captura e fuso horário. Também pode trazer o nome do proprietário, o número de série do corpo e uma MakerNote com dados próprios do fabricante.' },
+              { term: 'EXIF · GPS', text: 'Latitude e longitude, muitas vezes com precisão de poucos metros, além da altitude e às vezes a direção para onde a câmera apontava. É o campo que quase todo mundo quer conferir antes de compartilhar.' },
+              { term: 'XMP', text: 'Adicionado por programas de edição como Lightroom ou Photoshop: a ferramenta usada, o histórico de edição, classificações e palavras-chave. Ferramentas de IA também usam XMP para declarar que uma imagem foi gerada.' },
+              { term: 'IPTC', text: 'Legendas, autor, linha de crédito e aviso de copyright, usados principalmente por agências de notícias e bancos de imagens.' },
+              { term: 'C2PA', text: 'Content Credentials: um manifesto assinado que registra qual aplicativo ou modelo de IA criou a imagem e quais edições foram feitas. As plataformas leem esse manifesto para mostrar selos de “Info de IA”.' },
+              { term: 'PNG text', text: 'Blocos de texto livre. O Stable Diffusion guarda ali o prompt, a seed e o modelo; o ComfyUI guarda o workflow completo de nós em JSON.' },
+              { term: 'ICC', text: 'O perfil de cor. Não contém dados pessoais e é necessário para exibir as cores corretamente.' },
+            ],
+          },
+          {
+            title: 'Como ler o relatório',
+            text: 'Cada arquivo abre com um resumo de privacidade que lista os campos de localização, dados pessoais e horário encontrados. Logo abaixo, a seção de IA dá um de três vereditos: “Sinais de IA detectados” quando os metadados citam uma ferramenta de IA, contêm um prompt ou declaram geração por IA; “Requer atenção” quando há Content Credentials sem declaração explícita de IA; e “Sem sinais de IA” quando nada foi encontrado. A tabela completa vem por último. Use a busca para ir direto ao que importa: digitar “GPS”, “Serial”, “Software” ou “prompt” costuma ser bem mais rápido do que rolar por cem campos.',
+          },
+          {
+            title: 'Quando vale a pena ver os metadados',
+            text: 'Olhe dentro de uma foto antes de publicá-la ou enviá-la a alguém que você não conhece, quando um vendedor de marketplace ou um desconhecido manda uma imagem para você, quando uma plataforma marca uma foto real como IA e você quer saber o motivo, e depois de limpar um arquivo para confirmar que não sobrou nada — basta soltar a cópia limpa no visualizador. Lembre-se de que qualquer pessoa pode editar ou apagar metadados, então eles são uma pista, não uma prova.',
+          },
+        ],
+        faq: [
+          {
+            q: 'Os metadados provam quando ou onde uma foto foi tirada?',
+            a: 'Sozinhos, não. Datas e GPS no EXIF podem ser alterados com ferramentas gratuitas. Os manifestos C2PA são assinados e mais difíceis de falsificar, mas são fáceis de remover, então a ausência de um manifesto também não prova nada.',
+          },
+          {
+            q: 'Por que minha foto quase não mostra metadados?',
+            a: 'A maioria das redes sociais e dos apps de mensagem remove o EXIF no envio, e capturas de tela nunca tiveram dados de câmera. Um arquivo baixado dessas plataformas geralmente já está limpo.',
+          },
+          {
+            q: 'Quais formatos posso verificar?',
+            a: 'Fotos JPG, PNG, WebP e HEIC/HEIF, incluindo as do iPhone. Você pode soltar vários arquivos de uma vez e abrir o relatório de cada um separadamente.',
+          },
+        ],
+      },
     },
     'privacy-check': {
       title: 'Análise de privacidade de fotos — encontre GPS e dados pessoais',
@@ -75,6 +114,42 @@ const tools: ToolsContent = {
           a: 'Os metadados são só uma fonte. O que aparece na imagem — placas, pontos turísticos, reflexos — também pode revelar um lugar, e esta análise não detecta isso.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'O que a análise procura',
+            text: 'A análise separa os metadados encontrados em quatro tipos de exposição. Cada um responde a uma pergunta diferente que alguém poderia fazer sobre você a partir de um único arquivo.',
+            items: [
+              { term: 'Localização', text: 'Latitude, longitude e altitude do GPS. Uma foto tirada em casa com o celular pode apontar para a sua porta, por isso qualquer localização deixa o resultado com risco alto.' },
+              { term: 'Pessoal e dispositivo', text: 'Marca e modelo da câmera, campos de autor e copyright, nome do proprietário, número de série do corpo, ID único da imagem, comentários e dados MakerNote do fabricante. Um número de série pode ligar fotos que você publica em contas diferentes à mesma câmera.' },
+              { term: 'Horário', text: 'Data original da captura, frações de segundo e fuso horário. Juntos, mostram quando você esteve em algum lugar e, aproximadamente, em que parte do mundo você mora.' },
+              { term: 'IA e procedência', text: 'Content Credentials, nomes de ferramentas de IA e prompts de geração. Não são dados pessoais no sentido usual, mas revelam como a imagem foi feita e podem acionar selos de IA.' },
+            ],
+          },
+          {
+            title: 'O que fazer em cada nível de risco',
+            text: 'Alto: a foto contém uma localização — remova antes de compartilhar em qualquer lugar público e, se quiser ver o quão precisa ela é, abra o mapa primeiro. Médio: não há localização, mas o arquivo traz dados do dispositivo, pessoais, de horário ou de IA — tudo bem para amigos, mas vale limpar antes de publicar ou mandar para desconhecidos. Baixo: nenhum metadado sensível foi encontrado, então o arquivo em si não entrega você; o que aparece na imagem ainda pode entregar.',
+          },
+          {
+            title: 'Onde os metadados sobrevivem ao compartilhamento',
+            text: 'Muitas redes sociais grandes removem o GPS na publicação, mas vários outros canais não: anexos de e-mail, armazenamento em nuvem e links de compartilhamento de arquivos, AirDrop e Nearby Share, fotos enviadas “como arquivo” ou “como documento” em apps de conversa, fóruns e sites pequenos. Se você não tem certeza de por onde uma foto vai passar, verifique aqui e limpe antes que ela saia do seu aparelho.',
+          },
+        ],
+        faq: [
+          {
+            q: 'Como impedir que o celular adicione a localização às fotos?',
+            a: 'No iPhone, vá em Ajustes → Privacidade e Segurança → Serviços de Localização → Câmera e escolha Nunca. No Android, abra as configurações do app de câmera e desative as tags de localização (o nome varia conforme a marca). As fotos já tiradas mantêm a localização até você removê-la.',
+          },
+          {
+            q: 'Risco baixo significa que a foto é segura para compartilhar?',
+            a: 'Significa que os metadados estão limpos. Rostos, números de casa, placas de carro, documentos sobre a mesa ou um reflexo na janela ainda podem revelar mais do que você quer, então dê uma olhada também na própria imagem.',
+          },
+          {
+            q: 'Posso verificar fotos que alguém me enviou?',
+            a: 'Sim. A análise apenas lê o arquivo, então é um jeito rápido de saber se uma foto recebida ainda tem localização ou dados do dispositivo — por exemplo, antes de encaminhá-la.',
+          },
+        ],
+      },
     },
     'metadata-size': {
       title: 'Tamanho dos metadados — quanto metadado tem uma foto?',
@@ -101,6 +176,44 @@ const tools: ToolsContent = {
           a: 'Não. Só os blocos de metadados são removidos; os dados da imagem são copiados sem alteração, então o arquivo fica menor sem perder qualidade.',
         },
       ],
+      guide: {
+        sections: [
+          {
+            title: 'O que costuma ocupar espaço',
+            text: 'O tamanho dos metadados varia muito mais do que a maioria imagina. Um bloco EXIF comum é minúsculo, enquanto uma única prévia ou um workflow incorporado pode pesar mais do que a imagem de um pequeno gráfico para a web. Estes são os blocos que o medidor costuma encontrar, do menor para o maior:',
+            items: [
+              { term: 'Perfil de cor ICC', text: 'De algumas centenas de bytes a poucos kilobytes. Aparece como mantido, porque as cores dependem dele.' },
+              { term: 'EXIF', text: 'Normalmente alguns kilobytes de configurações da câmera, datas e GPS, mais uma miniatura EXIF que muitas vezes adiciona outros 5–20 KB.' },
+              { term: 'XMP', text: 'Menos de um kilobyte em arquivos simples, mas o Photoshop e o Lightroom podem gravar históricos de edição e listas de documentos que chegam a centenas de kilobytes.' },
+              { term: 'Manifesto C2PA', text: 'Muitas vezes dezenas de kilobytes: certificados, assinaturas e às vezes miniaturas das imagens de origem.' },
+              { term: 'Prompts e workflows PNG', text: 'Os parâmetros do Stable Diffusion ocupam um ou dois kilobytes; um workflow do ComfyUI com muitos nós pode chegar a dezenas ou centenas de kilobytes.' },
+              { term: 'Dados depois da imagem', text: 'Alguns celulares anexam dados ao final dos arquivos JPG: imagens secundárias MPF, prévias maiores ou o vídeo curto de uma Motion Photo, o que pode somar vários megabytes.' },
+            ],
+          },
+          {
+            title: 'Por que o tamanho dos metadados importa',
+            text: 'Em um site, cada kilobyte é multiplicado por cada visitante e cada imagem da página, então tirar algumas dezenas de kilobytes por imagem faz diferença — e, ao contrário de recomprimir, não custa nada em qualidade. O tamanho também é uma pista de privacidade: os maiores blocos costumam ser os mais reveladores, como um histórico de edição completo, um workflow de geração ou uma segunda imagem escondida. Em acervos com milhares de fotos, a economia também aparece no armazenamento.',
+          },
+          {
+            title: 'Como ler o resultado',
+            text: 'O destaque mostra o total de metadados que seriam removidos e a parcela que representam no arquivo; a barra logo abaixo deixa essa parcela visível de relance. Em seguida, cada bloco aparece do maior para o menor com sua própria barra, para que os casos fora do comum chamem atenção na hora. O perfil de cor aparece em verde como mantido e não entra no total. Alguns poucos por cento é o normal em fotos grandes de câmera, enquanto PNGs pequenos e imagens de IA costumam chegar a valores bem mais altos.',
+          },
+        ],
+        faq: [
+          {
+            q: 'Quanto meu arquivo vai diminuir?',
+            a: 'Aproximadamente o total de metadados mostrado. O limpador remove esses blocos e copia os dados da imagem como estão, então o arquivo limpo tem o tamanho original menos os metadados removidos.',
+          },
+          {
+            q: 'Remover metadados substitui a compressão de imagens?',
+            a: 'Não. A remoção tira apenas o que não faz parte da imagem. Para deixar fotos muito menores, você ainda precisa redimensionar ou recomprimir, o que altera os pixels; remover metadados é o passo gratuito que dá para fazer antes, sem nenhuma perda de qualidade.',
+          },
+          {
+            q: 'Por que uma imagem de IA pequena mostra uma parcela alta de metadados?',
+            a: 'Geradores e editores anexam os mesmos prompts, workflows ou Content Credentials independentemente do tamanho da imagem, então, em um arquivo pequeno, eles podem representar grande parte do total de bytes.',
+          },
+        ],
+      },
     },
   },
 };

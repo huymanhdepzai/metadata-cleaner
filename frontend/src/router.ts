@@ -2,9 +2,8 @@ import { create } from './store/create';
 import {
   activePages,
   availableGuides,
+  FULL_CONTENT_LANGS,
   GUIDE_DATES,
-  guidePageCount,
-  guidesOnPage,
   hasFullArticle,
   isGuideAvailable,
   isGuideSlug,
@@ -27,8 +26,7 @@ import { DEFAULT_LANG, findLanguage, LANGUAGES, type LangCode } from './i18n/lan
  * Bộ định tuyến tối giản theo đường dẫn:
  *   /                          → trang chủ tiếng Anh (x-default)
  *   /{lang}/                   → trang chủ theo ngôn ngữ (vd. /vi/, /pt-br/)
- *   /{lang?}/guides/           → trang tổng hợp bài viết (trang 1)
- *   /{lang?}/guides/page/{n}/  → trang tổng hợp, trang n (n ≥ 2)
+ *   /{lang?}/guides/           → trang tổng hợp bài viết (một trang, chia nhóm chủ đề — không phân trang)
  *   /{lang?}/guides/{slug}/    → trang bài viết
  *   /{lang?}/tools/            → trang tổng hợp công cụ
  *   /{lang?}/tools/{slug}/     → trang công cụ riêng
@@ -37,14 +35,14 @@ import { DEFAULT_LANG, findLanguage, LANGUAGES, type LangCode } from './i18n/lan
  */
 export type Route =
   | { name: 'home' }
-  | { name: 'guides'; page: number }
+  | { name: 'guides' }
   | { name: 'guide'; slug: GuideSlug }
   | { name: 'tools' }
   | { name: 'tool'; slug: ToolSlug }
   | { name: 'page'; slug: PageSlug };
 
 export const HOME: Route = { name: 'home' };
-export const GUIDES_INDEX: Route = { name: 'guides', page: 1 };
+export const GUIDES_INDEX: Route = { name: 'guides' };
 export const TOOLS_INDEX: Route = { name: 'tools' };
 
 const langSegment = (lang: LangCode) => (lang === DEFAULT_LANG ? '' : `/${lang.toLowerCase()}`);
@@ -55,7 +53,7 @@ export function pathFor(lang: LangCode, route: Route): string {
     case 'home':
       return `${prefix}/`;
     case 'guides':
-      return route.page > 1 ? `${prefix}/guides/page/${route.page}/` : `${prefix}/guides/`;
+      return `${prefix}/guides/`;
     case 'guide':
       return `${prefix}/guides/${route.slug}/`;
     case 'tools':
@@ -87,10 +85,6 @@ export function parsePath(pathname: string): { lang: LangCode; route: Route; exp
       const route = localizeRoute(lang, { name: 'guide', slug: segs[1] });
       return { lang, route, explicitLang, known: route.name === 'guide' };
     }
-    if (segs.length === 3 && segs[1] === 'page' && /^\d+$/.test(segs[2])) {
-      const page = Number(segs[2]);
-      if (page >= 1 && page <= indexPageCount(lang)) return { lang, route: { name: 'guides', page }, explicitLang, known: page > 1 };
-    }
     return { lang, route: GUIDES_INDEX, explicitLang, known: false };
   }
   if (segs[0] === 'tools') {
@@ -104,16 +98,9 @@ export function parsePath(pathname: string): { lang: LangCode; route: Route; exp
   return { lang, route: HOME, explicitLang, known: false };
 }
 
-/** Số trang tổng hợp ở ngôn ngữ `lang` (mỗi ngôn ngữ có thể có số bài khác nhau). */
-export const indexPageCount = (lang: LangCode) => guidePageCount(availableGuides(lang).length);
-
-/**
- * Trang tương ứng ở ngôn ngữ khác: giữ nguyên nếu tồn tại, nếu không thì về trang tổng hợp
- * (bài chưa có bản dịch) hoặc trang cuối (ngôn ngữ đích có ít trang hơn).
- */
+/** Trang tương ứng ở ngôn ngữ khác: giữ nguyên nếu tồn tại, nếu không (bài chưa có bản dịch) thì về trang tổng hợp. */
 export function localizeRoute(lang: LangCode, route: Route): Route {
   if (route.name === 'guide' && !isGuideAvailable(route.slug, lang)) return GUIDES_INDEX;
-  if (route.name === 'guides' && route.page > indexPageCount(lang)) return { name: 'guides', page: indexPageCount(lang) };
   return route;
 }
 
@@ -127,10 +114,13 @@ const sameRoute = (a: Route, b: Route) => JSON.stringify(a) === JSON.stringify(b
 export function isIndexable(lang: LangCode, route: Route): boolean {
   switch (route.name) {
     case 'home':
-    case 'tools':
-    case 'tool':
     case 'page':
       return true;
+    // Trang công cụ chỉ có nội dung chuyên sâu (mục `guide`) ở FULL_CONTENT_LANGS; ngôn ngữ khác chỉ có khung cơ bản
+    // (~300 từ riêng) → vẫn dùng được nhưng noindex, như bài chỉ có tóm tắt.
+    case 'tools':
+    case 'tool':
+      return FULL_CONTENT_LANGS.includes(lang);
     case 'guides':
       return availableGuides(lang).some((slug) => hasFullArticle(slug, lang));
     case 'guide':
@@ -144,14 +134,14 @@ export const languagesFor = (route: Route) =>
 
 /**
  * Ngày sửa nội dung của trang (lastmod trong sitemap): bài → ngày của bài; trang tổng hợp → bài mới sửa nhất
- * trên trang đó; trang thông tin → PAGE_UPDATED; trang chủ → SITE.contentUpdated.
+ * trong ngôn ngữ đó; trang thông tin → PAGE_UPDATED; trang chủ → SITE.contentUpdated.
  */
 export function lastModified(lang: LangCode, route: Route): string {
   switch (route.name) {
     case 'home':
       return SITE.contentUpdated;
     case 'guides':
-      return latestDate(guidesOnPage(route.page, availableGuides(lang)).map((slug) => GUIDE_DATES[slug].updated));
+      return latestDate(availableGuides(lang).map((slug) => GUIDE_DATES[slug].updated));
     case 'guide':
       return GUIDE_DATES[route.slug].updated;
     case 'tools':
@@ -168,11 +158,10 @@ export function lastModified(lang: LangCode, route: Route): string {
  */
 export function allRoutes(): { lang: LangCode; route: Route; path: string; indexable: boolean }[] {
   return LANGUAGES.flatMap((l) => {
-    const indexPages = Array.from({ length: indexPageCount(l.code) }, (_, i): Route => ({ name: 'guides', page: i + 1 }));
     const guides = availableGuides(l.code).map((slug): Route => ({ name: 'guide', slug }));
     const tools = TOOL_SLUGS.map((slug): Route => ({ name: 'tool', slug }));
     const pages = activePages().map((slug): Route => ({ name: 'page', slug }));
-    return [HOME, ...indexPages, ...guides, TOOLS_INDEX, ...tools, ...pages].map((route) => ({
+    return [HOME, GUIDES_INDEX, ...guides, TOOLS_INDEX, ...tools, ...pages].map((route) => ({
       lang: l.code,
       route,
       path: pathFor(l.code, route),
@@ -183,11 +172,13 @@ export function allRoutes(): { lang: LangCode; route: Route; path: string; index
 
 /**
  * Nội dung tải riêng mà trang cần trước khi hiển thị (để HTML khớp bản prerender khi hydrate): trang thông tin
- * cần nội dung trang; bài viết cần nội dung đầy đủ của đúng bài đó. Trang chủ và trang tổng hợp chỉ cần meta.
+ * cần nội dung trang; trang tổng hợp bài cần văn bản nhóm chủ đề; bài viết cần nội dung đầy đủ của đúng bài đó.
+ * Trang chủ chỉ cần meta.
  */
 export function contentNeeds(lang: LangCode, route: Route): ContentNeeds {
   if (route.name === 'page') return { pages: true };
   if (route.name === 'tools' || route.name === 'tool') return { tools: true };
+  if (route.name === 'guides') return { hub: true };
   if (route.name === 'guide' && hasFullArticle(route.slug, lang)) return { guide: route.slug };
   return {};
 }

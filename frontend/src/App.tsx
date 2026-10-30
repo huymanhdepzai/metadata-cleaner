@@ -49,7 +49,7 @@ export default function App() {
       ) : route.name === 'page' ? (
         <StaticPage key={route.slug} slug={route.slug} />
       ) : route.name === 'guides' ? (
-        <GuidesIndexPage key={route.page} page={route.page} />
+        <GuidesIndexPage />
       ) : (
         <HomePage />
       )}

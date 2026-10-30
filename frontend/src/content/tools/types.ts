@@ -15,7 +15,21 @@ export interface ToolPageContent {
   /** Ba bước dùng công cụ. */
   steps: string[];
   faq: { q: string; a: string }[];
+  /**
+   * Nội dung chuyên sâu riêng của công cụ — chỉ có ở ngôn ngữ trong FULL_CONTENT_LANGS (test kiểm tra), để trang công cụ
+   * không chỉ là khung mẫu chung. Ngôn ngữ khác bỏ trống.
+   */
+  guide?: ToolGuide;
 }
+
+/** Các mục H2 (đoạn văn + danh sách thuật ngữ tùy chọn) và câu hỏi bổ sung, nối sau `faq`. */
+export interface ToolGuide {
+  sections: { title: string; text: string; items?: { term: string; text: string }[] }[];
+  faq: { q: string; a: string }[];
+}
+
+/** Toàn bộ hỏi đáp của trang công cụ (câu cơ bản + câu bổ sung của `guide`) — dùng chung cho trang và schema FAQPage. */
+export const toolFaq = (page: ToolPageContent) => [...page.faq, ...(page.guide?.faq ?? [])];
 
 export interface ToolsContent {
   hub: { title: string; description: string; intro: string };
