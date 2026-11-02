@@ -43,13 +43,37 @@ await fs.writeFile(path.join(dist, 'sitemap.xml'), sitemapXml());
 await fs.writeFile(path.join(dist, 'llms.txt'), await llmsTxt());
 
 // PNG từ SVG: ảnh OG theo bài + biểu tượng ứng dụng (apple-touch-icon, manifest, logo cho schema.org).
-const toPng = (svg, width) =>
-  new Resvg(svg, {
-    fitTo: width ? { mode: 'width', value: width } : { mode: 'original' },
-    font: { loadSystemFonts: true, defaultFontFamily: 'Arial', sansSerifFamily: 'Segoe UI', monospaceFamily: 'Consolas' },
-  })
-    .render()
-    .asPng();
+// Font đi kèm dự án (devDependencies @expo-google-fonts/*), KHÔNG dùng font hệ thống: build trên Windows, Linux hay
+// VPS đều cho ảnh giống hệt nhau. (Trước đây dùng Segoe UI → build trên Linux ra ảnh không có chữ.)
+const fontDir = path.join(root, 'node_modules', '@expo-google-fonts');
+const fontFiles = [
+  'inter/400Regular/Inter_400Regular.ttf',
+  'inter/600SemiBold/Inter_600SemiBold.ttf',
+  'inter/700Bold/Inter_700Bold.ttf',
+  'noto-sans-jp/400Regular/NotoSansJP_400Regular.ttf',
+  'noto-sans-jp/700Bold/NotoSansJP_700Bold.ttf',
+  'jetbrains-mono/400Regular/JetBrainsMono_400Regular.ttf',
+  'jetbrains-mono/800ExtraBold/JetBrainsMono_800ExtraBold.ttf',
+].map((f) => path.join(fontDir, f));
+for (const f of fontFiles) {
+  try {
+    await fs.access(f);
+  } catch {
+    throw new Error(`Thiếu font cho ảnh OG: ${f} — chạy "npm install" (devDependencies @expo-google-fonts/*).`);
+  }
+}
+const resvgOptions = (width) => ({
+  fitTo: width ? { mode: 'width', value: width } : { mode: 'original' },
+  font: { loadSystemFonts: false, fontFiles, defaultFontFamily: 'Inter', sansSerifFamily: 'Inter', monospaceFamily: 'JetBrains Mono' },
+});
+const toPng = (svg, width) => new Resvg(svg, resvgOptions(width)).render().asPng();
+
+// Tự kiểm tra: mỗi font phải vẽ ra điểm ảnh. resvg bỏ qua chữ không có font mà không báo lỗi → ảnh trống chữ.
+for (const [family, sample] of [['Inter', 'Ag'], ['Noto Sans JP', '日本'], ['JetBrains Mono', 'Ag']]) {
+  const probe = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="40"><text x="4" y="30" font-family="${family}" font-size="28">${sample}</text></svg>`;
+  const { pixels } = new Resvg(probe, resvgOptions()).render();
+  if (!pixels.some((v, i) => i % 4 === 3 && v > 0)) throw new Error(`Font "${family}" không vẽ được chữ — ảnh OG sẽ trống chữ.`);
+}
 
 // Ảnh OG theo ngôn ngữ nằm trong thư mục con (dist/og/<mã>/…), tiếng Anh ở dist/og/.
 const og = await ogSvgs();

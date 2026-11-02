@@ -26,6 +26,11 @@ export interface HeadData {
  * Ảnh được sinh theo từng ngôn ngữ có nội dung đầy đủ (/og/<mã>/…, tiếng Anh ở /og/…); ngôn ngữ khác dùng ảnh tiếng Anh.
  */
 export const OG_SIZE = { width: 1200, height: 630 } as const;
+/**
+ * Phiên bản ảnh OG, gắn vào og:image dạng ?v=… — Facebook, Zalo, Messenger lưu ảnh theo URL rất lâu, nên mỗi lần
+ * đổi thiết kế ảnh phải tăng số này để chúng tải ảnh mới. (2: ảnh có tiêu đề, font đi kèm dự án.)
+ */
+export const OG_VERSION = 2;
 export const ogDir = (lang: LangCode): string => (lang === DEFAULT_LANG ? '' : `${lang.toLowerCase()}/`);
 export const ogImagePath = (lang: LangCode, route: Route): string => {
   if (route.name === 'guide') {
@@ -84,7 +89,7 @@ export function buildHead({ lang, m, articles, pages, tools }: Omit<LanguageBund
     canonical: absoluteUrl(pathFor(lang, route)),
     ogType: route.name === 'guide' ? 'article' : 'website',
     ogLocale: findLanguage(lang)?.og ?? 'en_US',
-    image: absoluteUrl(ogImagePath(lang, route)),
+    image: `${absoluteUrl(ogImagePath(lang, route))}?v=${OG_VERSION}`,
     imageAlt: guideTitle ?? SITE.name,
     alternates: [
       ...langs.map((l) => ({ hreflang: l.code, href: absoluteUrl(pathFor(l.code, route)) })),

@@ -12,8 +12,8 @@ import { OG_SIZE, ogDir } from './head';
  * Sinh ảnh chia sẻ mạng xã hội (Open Graph, 1200×630) — chỉ dùng lúc build (entry-server), không vào bundle client.
  * Mỗi bài một ảnh có tiêu đề bài + ảnh minh họa, và một ảnh mặc định (trang chủ, công cụ, trang thông tin) — sinh riêng
  * cho từng ngôn ngữ có nội dung đầy đủ (FULL_CONTENT_LANGS); ngôn ngữ khác dùng ảnh tiếng Anh (xem ogImagePath).
- * SVG được chuyển sang PNG trong scripts/prerender.mjs vì Facebook/X không nhận SVG. Font lấy từ hệ thống lúc build
- * (Segoe UI cho chữ Latin/tiếng Việt, Yu Gothic cho tiếng Nhật).
+ * SVG được chuyển sang PNG trong scripts/prerender.mjs vì Facebook/X không nhận SVG. Font đi kèm dự án (prerender.mjs)
+ * — Inter cho chữ Latin/tiếng Việt, Noto Sans JP cho tiếng Nhật, JetBrains Mono cho nhãn kỹ thuật.
  */
 
 /** Bảng màu (hex) thay cho biến CSS var(--color-…): trình chuyển SVG→PNG không đọc được CSS của trang. */
@@ -37,8 +37,8 @@ function resolveColors(svg: string): string {
 }
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const FONT = "'Segoe UI', Arial, sans-serif";
-const fontFor = (lang: LangCode) => (lang === 'ja' ? "'Yu Gothic', 'Meiryo', 'Segoe UI', sans-serif" : FONT);
+const FONT = "Inter, sans-serif";
+const fontFor = (lang: LangCode) => (lang === 'ja' ? "'Noto Sans JP', Inter, sans-serif" : FONT);
 
 /** SVG độc lập của biểu tượng thương hiệu — dùng cho favicon.svg và icon PNG (xem scripts/prerender.mjs). */
 export const brandSvg = () => renderToStaticMarkup(<BrandMark gradientId="brand" />).replace(' aria-hidden="true"', '');
@@ -65,7 +65,7 @@ const NO_BREAK_BEFORE = /^[、。，．」』）】〕ー・！？：；…ぁ�
 /** Không ngắt dòng sau các ký tự này (dấu mở ngoặc). */
 const NO_BREAK_AFTER = /[「『（【〔(\[]$/u;
 
-/** Bề rộng ước tính (theo em) của chữ đậm Segoe UI / Yu Gothic — đủ chính xác để ngắt dòng, có chừa lề an toàn. */
+/** Bề rộng ước tính (theo em) của chữ đậm Inter / Noto Sans JP — đủ chính xác để ngắt dòng, có chừa lề an toàn. */
 function emWidth(text: string): number {
   let w = 0;
   for (const ch of text) {
@@ -73,9 +73,9 @@ function emWidth(text: string): number {
     else if (ch === ' ') w += 0.27;
     else if (/[iljI.,:;'!|’·]/.test(ch)) w += 0.3;
     else if (/[ftr()\-]/.test(ch)) w += 0.4;
-    else if (/[mwMW—]/.test(ch)) w += 0.92;
-    else if (/[A-ZÀ-ÝĐ0-9]/.test(ch)) w += 0.66;
-    else w += 0.57;
+    else if (/[mwMW—]/.test(ch)) w += 0.96;
+    else if (/[A-ZÀ-ÝĐ0-9]/.test(ch)) w += 0.72;
+    else w += 0.62;
   }
   return w;
 }
