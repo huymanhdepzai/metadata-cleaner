@@ -20,7 +20,7 @@ export function ThemeSwitcher() {
   // HTML prerender không biết lựa chọn đã lưu của người dùng → hiển thị biểu tượng thật sau khi mount để hydrate khớp.
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  const current = MODES.find((m) => m.mode === (mounted ? mode : 'system')) ?? MODES[2];
+  const current = MODES.find((m) => m.mode === (mounted ? mode : 'light')) ?? MODES[0];
 
   return (
     <div ref={ref} className="relative">

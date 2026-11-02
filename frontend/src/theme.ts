@@ -12,7 +12,8 @@ function readStored(): ThemeMode {
   } catch {
     /* chế độ riêng tư / bị chặn lưu trữ */
   }
-  return 'system';
+  // Khách mới (chưa chọn gì) luôn thấy giao diện Sáng, kể cả khi hệ điều hành đang ở chế độ Tối.
+  return 'light';
 }
 
 /** Gắn/bỏ class `dark` trên <html>; bảng màu tối được định nghĩa trong index.css. */
