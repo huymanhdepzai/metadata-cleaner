@@ -26,13 +26,16 @@ export const OG_SIZE = { width: 1200, height: 630 } as const;
 export const ogImagePath = (route: Route): string => (route.name === 'guide' ? `/og/${route.slug}.png` : '/og/default.png');
 
 /**
- * Google thường cắt tiêu đề quá ~60 ký tự → bỏ hậu tố tên trang khi tiêu đề bài đã dài,
+ * Google cắt tiêu đề theo bề rộng (~600px ≈ 60 ký tự Latin) → bỏ hậu tố tên trang khi tiêu đề bài đã dài,
  * hoặc khi tiêu đề đã chứa tên trang (vd. "About All Metadata Cleaner") để không lặp lại.
+ * Chữ toàn khổ (Nhật, Trung, Hàn, dấu câu toàn khổ) rộng gần gấp đôi chữ Latin nên tính là 2.
  */
 const TITLE_LIMIT = 62;
+const WIDE = /[ᄀ-ᅟ⺀-〾ぁ-㏿㐀-䶿一-鿿가-힣豈-﫿︰-﹏＀-｠￠-￦]/u;
+export const titleWidth = (s: string) => [...s].reduce((w, c) => w + (WIDE.test(c) ? 2 : 1), 0);
 const withSiteName = (title: string) => {
   const full = title.includes(SITE.name) ? `${title} – Free AI Tag Remover` : `${title} | ${SITE.name}`;
-  return full.length <= TITLE_LIMIT ? full : title;
+  return titleWidth(full) <= TITLE_LIMIT ? full : title;
 };
 
 const truncate = (s: string, max = 158) => (s.length <= max ? s : `${s.slice(0, max - 1).replace(/\s+\S*$/, '')}…`);

@@ -52,7 +52,8 @@ function guideSvg(slug: GuideSlug): string {
   ${art}
   <rect y="${height - bar}" width="${width}" height="${bar}" fill="#0f172a"/>
   ${mark(48, height - bar + 26, 48)}
-  <text x="112" y="${height - bar + 62}" font-family="${FONT}" font-size="34" font-weight="800" fill="#ffffff">${esc(SITE.name)}</text>
+  <text x="112" y="${height - bar + 50}" font-family="${FONT}" font-size="32" font-weight="800" fill="#ffffff">${esc(SITE.name)}</text>
+  <text x="112" y="${height - bar + 80}" font-family="${FONT}" font-size="20" fill="#94a3b8">${esc(SITE.domain)}</text>
   <text x="${width - 48}" y="${height - bar + 60}" text-anchor="end" font-family="${FONT}" font-size="26" font-weight="700" fill="#fb7185">${esc(GUIDE_TAGS[slug].toUpperCase())}</text>
 </svg>`);
 }
@@ -79,6 +80,7 @@ function defaultSvg(): string {
   <text x="96" y="378" font-family="${FONT}" font-size="32" fill="#c7d2fe">Remove AI metadata from images — free, in your browser</text>
   ${chipEls}
   <text x="96" y="560" font-family="${FONT}" font-size="26" fill="#a5b4fc">JPG · PNG · WebP · GIF · HEIC · AVIF</text>
+  <text x="${width - 96}" y="560" text-anchor="end" font-family="${FONT}" font-size="28" font-weight="700" fill="#ffffff">${esc(SITE.domain)}</text>
 </svg>`;
 }
 

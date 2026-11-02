@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { ARTICLE_META_KEYS, type Article, type ArticleMetas } from './content/articles/types';
 import type { Messages } from './i18n/locales/en';
+import { titleWidth } from './seo/head';
 import {
   activePages,
   ARTICLE_LANGS,
@@ -103,7 +104,8 @@ describe('Bài viết chuyên sâu', () => {
         expect(article.description.length, `description: ${minDesc}–${maxDesc} ký tự`).toBeLessThanOrEqual(maxDesc);
         const i = baseGuideIndex(slug);
         const shownTitle = article.seoTitle ?? article.title ?? localeModules[`./i18n/locales/${lang}.ts`]!.default.seo.guides.items[i].title;
-        expect(shownTitle.length, `<title> ≤ 60 ký tự (đặt seoTitle): ${shownTitle}`).toBeLessThanOrEqual(60);
+        // Bề rộng hiển thị: chữ toàn khổ (Nhật, Trung, Hàn) tính 2 — Google cắt theo pixel, không theo số ký tự.
+        expect(titleWidth(shownTitle), `<title> rộng ≤ 60 (đặt seoTitle): ${shownTitle}`).toBeLessThanOrEqual(60);
         for (const s of article.sections) {
           for (const r of s.related ?? []) expect(r, `${s.heading}: không tự liên kết`).not.toBe(slug);
           for (const row of s.table?.rows ?? []) expect(row, s.heading).toHaveLength(s.table!.head.length);

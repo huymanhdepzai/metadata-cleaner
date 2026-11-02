@@ -11,9 +11,11 @@ const ORGANIZATION = {
   '@type': 'Organization',
   '@id': absoluteUrl('/#organization'),
   name: SITE.name,
+  alternateName: SITE.domain,
   url: absoluteUrl('/'),
   logo: { '@type': 'ImageObject', url: absoluteUrl('/icon-512.png'), width: 512, height: 512 },
   ...(SITE.contactEmail ? { email: SITE.contactEmail } : {}),
+  ...(SITE.sameAs.length ? { sameAs: SITE.sameAs } : {}),
 } as const;
 
 /**
@@ -41,7 +43,6 @@ export function StructuredData() {
           '@context': 'https://schema.org',
           '@type': 'WebApplication',
           name: SITE.name,
-          alternateName: ['Free Metadata Cleaner', 'AI Metadata Cleaner', 'AI Tag Remover'],
           url: homeUrl,
           image: absoluteUrl(ogImagePath(route)),
           inLanguage: lang,
@@ -58,7 +59,9 @@ export function StructuredData() {
         {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
+          // Tên trang trong kết quả Google (site name): tên đầy đủ, tên miền là tên thay thế duy nhất.
           name: SITE.name,
+          alternateName: SITE.domain,
           url: homeUrl,
           inLanguage: lang,
           publisher: { '@id': ORGANIZATION['@id'] },

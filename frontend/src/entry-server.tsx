@@ -61,7 +61,10 @@ export async function llmsTxt(): Promise<string> {
     '',
     `> ${m.meta.description}`,
     '',
-    'All Metadata Cleaner is a free web tool that inspects and removes metadata — EXIF (including GPS), XMP, IPTC, C2PA Content Credentials and AI prompts or workflows — from JPG, PNG, WebP, GIF, HEIC and AVIF images.',
+    `${SITE.name} (${SITE.domain}) is a free web tool that inspects and removes metadata — EXIF (including GPS), XMP, IPTC, C2PA Content Credentials and AI prompts or workflows — from JPG, PNG, WebP, GIF, HEIC and AVIF images.`,
+    '',
+    // Phân biệt thực thể: nhiều sản phẩm có tên gần giống, trợ lý AI dễ gộp nhầm.
+    `Name: always "${SITE.name}" at ${SITE.domain}. It is not affiliated with similarly named products such as the Metadata Cleaner desktop app for Linux, MetaCleaner or aimetadatacleaner.com.`,
     '',
     '- Runs entirely in the browser: images are never uploaded to a server.',
     '- Lossless: metadata blocks are removed at the byte level; image data is copied unchanged (no re-encoding). Orientation and ICC color profile are kept.',

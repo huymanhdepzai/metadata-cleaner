@@ -15,7 +15,7 @@
 | **Trang thông tin (E-E-A-T)** | About, Privacy, Terms, Contact ở cả 32 ngôn ngữ, URL `/{lang?}/{about,privacy,terms,contact}/`, được index + hreflang. Nội dung tải riêng (chunk ~7 KB) chỉ khi mở trang. Schema `AboutPage`/`ContactPage`/`WebPage` + `BreadcrumbList`. Contact chỉ được tạo khi đã điền `SITE.contactEmail`. | `src/content/pages/<mã>.ts`, `StaticPage.tsx`, nhãn trong `pages` của tệp ngôn ngữ |
 | **sitemap.xml** | Sinh khi build, chỉ gồm trang được index, mỗi URL kèm `xhtml:link` hreflang. `lastmod` theo từng trang: bài → `GUIDE_DATES[slug].updated`, trang tổng hợp → bài mới sửa nhất trên trang, trang thông tin → `PAGE_UPDATED`, trang chủ → `SITE.contentUpdated`. Cùng ngày đó dùng cho “Cập nhật” trên trang bài và `datePublished`/`dateModified` của schema Article. **Sửa bài nào thì đổi `updated` của bài đó.** | `src/content/seo.ts`, `lastModified()` trong `src/router.ts` |
 | **URL chuẩn (301)** | Nginx chuyển hướng vĩnh viễn http → https, www → tên miền chính và thêm “/” cuối, tránh trùng lặp nội dung. 404 thật cho URL không tồn tại. | `src/seo/nginx.ts` → `deploy/nginx.conf` |
-| **Tiêu đề ≤ 60 ký tự** | `seoTitle` trong bài viết cho thẻ `<title>`/og:title khi H1 dài; test chặn tiêu đề hiển thị > 60 ký tự. | `src/content/articles/types.ts`, `src/seo/head.ts` |
+| **Tiêu đề ≤ 60 (theo bề rộng)** | `seoTitle` trong bài viết cho thẻ `<title>`/og:title khi H1 dài; Google cắt theo pixel nên chữ Nhật/Trung/Hàn tính 2 (`titleWidth`). Hậu tố tên trang chỉ thêm khi còn chỗ; test chặn tiêu đề hiển thị rộng > 60. | `src/content/articles/types.ts`, `src/seo/head.ts` |
 | **Font tự host** | Inter/Sora/Playfair từ @fontsource, cùng tên miền; thứ tự unicode-range tinh chỉnh (vietnamese sau latin-ext) và tên 32 ngôn ngữ dùng font hệ thống → trang vi tải ~73 KB font thay vì ~236 KB. Lighthouse mobile ~92 (trước 69–77). | `src/fonts.css`, `--font-system` trong `index.css` |
 | **llms.txt** | Tóm tắt Markdown cho trợ lý AI: công cụ làm gì, giới hạn, danh sách bài hướng dẫn kèm mô tả. Sinh khi build. | `llmsTxt()` trong `src/entry-server.tsx` |
 | **IndexNow (Bing, Yandex…)** | `npm run indexnow` gửi mọi URL trong sitemap; khóa là tệp `public/<khóa>.txt`. Không cần xác minh tên miền. | `scripts/indexnow.mjs` |
@@ -28,7 +28,7 @@
    Bing Webmaster Tools (có thể nhập từ Search Console).
 3. Kiểm tra vài trang bằng Rich Results Test (Article, BreadcrumbList, FAQPage).
 
-**Khi đổi tên miền:** đổi `SITE.origin` (`src/content/seo.ts`), URL trong `index.html` (schema WebApplication) và
+**Khi đổi tên miền:** đổi `SITE.origin` và `SITE.domain` (`src/content/seo.ts`) và
 `public/robots.txt`; build lại (sinh lại `deploy/nginx.conf`), cập nhật Nginx + chứng chỉ SSL, chạy lại `npm run indexnow`.
 
 ## 3. Bản đồ từ khóa → trang
@@ -55,6 +55,7 @@
 | `view-remove-metadata-iphone-android` | view photo metadata on iPhone / Android, xem metadata ảnh trên điện thoại |
 | `remove-metadata-windows-mac` (en, vi) | remove metadata from photos Windows 11 / Mac, remove EXIF Windows, Preview remove location, xóa metadata ảnh trên máy tính |
 | `chatgpt-image-metadata` (en, vi) | does ChatGPT add metadata to images, ChatGPT image C2PA, remove metadata from ChatGPT image, ảnh ChatGPT có metadata không |
+| `best-metadata-remover-tools` | best metadata remover 2026, metadata remover tools compared, ExifTool alternative, top công cụ xóa metadata ảnh (có công khai All Metadata Cleaner là công cụ của trang; chỉ nêu cách hoạt động đã công bố, không đăng số đo chưa kiểm chứng) |
 | `does-screenshot-remove-metadata` (en, vi) | does a screenshot remove metadata / EXIF / GPS, chụp màn hình có xóa metadata không |
 
 **Mỗi truy vấn chỉ giao cho một trang** (tránh các trang tự cạnh tranh nhau); trang khác nhắc tới chủ đề đó thì dẫn link sang trang được giao.
@@ -69,6 +70,10 @@ Không nhắm các từ khóa kiểu “undetectable”, “bypass AI detection�
 1. **Điền `SITE.contactEmail`** (`src/content/seo.ts`) để bật trang Contact và email trong schema Organization.
 1. **Tên miền riêng**: allmetadatacleaner.com, thương hiệu All Metadata Cleaner. Từ khóa nhấn mạnh trong tiêu đề:
    Free Metadata Cleaner · AI Metadata Cleaner · AI Tag Remover. 301 từ www/http về tên miền chính đã có trong `deploy/nginx.conf`.
+   **Nhận diện thương hiệu (2026-11-02):** tên luôn viết đủ “All Metadata Cleaner”, tên thay thế duy nhất là tên miền
+   (`SITE.domain` → `alternateName` của WebSite/Organization, ảnh OG, llms.txt). Không khai “AI Metadata Cleaner” /
+   “Metadata Cleaner” làm tên khác — trùng aimetadatacleaner.com và app GNOME Metadata Cleaner. llms.txt có dòng nói rõ
+   không liên quan tới các sản phẩm đó. Khi có GitHub/Product Hunt/mạng xã hội chính thức → thêm URL vào `SITE.sameAs`.
 2. **Bài so sánh có kiểm chứng**: chạy thật nhiều công cụ trên cùng bộ ảnh, đo hash dữ liệu ảnh trước/sau, ICC,
    hướng xoay, C2PA còn sót — loại bài dễ được dẫn link nhất. Chỉ đăng số liệu đo được.
 3. **Backlink**: mở mã engine lên GitHub/npm; Reddit (r/comfyui, r/StableDiffusion, r/privacy); Product Hunt,

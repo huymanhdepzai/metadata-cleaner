@@ -26,8 +26,8 @@ export interface Article {
   title?: string;
   summary?: string[];
   /**
-   * Tiêu đề ngắn cho thẻ <title> / og:title (≤ 60 ký tự, từ khóa chính đứng đầu) khi tiêu đề H1 quá dài —
-   * Google thường cắt tiêu đề sau khoảng 60 ký tự. Không đặt thì dùng tiêu đề H1.
+   * Tiêu đề ngắn cho thẻ <title> / og:title (bề rộng ≤ 60, chữ Nhật/Trung/Hàn tính 2 — xem titleWidth trong
+   * seo/head.ts; từ khóa chính đứng đầu) khi tiêu đề H1 quá dài. Không đặt thì dùng tiêu đề H1.
    */
   seoTitle?: string;
   /** Meta description riêng cho trang (≈150 ký tự). */

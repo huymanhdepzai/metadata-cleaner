@@ -24,6 +24,11 @@ const SCENES: Record<
     ext?: string;
   }
 > = {
+  'best-metadata-remover-tools': {
+    hue: 'violet',
+    badge: 'search',
+    chips: [{ text: 'EXIF / GPS' }, { text: 'C2PA manifest' }, { text: 'ICC / Orientation', kept: true }],
+  },
   'remove-metadata-windows-mac': {
     hue: 'sky',
     badge: 'dots',

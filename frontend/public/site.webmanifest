@@ -1,6 +1,6 @@
 {
   "name": "All Metadata Cleaner",
-  "short_name": "Meta Cleaner",
+  "short_name": "All Metadata",
   "description": "Free AI metadata cleaner and AI tag remover. Inspect and remove AI metadata (C2PA, EXIF, XMP, IPTC, prompts) from images in your browser.",
   "start_url": "/",
   "display": "standalone",

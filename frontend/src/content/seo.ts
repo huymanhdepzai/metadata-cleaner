@@ -8,8 +8,19 @@ import type { Messages } from '../i18n/locales/en';
  * Thay `origin` bằng tên miền thật trước khi triển khai (đồng bộ với public/robots.txt).
  */
 export const SITE = {
+  /**
+   * Tên thương hiệu — luôn viết đủ, không viết tắt. Đừng dùng "AI Metadata Cleaner" / "Metadata Cleaner" làm tên
+   * khác: đó là tên của sản phẩm khác (aimetadatacleaner.com, app GNOME), dễ khiến Google và trợ lý AI nhầm lẫn.
+   */
   name: 'All Metadata Cleaner',
   origin: 'https://allmetadatacleaner.com',
+  /** Tên miền hiển thị cạnh tên thương hiệu (schema alternateName, ảnh OG, llms.txt). */
+  domain: 'allmetadatacleaner.com',
+  /**
+   * Hồ sơ chính thức của thương hiệu (GitHub, Product Hunt, X, LinkedIn…) → `sameAs` của schema Organization,
+   * giúp Google và trợ lý AI nhận ra đây là cùng một thực thể. Chỉ thêm trang đã tồn tại và do bạn quản lý.
+   */
+  sameAs: [] as string[],
   /** Ngày cập nhật nội dung trang chủ (lastmod trong sitemap). Ngày của từng bài nằm trong GUIDE_DATES. */
   contentUpdated: '2026-10-28',
   /**
@@ -148,6 +159,8 @@ export const BASE_GUIDE_SLUGS = [
  * src/content/articles/<mã>.ts. Đặt bài mới nhất lên đầu.
  */
 export const EXTRA_GUIDE_SLUGS = [
+  // Truy vấn so sánh "best metadata remover", "top công cụ xóa metadata" (2026-11-02).
+  'best-metadata-remover-tools',
   // Khoảng trống từ khóa (2026-10-29): xóa metadata trên máy tính, metadata ảnh ChatGPT, chụp màn hình có xóa metadata không.
   'remove-metadata-windows-mac',
   'chatgpt-image-metadata',
@@ -187,6 +200,7 @@ const FULL: readonly LangCode[] = ['en', 'vi', 'ja', 'es', 'de', 'fr', 'pt-BR'];
 /** Ngôn ngữ có nội dung chuyên sâu: bài nền tảng đầy đủ và mục `guide` của trang công cụ (src/content/tools). */
 export const FULL_CONTENT_LANGS = FULL;
 export const ARTICLE_LANGS: Record<GuideSlug, readonly LangCode[]> = {
+  'best-metadata-remover-tools': FULL,
   // Bài mới: en + vi trước, các ngôn ngữ còn lại thêm sau.
   'remove-metadata-windows-mac': ['en', 'vi'],
   'chatgpt-image-metadata': ['en', 'vi'],
@@ -215,6 +229,7 @@ export const ARTICLE_LANGS: Record<GuideSlug, readonly LangCode[]> = {
 
 /** Thẻ chủ đề (tag đỏ) trên thẻ bài viết — dùng tên riêng / thuật ngữ kỹ thuật nên giống nhau ở mọi ngôn ngữ. */
 export const GUIDE_TAGS: Record<GuideSlug, string> = {
+  'best-metadata-remover-tools': 'Top 8 · 2026',
   'remove-metadata-windows-mac': 'Windows · macOS',
   'chatgpt-image-metadata': 'ChatGPT · C2PA',
   'does-screenshot-remove-metadata': 'Screenshot · EXIF',
@@ -247,6 +262,7 @@ export const GUIDE_TAGS: Record<GuideSlug, string> = {
  */
 const INITIAL = { published: '2026-10-16', updated: '2026-10-16' };
 export const GUIDE_DATES: Record<GuideSlug, { published: string; updated: string }> = {
+  'best-metadata-remover-tools': { published: '2026-11-02', updated: '2026-11-02' },
   'remove-metadata-windows-mac': { published: '2026-10-29', updated: '2026-10-29' },
   'chatgpt-image-metadata': { published: '2026-10-29', updated: '2026-10-29' },
   'does-screenshot-remove-metadata': { published: '2026-10-29', updated: '2026-10-29' },
@@ -310,6 +326,7 @@ export const GUIDE_GROUPS = [
       'remove-metadata-from-heic',
       'remove-metadata-from-webp',
       'remove-metadata-windows-mac',
+      'best-metadata-remover-tools',
       'view-remove-metadata-iphone-android',
       'batch-remove-metadata',
     ],
