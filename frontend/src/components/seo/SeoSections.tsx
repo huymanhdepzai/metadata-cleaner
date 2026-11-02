@@ -13,6 +13,7 @@ import {
 import { useGuideContent } from '../../content/guideContent';
 import { fmt, useI18n, useT } from '../../i18n';
 import { GUIDES_INDEX, pathFor, useHref } from '../../router';
+import { BrandMark } from '../BrandMark';
 import { Link } from '../Link';
 import { Icon } from '../ui';
 import { GuideCarousel } from './GuideCarousel';
@@ -97,25 +98,32 @@ export function Features() {
   );
 }
 
-function SupportMark({ value, labels }: { value: Support; labels: Record<Support, string> }) {
-  const style = {
-    yes: 'bg-emerald-100 text-emerald-700',
+/** Ô đánh giá: vòng tròn biểu tượng + nhãn. `strong` = cột của chúng ta (vòng tròn đặc, nổi bật hơn). */
+function SupportMark({ value, labels, strong = false }: { value: Support; labels: Record<Support, string>; strong?: boolean }) {
+  const ring = {
+    yes: strong ? 'bg-emerald-500 text-white shadow-sm shadow-emerald-500/40' : 'bg-emerald-100 text-emerald-700',
     partial: 'bg-amber-100 text-amber-700',
     no: 'bg-rose-100 text-rose-700',
   }[value];
+  const text = { yes: 'text-emerald-700', partial: 'text-amber-700', no: 'text-rose-700' }[value];
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${style}`}>
-      {value === 'yes' ? (
-        <Icon name="tick" className="h-3.5 w-3.5" />
-      ) : value === 'no' ? (
-        <span aria-hidden="true" className="text-sm leading-none">✕</span>
-      ) : (
-        <span aria-hidden="true" className="text-sm leading-none">~</span>
-      )}
+    <span className={`inline-flex items-center gap-2 text-sm ${strong ? 'font-bold' : 'font-medium'} ${text}`}>
+      <span aria-hidden="true" className={`grid shrink-0 place-items-center rounded-full ${strong ? 'h-7 w-7' : 'h-6 w-6'} ${ring}`}>
+        {value === 'yes' ? (
+          <Icon name="tick" className={strong ? 'h-4 w-4' : 'h-3.5 w-3.5'} />
+        ) : value === 'no' ? (
+          <Icon name="x" className="h-3.5 w-3.5" />
+        ) : (
+          <span className="text-sm leading-none font-bold">~</span>
+        )}
+      </span>
       {labels[value]}
     </span>
   );
 }
+
+/** Biểu tượng cho từng tiêu chí của bảng "Vì sao chọn" (cùng thứ tự với WHY_ROWS). */
+const WHY_ICONS = ['lock', 'photo', 'sparkles', 'layers', 'chart', 'download', 'bolt'] as const;
 
 /** "Vì sao chọn …?": bảng so sánh với công cụ online thông thường và cách chụp màn hình / lưu lại. */
 export function WhyChoose() {
@@ -128,43 +136,70 @@ export function WhyChoose() {
           Một bảng duy nhất (không lặp nội dung trong HTML). Điện thoại: mỗi hàng hiển thị thành một thẻ, ba cách làm
           xếp dọc; tên cột lấy từ data-label qua CSS. Màn hình rộng: bảng bình thường.
         */}
-        <div data-reveal className="sm:overflow-x-auto sm:rounded-2xl sm:border sm:border-slate-200 sm:bg-surface sm:shadow-sm">
-          <table className="w-full text-start text-sm sm:min-w-[640px]">
-            <thead className="bg-slate-50 text-slate-700 max-sm:sr-only">
+        <div
+          data-reveal
+          className="sm:overflow-x-auto sm:rounded-3xl sm:border sm:border-slate-200 sm:bg-surface sm:p-2 sm:shadow-xl sm:shadow-indigo-900/5"
+        >
+          <table className="w-full border-separate border-spacing-0 text-start text-sm sm:min-w-[680px]">
+            <thead className="max-sm:sr-only">
               <tr>
-                <th scope="col" className="px-5 py-4 text-start font-semibold">
+                <th scope="col" className="px-5 pt-5 pb-4 text-start align-bottom text-xs font-semibold tracking-wider text-slate-500 uppercase">
                   {why.columns.feature}
                 </th>
-                <th scope="col" className="bg-indigo-50 px-5 py-4 text-center font-bold text-indigo-700">
-                  {SITE.name}
+                {/* Cột của chúng ta: đầu cột gradient + logo + điểm 7/7, cả cột có viền tím. */}
+                <th scope="col" className="w-[21%] rounded-t-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-4 pt-5 pb-4 text-center text-white">
+                  <span className="flex flex-col items-center gap-2">
+                    <BrandMark className="h-9 w-9 rounded-xl ring-2 ring-white/30" gradientId="why-brand" />
+                    <span className="font-brand text-sm leading-tight font-extrabold">{SITE.name}</span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2.5 py-0.5 text-xs font-bold ring-1 ring-white/25">
+                      <Icon name="tick" className="h-3 w-3" />
+                      {WHY_ROWS.filter((r) => r[0] === 'yes').length}/{WHY_ROWS.length}
+                    </span>
+                  </span>
                 </th>
-                <th scope="col" className="px-5 py-4 text-center font-semibold">
-                  {why.columns.online}
-                </th>
-                <th scope="col" className="px-5 py-4 text-center font-semibold">
-                  {why.columns.screenshot}
-                </th>
+                {[why.columns.online, why.columns.screenshot].map((label) => (
+                  <th key={label} scope="col" className="w-[19%] px-4 pt-5 pb-4 text-center align-bottom text-sm font-semibold text-slate-600">
+                    {label}
+                  </th>
+                ))}
               </tr>
             </thead>
-            <tbody className="max-sm:block max-sm:space-y-3 sm:divide-y sm:divide-slate-200">
-              {WHY_ROWS.map((cells, i) => (
-                <tr key={i} className="max-sm:block max-sm:rounded-2xl max-sm:border max-sm:border-slate-200 max-sm:bg-surface max-sm:p-4 max-sm:shadow-sm">
-                  <th scope="row" className="text-start font-medium text-slate-800 max-sm:mb-3 max-sm:block max-sm:font-semibold max-sm:text-slate-900 sm:px-5 sm:py-3.5">
-                    {why.rows[i]}
-                  </th>
-                  {cells.map((value, c) => (
-                    <td
-                      key={c}
-                      data-label={[SITE.name, why.columns.online, why.columns.screenshot][c]}
-                      className={`max-sm:mt-2 max-sm:flex max-sm:items-center max-sm:justify-between max-sm:gap-3 max-sm:rounded-lg max-sm:px-3 max-sm:py-2 max-sm:before:min-w-0 max-sm:before:content-[attr(data-label)] sm:px-5 sm:py-3.5 sm:text-center ${
-                        c === 0 ? 'bg-indigo-50/60 max-sm:bg-indigo-50 max-sm:font-semibold max-sm:text-indigo-700' : 'max-sm:text-slate-600'
-                      }`}
+            <tbody className="max-sm:block max-sm:space-y-3">
+              {WHY_ROWS.map((cells, i) => {
+                const last = i === WHY_ROWS.length - 1;
+                const line = last ? '' : 'sm:border-b sm:border-slate-100';
+                return (
+                  <tr
+                    key={i}
+                    className="group/row max-sm:block max-sm:rounded-2xl max-sm:border max-sm:border-slate-200 max-sm:bg-surface max-sm:p-4 max-sm:shadow-sm"
+                  >
+                    <th
+                      scope="row"
+                      className={`text-start font-medium text-slate-800 transition-colors max-sm:mb-3 max-sm:block max-sm:font-semibold max-sm:text-slate-900 sm:rounded-s-xl sm:px-5 sm:py-4 sm:group-hover/row:bg-slate-50 ${line}`}
                     >
-                      <SupportMark value={value} labels={why.legend} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
+                      <span className="flex items-center gap-3">
+                        <span aria-hidden="true" className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100 ring-inset">
+                          <Icon name={WHY_ICONS[i]} className="h-[18px] w-[18px]" />
+                        </span>
+                        {why.rows[i]}
+                      </span>
+                    </th>
+                    {cells.map((value, c) => (
+                      <td
+                        key={c}
+                        data-label={[SITE.name, why.columns.online, why.columns.screenshot][c]}
+                        className={`max-sm:mt-2 max-sm:flex max-sm:items-center max-sm:justify-between max-sm:gap-3 max-sm:rounded-lg max-sm:px-3 max-sm:py-2 max-sm:before:min-w-0 max-sm:before:content-[attr(data-label)] sm:px-4 sm:py-4 sm:text-center ${
+                          c === 0
+                            ? `bg-indigo-50/70 max-sm:bg-indigo-50 max-sm:font-semibold max-sm:text-indigo-700 sm:border-x-2 sm:border-indigo-200 ${last ? 'sm:rounded-b-2xl sm:border-b-2' : 'sm:border-b sm:border-b-indigo-100'}`
+                            : `max-sm:text-slate-600 sm:group-hover/row:bg-slate-50 ${c === 2 ? 'sm:rounded-e-xl' : ''} ${line}`
+                        }`}
+                      >
+                        <SupportMark value={value} labels={why.legend} strong={c === 0} />
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

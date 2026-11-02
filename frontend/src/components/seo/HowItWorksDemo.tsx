@@ -2,7 +2,10 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { fmt, useT } from '../../i18n';
 import { HOME_SECTIONS, SITE } from '../../content/seo';
 import { BrandMark } from '../BrandMark';
-import { Badge, Icon, Spinner } from '../ui';
+import { Badge, Icon, Spinner, type IconName } from '../ui';
+
+/** Biểu tượng của bốn bước: thêm ảnh → xem báo cáo → xóa metadata → tải về. */
+const STEP_ICONS: IconName[] = ['upload', 'search', 'sparkles', 'download'];
 
 /**
  * "Video" hướng dẫn ở mục Cách hoạt động: dựng lại giao diện công cụ và diễn hoạt theo kịch bản (con trỏ di chuyển,
@@ -471,39 +474,69 @@ export function HowItWorksDemo() {
       </div>
 
       {/* ---------- Bốn chương = bốn bước ---------- */}
-      <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {how.steps.map((step, i) => (
-          <li key={i}>
-            <button
-              type="button"
-              onClick={() => seek(i)}
-              aria-current={chapter === i ? 'step' : undefined}
-              className={`flex h-full w-full flex-col items-start rounded-2xl border p-5 text-start transition ${
-                chapter === i ? 'border-indigo-300 bg-indigo-50/60 shadow-sm' : 'border-slate-200 bg-slate-50 hover:border-slate-300'
-              }`}
-            >
-              <span className="block h-1 w-full overflow-hidden rounded-full bg-slate-200">
-                {/* Tiến độ ghi thẳng vào style.transform (không dùng lớp scale-* vì Tailwind v4 đặt thuộc tính `scale` riêng). */}
-                <span
-                  ref={(el) => {
-                    fillRefs.current[i] = el;
-                  }}
-                  style={{ transform: 'scaleX(0)' }}
-                  className="block h-full origin-left rounded-full bg-indigo-600 rtl:origin-right"
-                />
-              </span>
-              <span
-                className={`mt-4 grid h-9 w-9 place-items-center rounded-full text-sm font-bold ${
-                  chapter === i ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-700'
+      <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        {how.steps.map((step, i) => {
+          // Trước khi video chạy (HTML prerender) không bước nào "đang chạy" → mọi thẻ cùng kiểu, hydrate khớp.
+          const active = started && chapter === i;
+          const done = started && chapter > i;
+          return (
+            <li key={i} className="relative">
+              <button
+                type="button"
+                onClick={() => seek(i)}
+                aria-current={active ? 'step' : undefined}
+                className={`group relative flex h-full w-full flex-col items-start overflow-hidden rounded-2xl border bg-surface p-6 pb-7 text-start transition duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 ${
+                  active
+                    ? 'border-indigo-300 shadow-lg ring-4 shadow-indigo-500/10 ring-indigo-500/10 lg:-translate-y-1'
+                    : 'border-slate-200 shadow-sm hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md'
                 }`}
               >
-                {i + 1}
-              </span>
-              <h3 className="mt-3 font-semibold text-slate-900">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.text}</p>
-            </button>
-          </li>
-        ))}
+                <span className="flex w-full items-start justify-between gap-3">
+                  <span
+                    className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-colors duration-300 ${
+                      active
+                        ? 'bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-md shadow-indigo-500/30'
+                        : done
+                          ? 'bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200 ring-inset'
+                          : 'bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100 ring-inset'
+                    }`}
+                  >
+                    <Icon name={done ? 'tick' : STEP_ICONS[i]} className="h-5 w-5" />
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`font-brand text-4xl leading-none font-extrabold tabular-nums transition-colors duration-300 ${
+                      active ? 'text-indigo-200' : 'text-slate-200 group-hover:text-slate-300'
+                    }`}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </span>
+                <h3 className={`mt-5 text-base leading-snug font-semibold ${active ? 'text-indigo-700' : 'text-slate-900'}`}>{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.text}</p>
+                {/* Thanh tiến độ của chương, sát đáy thẻ. Ghi thẳng vào style.transform (không dùng lớp scale-* vì Tailwind v4 đặt thuộc tính `scale` riêng). */}
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1 bg-slate-100">
+                  <span
+                    ref={(el) => {
+                      fillRefs.current[i] = el;
+                    }}
+                    style={{ transform: 'scaleX(0)' }}
+                    className="block h-full origin-left bg-gradient-to-r from-indigo-500 to-violet-500 rtl:origin-right"
+                  />
+                </span>
+              </button>
+              {/* Mũi tên nối sang bước sau (chỉ khi 4 thẻ nằm trên một hàng). */}
+              {i < how.steps.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute top-1/2 -end-[1.15rem] z-10 hidden h-7 w-7 -translate-y-1/2 place-items-center rounded-full border border-slate-200 bg-surface text-slate-400 shadow-sm lg:grid"
+                >
+                  <Icon name="chevron" className="h-3.5 w-3.5 -rotate-90 rtl:rotate-90" />
+                </span>
+              )}
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
