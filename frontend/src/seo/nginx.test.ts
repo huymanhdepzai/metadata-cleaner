@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { SITE } from '../content/seo';
 import { COUNTRY_LANG } from '../i18n/detect';
 import { LANGUAGES, matchLanguage } from '../i18n/languages';
 import { acceptLanguageRules, nginxConf } from './nginx';
@@ -31,5 +32,19 @@ describe('cấu hình Nginx', () => {
     expect(target('/vi/guides/page/4/')).toBe('/vi/guides/');
     expect(target('/pt-br/guides/page/3')).toBe('/pt-br/guides/');
     for (const p of ['/guides/', '/vi/guides/remove-exif/', '/guides/page/']) expect(re.test(p), p).toBe(false);
+  });
+
+  it('http:// và www chuyển thẳng tới URL cuối cùng trong một lần (thêm "/" cuối ngay khi chuyển sang https)', () => {
+    const conf = nginxConf();
+    const origin = SITE.origin;
+    const blocks = conf.split(/^server \{$/m).slice(1);
+    const redirectBlocks = blocks.filter((b) => /return 301 https:\/\//.test(b));
+    expect(redirectBlocks).toHaveLength(2);
+    for (const b of redirectBlocks) {
+      expect(b).toContain(`rewrite ^(.*/[^/.]+)$ ${origin}$1/ permanent;`);
+      expect(b).toContain(`${origin}$1/guides/ permanent;`);
+      // rewrite phải đứng trước return, nếu không Nginx trả về 301 thiếu "/" trước.
+      expect(b.indexOf('rewrite ')).toBeLessThan(b.indexOf('return 301'));
+    }
   });
 });

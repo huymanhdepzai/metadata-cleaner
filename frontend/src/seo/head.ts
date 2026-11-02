@@ -48,7 +48,9 @@ const TITLE_LIMIT = 62;
 const WIDE = /[ᄀ-ᅟ⺀-〾ぁ-㏿㐀-䶿一-鿿가-힣豈-﫿︰-﹏＀-｠￠-￦]/u;
 export const titleWidth = (s: string) => [...s].reduce((w, c) => w + (WIDE.test(c) ? 2 : 1), 0);
 const withSiteName = (title: string) => {
-  const full = title.includes(SITE.name) ? `${title} – Free AI Tag Remover` : `${title} | ${SITE.name}`;
+  // Tiêu đề đã có tên trang (vd. trang About) → giữ nguyên. Không gắn khẩu hiệu tiếng Anh vào tiêu đề đã dịch.
+  if (title.includes(SITE.name)) return title;
+  const full = `${title} | ${SITE.name}`;
   return titleWidth(full) <= TITLE_LIMIT ? full : title;
 };
 

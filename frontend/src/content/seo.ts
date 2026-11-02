@@ -201,10 +201,10 @@ const FULL: readonly LangCode[] = ['en', 'vi', 'ja', 'es', 'de', 'fr', 'pt-BR'];
 export const FULL_CONTENT_LANGS = FULL;
 export const ARTICLE_LANGS: Record<GuideSlug, readonly LangCode[]> = {
   'best-metadata-remover-tools': FULL,
-  // Bài mới: en + vi trước, các ngôn ngữ còn lại thêm sau.
-  'remove-metadata-windows-mac': ['en', 'vi'],
-  'chatgpt-image-metadata': ['en', 'vi'],
-  'does-screenshot-remove-metadata': ['en', 'vi'],
+  // Bài mới: viết en + vi trước, dịch sang các ngôn ngữ còn lại sau (ja, es, de, fr, pt-BR: 2026-11-02).
+  'remove-metadata-windows-mac': FULL,
+  'chatgpt-image-metadata': FULL,
+  'does-screenshot-remove-metadata': FULL,
   'made-with-ai-label': FULL,
   'remove-stable-diffusion-comfyui-metadata': FULL,
   'hide-midjourney-dalle-prompts': FULL,
@@ -263,9 +263,9 @@ export const GUIDE_TAGS: Record<GuideSlug, string> = {
 const INITIAL = { published: '2026-10-16', updated: '2026-10-16' };
 export const GUIDE_DATES: Record<GuideSlug, { published: string; updated: string }> = {
   'best-metadata-remover-tools': { published: '2026-11-02', updated: '2026-11-02' },
-  'remove-metadata-windows-mac': { published: '2026-10-29', updated: '2026-10-29' },
-  'chatgpt-image-metadata': { published: '2026-10-29', updated: '2026-10-29' },
-  'does-screenshot-remove-metadata': { published: '2026-10-29', updated: '2026-10-29' },
+  'remove-metadata-windows-mac': { published: '2026-10-29', updated: '2026-11-02' },
+  'chatgpt-image-metadata': { published: '2026-10-29', updated: '2026-11-02' },
+  'does-screenshot-remove-metadata': { published: '2026-10-29', updated: '2026-11-02' },
   'remove-c2pa': { published: '2026-10-20', updated: '2026-10-20' },
   'remove-exif': { published: '2026-10-20', updated: '2026-10-20' },
   'remove-metadata-from-jpg': INITIAL,

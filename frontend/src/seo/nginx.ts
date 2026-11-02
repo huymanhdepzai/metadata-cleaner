@@ -30,6 +30,18 @@ export function acceptLanguageRules(): [pattern: string, lang: string][] {
 
 const pad = (s: string, n = 44) => (s.length >= n ? `${s} ` : s.padEnd(n));
 
+/**
+ * Quy tắc 301 chuẩn hóa đường dẫn, dùng chung cho mọi khối server. `origin` rỗng = chuyển trong cùng tên miền (trang
+ * chính); có `origin` (khối http:// và www) = chuyển thẳng tới https://<tên miền chính> kèm đường dẫn đã sửa, để mỗi
+ * URL chỉ qua MỘT lần chuyển hướng (không phải http → https rồi mới thêm "/" cuối).
+ */
+const redirectRules = (origin = '') => `    # Trang phân trang cũ /guides/page/N/ (đã gộp thành một trang /guides/ chia nhóm) → 301 về trang tổng hợp cùng ngôn ngữ.
+    rewrite "^(/[a-z]{2}(?:-[a-z]{2})?)?/guides/page/[0-9]+/?$" ${origin}$1/guides/ permanent;
+
+    # Đường dẫn trang thiếu "/" cuối → 301 (vd. /guides/what-is-exif-data → /guides/what-is-exif-data/).
+    # Tệp có phần mở rộng (.png, .xml, .txt…) không bị đổi.
+    rewrite ^(.*/[^/.]+)$ ${origin}$1/ permanent;`;
+
 export function nginxConf(root = `/var/www/${new URL(SITE.origin).host}`): string {
   const host = new URL(SITE.origin).host;
   const cookieMap = LANGUAGES.map((l) => `    ${pad(`"~*^${l.code}$"`)}${l.code.toLowerCase()};`).join('\n');
@@ -117,6 +129,7 @@ server {
     listen [::]:80;
     server_name ${host} www.${host};
 
+${redirectRules(`https://${host}`)}
     return 301 https://${host}$request_uri;
 }
 
@@ -130,6 +143,7 @@ server {
     ssl_certificate /etc/letsencrypt/live/${host}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/${host}/privkey.pem;
 
+${redirectRules(`https://${host}`)}
     return 301 https://${host}$request_uri;
 }
 
@@ -168,12 +182,7 @@ server {
     # URL không tồn tại → dist/404.html với mã 404 thật (không phải "soft 404").
     error_page 404 /404.html;
 
-    # Trang phân trang cũ /guides/page/N/ (đã gộp thành một trang /guides/ chia nhóm) → 301 về trang tổng hợp cùng ngôn ngữ.
-    rewrite "^(/[a-z]{2}(?:-[a-z]{2})?)?/guides/page/[0-9]+/?$" $1/guides/ permanent;
-
-    # Đường dẫn trang thiếu "/" cuối → 301 (vd. /guides/what-is-exif-data → /guides/what-is-exif-data/).
-    # Tệp có phần mở rộng (.png, .xml, .txt…) không bị đổi.
-    rewrite ^(.*/[^/.]+)$ $1/ permanent;
+${redirectRules()}
 
     location = / {
         if ($root_lang) {
