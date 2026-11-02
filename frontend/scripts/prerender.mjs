@@ -51,9 +51,13 @@ const toPng = (svg, width) =>
     .render()
     .asPng();
 
-await fs.mkdir(path.join(dist, 'og'), { recursive: true });
-const og = ogSvgs();
-for (const { file, svg } of og) await fs.writeFile(path.join(dist, 'og', file), toPng(svg));
+// Ảnh OG theo ngôn ngữ nằm trong thư mục con (dist/og/<mã>/…), tiếng Anh ở dist/og/.
+const og = await ogSvgs();
+for (const { file, svg } of og) {
+  const out = path.join(dist, 'og', file);
+  await fs.mkdir(path.dirname(out), { recursive: true });
+  await fs.writeFile(out, toPng(svg));
+}
 
 // Biểu tượng sinh từ src/components/BrandMark.tsx (public/favicon.svg là bản sao cho dev server, có test kiểm tra khớp).
 const favicon = brandSvg();

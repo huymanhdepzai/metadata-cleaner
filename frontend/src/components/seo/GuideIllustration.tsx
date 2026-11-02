@@ -6,7 +6,7 @@ import type { GuideSlug } from '../../content/seo';
  * Vẽ bằng biến màu của bảng màu (var(--color-…)) nên tự đổi theo chế độ Sáng/Tối, không cần tải ảnh ngoài.
  * Chữ trong hình là thuật ngữ kỹ thuật, giống nhau ở mọi ngôn ngữ.
  */
-type Hue = 'indigo' | 'rose' | 'amber' | 'emerald' | 'sky' | 'violet';
+export type Hue = 'indigo' | 'rose' | 'amber' | 'emerald' | 'sky' | 'violet';
 
 interface ChipSpec {
   text: string;
@@ -271,6 +271,9 @@ function Badge({ kind, ext = '' }: { kind: (typeof SCENES)[GuideSlug]['badge']; 
       return null;
   }
 }
+
+/** Màu chủ đạo của ảnh minh họa bài — ảnh chia sẻ (seo/og.tsx) dùng cùng màu cho thẻ chủ đề và quầng sáng. */
+export const guideHue = (slug: GuideSlug): Hue => SCENES[slug].hue;
 
 export function GuideIllustration({ slug, className = '' }: { slug: GuideSlug; className?: string }) {
   const scene = SCENES[slug];

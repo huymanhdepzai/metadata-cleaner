@@ -1,7 +1,7 @@
 import { guideContent } from '../content/guideContent';
-import { SITE } from '../content/seo';
+import { ARTICLE_LANGS, FULL_CONTENT_LANGS, SITE } from '../content/seo';
 import { isRtl, type LanguageBundle } from '../i18n';
-import { DEFAULT_LANG, findLanguage } from '../i18n/languages';
+import { DEFAULT_LANG, findLanguage, type LangCode } from '../i18n/languages';
 import { absoluteUrl, isIndexable, languagesFor, pathFor, type Route } from '../router';
 
 /** Toàn bộ thẻ <head> phụ thuộc trang + ngôn ngữ. Dùng chung cho prerender (chuỗi HTML) và client (cập nhật DOM). */
@@ -21,9 +21,18 @@ export interface HeadData {
   imageAlt: string;
 }
 
-/** Ảnh Open Graph: mỗi bài một ảnh, các trang khác dùng ảnh mặc định (sinh lúc build, xem seo/og.tsx). */
+/**
+ * Ảnh Open Graph (sinh lúc build, xem seo/og.tsx): mỗi bài một ảnh có tiêu đề bài, các trang khác dùng ảnh mặc định.
+ * Ảnh được sinh theo từng ngôn ngữ có nội dung đầy đủ (/og/<mã>/…, tiếng Anh ở /og/…); ngôn ngữ khác dùng ảnh tiếng Anh.
+ */
 export const OG_SIZE = { width: 1200, height: 630 } as const;
-export const ogImagePath = (route: Route): string => (route.name === 'guide' ? `/og/${route.slug}.png` : '/og/default.png');
+export const ogDir = (lang: LangCode): string => (lang === DEFAULT_LANG ? '' : `${lang.toLowerCase()}/`);
+export const ogImagePath = (lang: LangCode, route: Route): string => {
+  if (route.name === 'guide') {
+    return `/og/${ARTICLE_LANGS[route.slug].includes(lang) ? ogDir(lang) : ''}${route.slug}.png`;
+  }
+  return `/og/${FULL_CONTENT_LANGS.includes(lang) ? ogDir(lang) : ''}default.png`;
+};
 
 /**
  * Google cắt tiêu đề theo bề rộng (~600px ≈ 60 ký tự Latin) → bỏ hậu tố tên trang khi tiêu đề bài đã dài,
@@ -75,7 +84,7 @@ export function buildHead({ lang, m, articles, pages, tools }: Omit<LanguageBund
     canonical: absoluteUrl(pathFor(lang, route)),
     ogType: route.name === 'guide' ? 'article' : 'website',
     ogLocale: findLanguage(lang)?.og ?? 'en_US',
-    image: absoluteUrl(ogImagePath(route)),
+    image: absoluteUrl(ogImagePath(lang, route)),
     imageAlt: guideTitle ?? SITE.name,
     alternates: [
       ...langs.map((l) => ({ hreflang: l.code, href: absoluteUrl(pathFor(l.code, route)) })),
