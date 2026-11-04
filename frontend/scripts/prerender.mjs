@@ -18,11 +18,33 @@ if (!template.includes('<!--app-head-->') || !template.includes('<div id="root">
 
 const { paths, render, sitemapXml, llmsTxt, ogSvgs, brandSvg, nginxConf } = await import(pathToFileURL(path.join(ssrDir, 'entry-server.js')).href);
 
+// Chunk JS của từng loại trang (src/pages/<chunk>.tsx, xem src/pageLoader.tsx) cùng các chunk nó phụ thuộc
+// → <link rel="modulepreload"> để trình duyệt tải song song với JS chính, không phải đợi JS chính chạy xong.
+const manifestFile = path.join(dist, '.vite', 'manifest.json');
+const manifest = JSON.parse(await fs.readFile(manifestFile, 'utf8'));
+const pagePreloads = new Map();
+function pagePreloadHtml(chunk) {
+  if (pagePreloads.has(chunk)) return pagePreloads.get(chunk);
+  const key = `src/pages/${chunk}.tsx`;
+  if (!manifest[key]) throw new Error(`Không thấy ${key} trong manifest của Vite`);
+  const files = new Set();
+  const visit = (k) => {
+    const e = manifest[k];
+    if (!e || e.isEntry || files.has(e.file)) return; // chunk chính đã có sẵn thẻ <script> trong template
+    files.add(e.file);
+    for (const dep of e.imports ?? []) visit(dep);
+  };
+  visit(key);
+  const html = [...files].map((f) => `<link rel="modulepreload" crossorigin href="/${f}" />`).join('\n    ');
+  pagePreloads.set(chunk, html);
+  return html;
+}
+
 async function renderPage(url) {
-  const { html, head, htmlAttrs } = await render(url);
+  const { html, head, htmlAttrs, pageChunk } = await render(url);
   return template
     .replace(/<html[^>]*>/, `<html ${htmlAttrs}>`)
-    .replace('<!--app-head-->', head)
+    .replace('<!--app-head-->', `${head}\n    ${pagePreloadHtml(pageChunk)}`)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
 }
 
@@ -89,6 +111,9 @@ await fs.writeFile(path.join(dist, 'favicon.svg'), favicon);
 for (const [file, size] of [['apple-touch-icon.png', 180], ['icon-192.png', 192], ['icon-512.png', 512]]) {
   await fs.writeFile(path.join(dist, file), toPng(favicon, size));
 }
+
+// Manifest chỉ dùng lúc build, không đưa lên máy chủ.
+await fs.rm(path.join(dist, '.vite'), { recursive: true, force: true });
 
 // Nén sẵn (gzip mức 9) cho Nginx gzip_static: HTML, CSS, JS, sitemap… ≥ 1 KB — giảm thời gian phản hồi máy chủ.
 const compressible = /\.(html|css|js|mjs|json|xml|txt|svg|webmanifest)$/;

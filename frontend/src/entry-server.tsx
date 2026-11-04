@@ -5,6 +5,7 @@ import { guideContent } from './content/guideContent';
 import { SITE, type GuideSlug } from './content/seo';
 import { loadBundle, useI18n } from './i18n';
 import { DEFAULT_LANG, LANGUAGES } from './i18n/languages';
+import { loadPage, PAGE_CHUNK, type PageChunk } from './pageLoader';
 import { absoluteUrl, allRoutes, contentNeeds, HOME, languagesFor, lastModified, pathFor, useRouter } from './router';
 import { fontPreloadHtml } from './seo/fontPreload';
 import { buildHead, headToHtml } from './seo/head';
@@ -18,11 +19,12 @@ export const paths = () => allRoutes().map((r) => r.path);
 export { brandSvg, ogSvgs } from './seo/og';
 export { nginxConf } from './seo/nginx';
 
-export async function render(path: string): Promise<{ html: string; head: string; htmlAttrs: string }> {
+/** `pageChunk`: nhóm trang (src/pages/<chunk>.tsx) → prerender chèn modulepreload cho chunk JS tương ứng. */
+export async function render(path: string): Promise<{ html: string; head: string; htmlAttrs: string; pageChunk: PageChunk }> {
   const entry = allRoutes().find((r) => r.path === path);
   if (!entry) throw new Error(`Unknown route: ${path}`);
 
-  const bundle = await loadBundle(entry.lang, contentNeeds(entry.lang, entry.route));
+  const [bundle] = await Promise.all([loadBundle(entry.lang, contentNeeds(entry.lang, entry.route)), loadPage(entry.route.name)]);
   useI18n.setState(bundle);
   useRouter.setState({ route: entry.route });
 
@@ -32,7 +34,12 @@ export async function render(path: string): Promise<{ html: string; head: string
     </StrictMode>,
   );
   const head = buildHead(bundle, entry.route);
-  return { html, head: `${fontPreloadHtml(entry.lang)}\n    ${headToHtml(head)}`, htmlAttrs: `lang="${head.lang}" dir="${head.dir}"` };
+  return {
+    html,
+    head: `${fontPreloadHtml(entry.lang)}\n    ${headToHtml(head)}`,
+    htmlAttrs: `lang="${head.lang}" dir="${head.dir}"`,
+    pageChunk: PAGE_CHUNK[entry.route.name],
+  };
 }
 
 /**

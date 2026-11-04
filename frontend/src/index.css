@@ -234,6 +234,9 @@ body {
     new-flag-wave 2.6s ease-in-out infinite,
     new-flag-shine 2.6s linear infinite;
 }
+.new-flag__cloth::before {
+  content: attr(data-label);
+}
 [dir='rtl'] .new-flag__cloth {
   padding-inline: 5px calc(var(--flag-notch) + 4px);
   clip-path: polygon(100% 0, 0 0, var(--flag-notch) 50%, 0 100%, 100% 100%);

@@ -126,12 +126,14 @@ const NAV_NEW: ReadonlySet<NavTarget> = new Set(['tools']);
 /**
  * Nhãn "Mới" dạng lá cờ đuôi én (chỉ có vải cờ), phấp phới nhẹ (CSS `.new-flag` trong index.css).
  * Đặt nổi ở góc trên bên phải tên mục menu: vị trí truyền qua `className`, phần tử cha cần `relative`.
+ * Chữ hiển thị bằng CSS (`content: attr(data-label)`) thay vì nút văn bản: công cụ tìm kiếm không đọc nội dung
+ * sinh bằng CSS → anchor text của link chỉ là tên mục ("More tools"), không bị dính thêm "New".
  */
 function NewTag({ className = '' }: { className?: string }) {
   const t = useT();
   return (
     <span className={`new-flag theme-fixed pointer-events-none absolute ${className}`}>
-      <span className="new-flag__cloth">{t.header.new}</span>
+      <span className="new-flag__cloth" data-label={t.header.new} />
     </span>
   );
 }

@@ -31,6 +31,10 @@ export default defineConfig({
   worker: {
     format: 'es',
   },
+  // dist/.vite/manifest.json: prerender đọc để chèn modulepreload cho chunk của từng loại trang (xoá sau khi dùng).
+  build: {
+    manifest: true,
+  },
   // Bản build SSR chỉ dùng để prerender HTML lúc build → gói kèm mọi thư viện để chạy độc lập trong Node.
   ssr: {
     noExternal: true,

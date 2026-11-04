@@ -21,6 +21,7 @@ import {
 } from './content/seo';
 import { preferredLanguage, rememberLanguage, setLanguage, useI18n, type ContentNeeds } from './i18n';
 import { DEFAULT_LANG, findLanguage, LANGUAGES, type LangCode } from './i18n/languages';
+import { loadPage } from './pageLoader';
 
 /**
  * Bộ định tuyến tối giản theo đường dẫn:
@@ -209,7 +210,8 @@ function scrollAfterRender(hash: string) {
 }
 
 async function apply(lang: LangCode, route: Route) {
-  await setLanguage(lang, contentNeeds(lang, route));
+  // Văn bản và mã của trang tải song song; chỉ đổi route khi cả hai đã sẵn sàng (xem pageLoader.tsx).
+  await Promise.all([setLanguage(lang, contentNeeds(lang, route)), loadPage(route.name)]);
   useRouter.setState({ route });
 }
 
