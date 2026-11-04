@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { fmt, useT } from '../../i18n';
 import { HOME_SECTIONS, SITE } from '../../content/seo';
 import { BrandMark } from '../BrandMark';
+import { PhotoStack } from '../Dropzone';
 import { Badge, Icon, Spinner, type IconName } from '../ui';
 
 /** Biểu tượng của bốn bước: thêm ảnh → xem báo cáo → xóa metadata → tải về. */
@@ -239,7 +240,7 @@ export function HowItWorksDemo() {
                 <div className="px-8 pt-5">
                   {!hasFiles ? (
                     <>
-                      <p className="text-center text-3xl font-extrabold tracking-tight text-slate-900">
+                      <p className="text-center text-3xl font-extrabold tracking-tight text-balance text-slate-900">
                         <Txt>{t.hero.title}</Txt>{' '}
                         <span className="text-indigo-600">
                           <Txt>{t.hero.titleAccent}</Txt>
@@ -248,11 +249,9 @@ export function HowItWorksDemo() {
                       <p className="mx-auto mt-2 line-clamp-2 max-w-2xl text-center text-sm text-slate-600">
                         <Txt>{t.hero.subtitle}</Txt>
                       </p>
-                      <div className="mx-auto mt-6 max-w-2xl rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/50 px-6 py-9 text-center">
-                        <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-indigo-600 text-white shadow-lg shadow-indigo-600/30">
-                          <Icon name="upload" className="h-6 w-6" />
-                        </span>
-                        <p className="mt-3 font-semibold text-slate-900">
+                      <div className="mx-auto mt-6 max-w-2xl rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/50 px-6 py-7 text-center">
+                        <PhotoStack active={false} />
+                        <p className="mt-4 font-semibold text-slate-900">
                           <Txt>{t.dropzone.drop}</Txt>
                         </p>
                         <p className="mt-1 text-sm text-slate-500">

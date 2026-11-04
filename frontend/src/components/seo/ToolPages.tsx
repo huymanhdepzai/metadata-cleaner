@@ -20,6 +20,7 @@ import { Link } from '../Link';
 import { PrivacyPanel } from '../report/ReportPanels';
 import { RejectionList } from '../RejectionList';
 import { Badge, Icon, Spinner } from '../ui';
+import { ToolArt } from './ToolArt';
 
 /** Đích của một thẻ công cụ ở ngôn ngữ `lang` (bài chưa có ở ngôn ngữ này → công cụ trên trang chủ). */
 function cardHref(lang: LangCode, to: ToolCardTarget): string {
@@ -31,23 +32,18 @@ function cardHref(lang: LangCode, to: ToolCardTarget): string {
 const CARD_BY_ID = new Map(TOOL_CARDS.map((c) => [c.id as ToolCardId, c]));
 
 /**
- * Một công cụ dạng hàng ngang: biểu tượng · tên + mô tả · mũi tên. Cả hàng bấm được (link phủ bằng `after:`).
- * `framed`: hàng có viền riêng (lưới "Công cụ khác"); không thì hàng nằm trong danh sách có đường kẻ chung.
- * `detailed`: thêm câu mô tả chi tiết (trang tổng hợp /tools/); lưới "Công cụ khác" chỉ cần câu ngắn.
+ * Một công cụ dạng hàng ngang có viền (lưới "Công cụ khác" cuối trang công cụ): ảnh minh họa thu nhỏ · tên + mô tả ·
+ * mũi tên. Cả hàng bấm được (link phủ bằng `after:`).
  */
-function ToolRow({ id, framed = false, detailed = false }: { id: ToolCardId; framed?: boolean; detailed?: boolean }) {
+function ToolRow({ id }: { id: ToolCardId }) {
   const lang = useI18n((s) => s.lang);
   const text = useI18n((s) => s.tools?.cards[id]);
   const card = CARD_BY_ID.get(id)!;
   if (!text) return null;
   return (
-    <div
-      className={`group relative flex h-full items-center gap-4 p-4 transition-colors hover:bg-indigo-50/60 sm:p-5 ${
-        framed ? 'rounded-2xl border border-slate-200 bg-surface shadow-sm hover:border-indigo-300' : ''
-      }`}
-    >
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100 transition-colors group-hover:bg-indigo-600 group-hover:text-white">
-        <Icon name={card.icon} className="h-5 w-5" />
+    <div className="group relative flex h-full items-center gap-4 rounded-2xl border border-slate-200 bg-surface p-3 shadow-sm transition-colors hover:border-indigo-300 hover:bg-indigo-50/60 sm:p-4">
+      <span className="w-24 shrink-0 overflow-hidden rounded-xl ring-1 ring-slate-200">
+        <ToolArt id={id} className="block h-auto w-full transition-transform duration-500 group-hover:scale-110" />
       </span>
       <div className="min-w-0 flex-1">
         <h3 className="font-semibold text-slate-900">
@@ -55,15 +51,43 @@ function ToolRow({ id, framed = false, detailed = false }: { id: ToolCardId; fra
             {text.name}
           </Link>
         </h3>
-        <p className="mt-1 text-sm leading-relaxed text-slate-600">
-          {text.text}
-          {detailed && <> {text.detail}</>}
-        </p>
+        <p className="mt-1 text-sm leading-relaxed text-slate-600">{text.text}</p>
       </div>
       <Icon
         name="chevron"
         className="h-5 w-5 shrink-0 -rotate-90 text-slate-300 transition group-hover:translate-x-0.5 group-hover:text-indigo-600 rtl:rotate-90 rtl:group-hover:-translate-x-0.5"
       />
+    </div>
+  );
+}
+
+/** Thẻ công cụ trên trang tổng hợp /tools/: ảnh minh họa riêng ở trên, tên + mô tả chi tiết bên dưới. */
+function ToolCard({ id }: { id: ToolCardId }) {
+  const lang = useI18n((s) => s.lang);
+  const text = useI18n((s) => s.tools?.cards[id]);
+  const card = CARD_BY_ID.get(id)!;
+  if (!text) return null;
+  return (
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-surface shadow-sm transition duration-300 hover:border-indigo-200 hover:shadow-xl hover:shadow-slate-900/5 motion-safe:hover:-translate-y-1">
+      <div className="overflow-hidden border-b border-slate-100">
+        <ToolArt id={id} className="block h-auto w-full transition-transform duration-500 motion-safe:group-hover:scale-105" />
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-semibold text-slate-900">
+          <Link to={cardHref(lang, card.to)} className="after:absolute after:inset-0 after:rounded-2xl group-hover:text-indigo-600">
+            {text.name}
+          </Link>
+        </h3>
+        <p className="mt-1.5 flex-1 text-sm leading-relaxed text-slate-600">
+          {text.text} {text.detail}
+        </p>
+        <span
+          aria-hidden="true"
+          className="mt-4 grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-slate-500 transition group-hover:bg-indigo-600 group-hover:text-white"
+        >
+          <Icon name="chevron" className="h-4 w-4 -rotate-90 rtl:rotate-90" />
+        </span>
+      </div>
     </div>
   );
 }
@@ -78,10 +102,7 @@ function FeaturedTool() {
   return (
     <div className="theme-fixed group relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-600 p-6 text-white shadow-lg sm:p-8">
       <div aria-hidden="true" className="absolute -end-16 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
-      <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center">
-        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/15 ring-1 ring-white/25">
-          <Icon name={card.icon} className="h-7 w-7" />
-        </span>
+      <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
         <div className="min-w-0 flex-1">
           <h2 className="text-xl font-bold sm:text-2xl">
             <Link to={cardHref(lang, card.to)} className="after:absolute after:inset-0 after:rounded-3xl">
@@ -91,11 +112,14 @@ function FeaturedTool() {
           <p className="mt-1.5 max-w-2xl text-white/85">
             {text.text} {text.detail}
           </p>
+          <span className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-slate-900 shadow-sm transition group-hover:shadow-md">
+            {t.seo.guides.tryTool}
+            <Icon name="chevron" className="h-4 w-4 -rotate-90 rtl:rotate-90" />
+          </span>
         </div>
-        <span className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-xl bg-white px-5 py-3 text-sm font-bold text-slate-900 shadow-sm transition group-hover:shadow-md sm:self-auto">
-          {t.seo.guides.tryTool}
-          <Icon name="chevron" className="h-4 w-4 -rotate-90 rtl:rotate-90" />
-        </span>
+        <div className="w-full shrink-0 rounded-2xl bg-white/10 p-2 ring-1 ring-white/25 md:w-80">
+          <ToolArt id={FEATURED_TOOL_CARD} className="block h-auto w-full rounded-xl transition-transform duration-500 motion-safe:group-hover:scale-[1.03]" />
+        </div>
       </div>
     </div>
   );
@@ -107,7 +131,7 @@ function MoreTools({ exclude }: { exclude: ToolCardId }) {
     <ul className="grid gap-3 sm:grid-cols-2">
       {TOOL_CARDS.filter((c) => c.id !== exclude).map((c) => (
         <li key={c.id}>
-          <ToolRow id={c.id} framed />
+          <ToolRow id={c.id} />
         </li>
       ))}
     </ul>
@@ -160,17 +184,17 @@ export function ToolsIndexPage() {
       <div className="mx-auto max-w-6xl space-y-14 px-4 py-12">
         <FeaturedTool />
         {TOOL_GROUPS.map((g) => (
-          <section key={g.id} aria-labelledby={`group-${g.id}`} className="grid gap-6 lg:grid-cols-12 lg:gap-10">
-            <div className="lg:col-span-4">
+          <section key={g.id} aria-labelledby={`group-${g.id}`}>
+            <div className="max-w-3xl">
               <h2 id={`group-${g.id}`} className="text-2xl font-bold tracking-tight text-slate-900">
                 {groups[g.id].title}
               </h2>
               <p className="mt-2 leading-relaxed text-slate-600">{groups[g.id].text}</p>
             </div>
-            <ul className="divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-surface shadow-sm lg:col-span-8">
+            <ul className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {g.cards.map((id) => (
                 <li key={id}>
-                  <ToolRow id={id} detailed />
+                  <ToolCard id={id} />
                 </li>
               ))}
             </ul>

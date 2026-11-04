@@ -19,7 +19,8 @@ function HomePage() {
   return (
     <main ref={mainRef}>
       <Hero hasJobs={hasJobs} />
-      <div className="mx-auto max-w-6xl px-4 pb-12">
+      {/* Chưa có ảnh thì Workspace gần như trống → bỏ khoảng đệm dưới để Hero nối liền mục "Cách hoạt động". */}
+      <div className={`mx-auto max-w-6xl px-4 ${hasJobs ? 'pb-12' : ''}`}>
         <Workspace />
       </div>
       <HowItWorks />

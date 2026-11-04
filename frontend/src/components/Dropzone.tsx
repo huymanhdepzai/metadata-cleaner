@@ -59,7 +59,7 @@ function PhotoCard({ tint, className = '' }: { tint: string; className?: string 
  * Chồng 3 tấm ảnh thay cho biểu tượng "tải lên": rê chuột vào khung thì hai tấm sau xòe ra và tấm trước nâng lên;
  * khi đang kéo ảnh vào, các tấm xòe rộng hơn. Người dùng bật "giảm chuyển động" sẽ không thấy hiệu ứng nảy.
  */
-function PhotoStack({ active }: { active: boolean }) {
+export function PhotoStack({ active }: { active: boolean }) {
   const ease = 'transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]';
   return (
     <div aria-hidden="true" className="relative mx-auto h-20 w-32">

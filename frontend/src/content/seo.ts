@@ -52,16 +52,16 @@ export const isToolSlug = (s: string): s is ToolSlug => (TOOL_SLUGS as readonly 
  */
 export type ToolCardTarget = { tool: ToolSlug } | { guide: GuideSlug } | 'home';
 export const TOOL_CARDS = [
-  { id: 'cleaner', icon: 'sparkles', to: 'home' },
-  { id: 'view-metadata', icon: 'search', to: { tool: 'view-metadata' } },
-  { id: 'privacy-check', icon: 'shield', to: { tool: 'privacy-check' } },
-  { id: 'metadata-size', icon: 'chart', to: { tool: 'metadata-size' } },
-  { id: 'remove-exif', icon: 'photo', to: { guide: 'remove-exif' } },
-  { id: 'remove-gps', icon: 'mapPin', to: { guide: 'remove-gps-location-from-photos' } },
-  { id: 'remove-c2pa', icon: 'layers', to: { guide: 'remove-c2pa' } },
-  { id: 'remove-prompts', icon: 'sparkles', to: { guide: 'remove-stable-diffusion-comfyui-metadata' } },
-  { id: 'batch', icon: 'bolt', to: { guide: 'batch-remove-metadata' } },
-] as const satisfies readonly { id: string; icon: IconName; to: ToolCardTarget }[];
+  { id: 'cleaner', to: 'home' },
+  { id: 'view-metadata', to: { tool: 'view-metadata' } },
+  { id: 'privacy-check', to: { tool: 'privacy-check' } },
+  { id: 'metadata-size', to: { tool: 'metadata-size' } },
+  { id: 'remove-exif', to: { guide: 'remove-exif' } },
+  { id: 'remove-gps', to: { guide: 'remove-gps-location-from-photos' } },
+  { id: 'remove-c2pa', to: { guide: 'remove-c2pa' } },
+  { id: 'remove-prompts', to: { guide: 'remove-stable-diffusion-comfyui-metadata' } },
+  { id: 'batch', to: { guide: 'batch-remove-metadata' } },
+] as const satisfies readonly { id: string; to: ToolCardTarget }[];
 export type ToolCardId = (typeof TOOL_CARDS)[number]['id'];
 
 /** Bố cục trang tổng hợp: thẻ nổi bật (công cụ làm sạch) rồi các nhóm thẻ theo thứ tự. */

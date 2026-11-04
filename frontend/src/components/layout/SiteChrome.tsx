@@ -6,6 +6,7 @@ import { LANGUAGES } from '../../i18n/languages';
 import { GUIDES_INDEX, HOME, localizeRoute, pathFor, TOOLS_INDEX, useHref, useRouter } from '../../router';
 import { BrandMark } from '../BrandMark';
 import { Dropzone } from '../Dropzone';
+import { Letter3DSwap } from '../Letter3DSwap';
 import { Link } from '../Link';
 import { Icon } from '../ui';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -129,15 +130,16 @@ export function Hero({ hasJobs }: { hasJobs: boolean }) {
         aria-hidden="true"
         className="absolute top-[-10rem] left-1/2 -z-10 h-[28rem] w-[56rem] -translate-x-1/2 rounded-full bg-indigo-200/40 blur-3xl"
       />
-      <div className={`mx-auto max-w-4xl px-4 text-center ${hasJobs ? 'pt-8 pb-6' : 'pt-14 pb-10 sm:pt-20'}`}>
+      <div className={`mx-auto max-w-4xl px-4 text-center ${hasJobs ? 'pt-8 pb-6' : 'pt-14 pb-12 sm:pt-20'}`}>
         {!hasJobs && (
           <p className="mb-4 inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-xs font-semibold text-indigo-700 shadow-sm ring-1 ring-indigo-100">
             <Icon name="sparkles" className="h-3.5 w-3.5" /> {t.hero.eyebrow}
           </p>
         )}
-        <h1 className={`font-extrabold tracking-tight text-slate-900 ${hasJobs ? 'text-2xl' : 'text-3xl sm:text-5xl'}`}>
-          {t.hero.title} <span className="text-indigo-600">{t.hero.titleAccent}</span>
-        </h1>
+        <Letter3DSwap
+          className={`font-extrabold tracking-tight text-balance text-slate-900 ${hasJobs ? 'text-2xl' : 'text-3xl sm:text-5xl'}`}
+          segments={[{ text: t.hero.title }, { text: t.hero.titleAccent, className: 'text-indigo-600' }]}
+        />
         {!hasJobs && <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg">{t.hero.subtitle}</p>}
 
         <div className={`mx-auto rounded-3xl bg-surface p-3 shadow-xl ring-1 shadow-slate-200/60 ring-slate-200 ${hasJobs ? 'mt-5 max-w-3xl' : 'mt-8'}`}>
