@@ -144,7 +144,10 @@ export function FeatureCube({
   // (và khi không có JS) luôn hiển thị hộp đúng vị trí.
   useEffect(() => {
     const roll = rollRef.current;
-    if (!roll || typeof IntersectionObserver === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Theo dõi khung chứa (không bị dịch chuyển), không theo dõi chính hộp: lúc chờ hộp bị đẩy sang trái ~2,2 cạnh,
+    // trên màn hình hẹp nằm hẳn ngoài khung nhìn → observer sẽ không bao giờ báo và hộp ẩn mãi.
+    const stage = roll?.parentElement;
+    if (!roll || !stage || typeof IntersectionObserver === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const side = roll.offsetWidth;
     // Mỗi 90° lăn được đúng một cạnh hộp → lăn hơn hai vòng cạnh, vượt nhẹ rồi dừng lại cho mượt.
     const start = `translateX(${-side * 2.2}px) rotateZ(-198deg)`;
@@ -168,7 +171,7 @@ export function FeatureCube({
       },
       { threshold: 0.35 },
     );
-    observer.observe(roll);
+    observer.observe(stage);
     return () => {
       observer.disconnect();
       roll.style.transform = '';
