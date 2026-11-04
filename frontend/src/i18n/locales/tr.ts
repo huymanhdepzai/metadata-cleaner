@@ -9,6 +9,7 @@ const tr: Messages = {
   header: {
     language: 'Dil',
     menu: 'Menü',
+    new: 'Yeni',
     theme: { label: 'Tema', light: 'Açık', dark: 'Koyu', system: 'Sistem' },
     nav: { tool: 'Araç', tools: 'Diğer araçlar', how: 'Nasıl çalışır', formats: 'Biçimler', guides: 'Rehberler', faq: 'SSS' },
   },

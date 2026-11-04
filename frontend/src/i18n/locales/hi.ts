@@ -9,6 +9,7 @@ const hi: Messages = {
   header: {
     language: 'भाषा',
     menu: 'मेनू',
+    new: 'नया',
     theme: { label: 'थीम', light: 'लाइट', dark: 'डार्क', system: 'सिस्टम' },
     nav: { tool: 'टूल', tools: 'और टूल', how: 'यह कैसे काम करता है', formats: 'फ़ॉर्मैट', guides: 'गाइड', faq: 'सवाल-जवाब' },
   },

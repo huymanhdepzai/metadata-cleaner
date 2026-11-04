@@ -9,6 +9,7 @@ const ptPT: Messages = {
   header: {
     language: 'Idioma',
     menu: 'Menu',
+    new: 'Novo',
     theme: { label: 'Tema', light: 'Claro', dark: 'Escuro', system: 'Sistema' },
     nav: { tool: 'Ferramenta', tools: 'Mais ferramentas', how: 'Como funciona', formats: 'Formatos', guides: 'Guias', faq: 'Perguntas' },
   },

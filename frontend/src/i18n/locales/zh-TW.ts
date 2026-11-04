@@ -9,6 +9,7 @@ const zhTW: Messages = {
   header: {
     language: '語言',
     menu: '選單',
+    new: '新',
     theme: { label: '主題', light: '淺色', dark: '深色', system: '跟隨系統' },
     nav: { tool: '工具', tools: '更多工具', how: '運作方式', formats: '支援格式', guides: '指南', faq: '常見問題' },
   },

@@ -9,6 +9,7 @@ const ko: Messages = {
   header: {
     language: '언어',
     menu: '메뉴',
+    new: '신규',
     theme: { label: '테마', light: '라이트', dark: '다크', system: '시스템 설정' },
     nav: { tool: '도구', tools: '다른 도구', how: '사용 방법', formats: '지원 형식', guides: '가이드', faq: '자주 묻는 질문' },
   },

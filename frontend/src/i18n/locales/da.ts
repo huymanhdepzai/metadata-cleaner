@@ -9,6 +9,7 @@ const da: Messages = {
   header: {
     language: 'Sprog',
     menu: 'Menu',
+    new: 'Ny',
     theme: { label: 'Tema', light: 'Lyst', dark: 'Mørkt', system: 'System' },
     nav: { tool: 'Værktøj', tools: 'Flere værktøjer', how: 'Sådan virker det', formats: 'Formater', guides: 'Guides', faq: 'FAQ' },
   },

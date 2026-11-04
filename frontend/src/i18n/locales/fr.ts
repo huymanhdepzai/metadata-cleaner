@@ -9,6 +9,7 @@ const fr: Messages = {
   header: {
     language: 'Langue',
     menu: 'Menu',
+    new: 'Nouveau',
     theme: { label: 'Thème', light: 'Clair', dark: 'Sombre', system: 'Système' },
     nav: { tool: 'Outil', tools: 'Autres outils', how: 'Fonctionnement', formats: 'Formats', guides: 'Guides', faq: 'FAQ' },
   },

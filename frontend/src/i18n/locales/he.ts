@@ -9,6 +9,7 @@ const he: Messages = {
   header: {
     language: 'שפה',
     menu: 'תפריט',
+    new: 'חדש',
     theme: { label: 'ערכת נושא', light: 'בהיר', dark: 'כהה', system: 'לפי המערכת' },
     nav: { tool: 'הכלי', tools: 'כלים נוספים', how: 'איך זה עובד', formats: 'פורמטים', guides: 'מדריכים', faq: 'שאלות נפוצות' },
   },

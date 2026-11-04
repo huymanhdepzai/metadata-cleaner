@@ -9,6 +9,7 @@ const uk: Messages = {
   header: {
     language: 'Мова',
     menu: 'Меню',
+    new: 'Нове',
     theme: { label: 'Тема', light: 'Світла', dark: 'Темна', system: 'Системна' },
     nav: { tool: 'Інструмент', tools: 'Інші інструменти', how: 'Як це працює', formats: 'Формати', guides: 'Посібники', faq: 'Питання' },
   },

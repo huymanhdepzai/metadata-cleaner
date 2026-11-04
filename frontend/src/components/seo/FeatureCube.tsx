@@ -44,6 +44,8 @@ const FACE_NORMAL: Record<CubeFace, [number, number, number]> = {
   bottom: [0, 1, 0],
 };
 
+/** Thời gian hộp lăn vào khi lần đầu cuộn tới (ms). */
+const ROLL_MS = 1600;
 const STIFFNESS = 140;
 const DAMPING = 18;
 /** Độ nhạy khi kéo: số độ xoay cho mỗi pixel di chuyển. */
@@ -94,6 +96,7 @@ export function FeatureCube({
   label: string;
 }) {
   const cubeRef = useRef<HTMLDivElement>(null);
+  const rollRef = useRef<HTMLDivElement>(null);
   const spring = useRef({ x: 0, y: 0, vx: 0, vy: 0, tx: 0, ty: 0, stiffness: STIFFNESS });
   const frame = useRef(0);
   const drag = useRef<{ px: number; py: number; x: number; y: number; moved: boolean } | null>(null);
@@ -136,6 +139,42 @@ export function FeatureCube({
     const { x, y } = FACE_ROTATION[CUBE_FACES[active]];
     rotateTo(nearestTurn(s.x, x), nearestTurn(s.y, y));
   }, [active, rotateTo]);
+
+  // Lần đầu cuộn tới: hộp lăn từ bên trái vào chỗ. Trạng thái "chờ" chỉ do JS gắn sau khi mount, nên HTML prerender
+  // (và khi không có JS) luôn hiển thị hộp đúng vị trí.
+  useEffect(() => {
+    const roll = rollRef.current;
+    if (!roll || typeof IntersectionObserver === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const side = roll.offsetWidth;
+    // Mỗi 90° lăn được đúng một cạnh hộp → lăn hơn hai vòng cạnh, vượt nhẹ rồi dừng lại cho mượt.
+    const start = `translateX(${-side * 2.2}px) rotateZ(-198deg)`;
+    roll.style.transform = start;
+    roll.style.opacity = '0';
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        roll.style.transform = '';
+        roll.style.opacity = '';
+        roll.animate(
+          [
+            { transform: start },
+            { transform: `translateX(${side * 0.05}px) rotateZ(4.5deg)`, offset: 0.8 },
+            { transform: 'translateX(0) rotateZ(0deg)' },
+          ],
+          { duration: ROLL_MS, easing: 'cubic-bezier(0.33, 1, 0.68, 1)' },
+        );
+        roll.animate([{ opacity: 0 }, { opacity: 1 }], { duration: ROLL_MS * 0.35, easing: 'ease-out' });
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(roll);
+    return () => {
+      observer.disconnect();
+      roll.style.transform = '';
+      roll.style.opacity = '';
+    };
+  }, []);
 
   // Đặt lại `frame` khi huỷ: StrictMode (dev) gỡ rồi gắn lại effect, nếu còn giữ id cũ thì vòng lặp không chạy lại.
   useEffect(
@@ -186,20 +225,23 @@ export function FeatureCube({
       onPointerUp={onPointerUp}
       onPointerCancel={onPointerUp}
     >
-      <div
-        ref={cubeRef}
-        className="relative h-[var(--cube)] w-[var(--cube)]"
-        style={{ transformStyle: 'preserve-3d', transform: cubeTransform(0, 0) }}
-      >
-        {CUBE_FACES.map((face, i) => (
-          <div
-            key={face}
-            className="absolute inset-0 [backface-visibility:hidden]"
-            style={{ transform: `${FACE_TRANSFORM[face]} translateZ(calc(var(--cube) / 2))` }}
-          >
-            {faces[i]}
-          </div>
-        ))}
+      {/* Lớp lăn vào (tịnh tiến + xoay trong mặt phẳng màn hình), bọc ngoài hộp để không lẫn với góc xoay của lò xo. */}
+      <div ref={rollRef} style={{ transformStyle: 'preserve-3d' }}>
+        <div
+          ref={cubeRef}
+          className="relative h-[var(--cube)] w-[var(--cube)]"
+          style={{ transformStyle: 'preserve-3d', transform: cubeTransform(0, 0) }}
+        >
+          {CUBE_FACES.map((face, i) => (
+            <div
+              key={face}
+              className="absolute inset-0 [backface-visibility:hidden]"
+              style={{ transform: `${FACE_TRANSFORM[face]} translateZ(calc(var(--cube) / 2))` }}
+            >
+              {faces[i]}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

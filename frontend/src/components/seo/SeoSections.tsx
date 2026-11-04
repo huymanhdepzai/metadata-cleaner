@@ -104,12 +104,15 @@ export function Features() {
   useEffect(() => {
     const section = sectionRef.current;
     if (!auto || !section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let visible = false;
-    const observer = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting), { threshold: 0.4 });
+    // Chỉ lật khi đã thấy phần này đủ một chu kỳ → không lật giữa lúc hộp đang lăn vào (FeatureCube).
+    let since = 0; // thời điểm bắt đầu thấy phần này hoặc lần lật gần nhất; 0 = đang khuất
+    const observer = new IntersectionObserver(([entry]) => (since = entry.isIntersecting ? performance.now() : 0), { threshold: 0.4 });
     observer.observe(section);
     const timer = window.setInterval(() => {
-      if (visible && !document.hidden) setActive((i) => (i + 1) % count);
-    }, FEATURE_CYCLE_MS);
+      if (!since || document.hidden || performance.now() - since < FEATURE_CYCLE_MS) return;
+      since = performance.now();
+      setActive((i) => (i + 1) % count);
+    }, 250);
     return () => {
       observer.disconnect();
       window.clearInterval(timer);

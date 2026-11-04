@@ -9,6 +9,7 @@ const hu: Messages = {
   header: {
     language: 'Nyelv',
     menu: 'Menü',
+    new: 'Új',
     theme: { label: 'Téma', light: 'Világos', dark: 'Sötét', system: 'Rendszer' },
     nav: { tool: 'Eszköz', tools: 'További eszközök', how: 'Hogyan működik', formats: 'Formátumok', guides: 'Útmutatók', faq: 'GYIK' },
   },

@@ -9,6 +9,7 @@ const ro: Messages = {
   header: {
     language: 'Limbă',
     menu: 'Meniu',
+    new: 'Nou',
     theme: { label: 'Temă', light: 'Luminoasă', dark: 'Întunecată', system: 'Sistem' },
     nav: { tool: 'Instrument', tools: 'Mai multe instrumente', how: 'Cum funcționează', formats: 'Formate', guides: 'Ghiduri', faq: 'Întrebări' },
   },

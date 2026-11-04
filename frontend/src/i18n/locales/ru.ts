@@ -9,6 +9,7 @@ const ru: Messages = {
   header: {
     language: 'Язык',
     menu: 'Меню',
+    new: 'Новое',
     theme: { label: 'Тема', light: 'Светлая', dark: 'Тёмная', system: 'Системная' },
     nav: { tool: 'Инструмент', tools: 'Другие инструменты', how: 'Как это работает', formats: 'Форматы', guides: 'Руководства', faq: 'Вопросы' },
   },

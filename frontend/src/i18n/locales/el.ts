@@ -9,6 +9,7 @@ const el: Messages = {
   header: {
     language: 'Γλώσσα',
     menu: 'Μενού',
+    new: 'Νέο',
     theme: { label: 'Θέμα', light: 'Ανοιχτό', dark: 'Σκούρο', system: 'Σύστημα' },
     nav: { tool: 'Εργαλείο', tools: 'Περισσότερα εργαλεία', how: 'Πώς λειτουργεί', formats: 'Μορφές', guides: 'Οδηγοί', faq: 'Συχνές ερωτήσεις' },
   },

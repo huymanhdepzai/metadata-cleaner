@@ -9,6 +9,7 @@ const ca: Messages = {
   header: {
     language: 'Idioma',
     menu: 'Menú',
+    new: 'Nou',
     theme: { label: 'Tema', light: 'Clar', dark: 'Fosc', system: 'Sistema' },
     nav: { tool: 'Eina', tools: 'Més eines', how: 'Com funciona', formats: 'Formats', guides: 'Guies', faq: 'Preguntes' },
   },

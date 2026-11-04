@@ -9,6 +9,7 @@ const ja: Messages = {
   header: {
     language: '言語',
     menu: 'メニュー',
+    new: '新着',
     theme: { label: 'テーマ', light: 'ライト', dark: 'ダーク', system: 'システム設定' },
     nav: { tool: 'ツール', tools: 'その他のツール', how: '使い方', formats: '対応形式', guides: 'ガイド', faq: 'よくある質問' },
   },

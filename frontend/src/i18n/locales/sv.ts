@@ -9,6 +9,7 @@ const sv: Messages = {
   header: {
     language: 'Språk',
     menu: 'Meny',
+    new: 'Ny',
     theme: { label: 'Tema', light: 'Ljust', dark: 'Mörkt', system: 'System' },
     nav: { tool: 'Verktyg', tools: 'Fler verktyg', how: 'Så fungerar det', formats: 'Format', guides: 'Guider', faq: 'Vanliga frågor' },
   },

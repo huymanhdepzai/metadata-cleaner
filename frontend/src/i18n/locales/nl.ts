@@ -9,6 +9,7 @@ const nl: Messages = {
   header: {
     language: 'Taal',
     menu: 'Menu',
+    new: 'Nieuw',
     theme: { label: 'Thema', light: 'Licht', dark: 'Donker', system: 'Systeem' },
     nav: { tool: 'Tool', tools: 'Meer tools', how: 'Hoe het werkt', formats: 'Formaten', guides: 'Gidsen', faq: 'FAQ' },
   },

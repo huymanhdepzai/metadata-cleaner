@@ -9,6 +9,7 @@ const ar: Messages = {
   header: {
     language: 'اللغة',
     menu: 'القائمة',
+    new: 'جديد',
     theme: { label: 'المظهر', light: 'فاتح', dark: 'داكن', system: 'حسب النظام' },
     nav: { tool: 'الأداة', tools: 'أدوات أخرى', how: 'طريقة العمل', formats: 'الصيغ', guides: 'أدلة', faq: 'الأسئلة الشائعة' },
   },

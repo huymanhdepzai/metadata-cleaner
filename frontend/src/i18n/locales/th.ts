@@ -9,6 +9,7 @@ const th: Messages = {
   header: {
     language: 'ภาษา',
     menu: 'เมนู',
+    new: 'ใหม่',
     theme: { label: 'ธีม', light: 'สว่าง', dark: 'มืด', system: 'ตามระบบ' },
     nav: { tool: 'เครื่องมือ', tools: 'เครื่องมืออื่น', how: 'วิธีการทำงาน', formats: 'รูปแบบไฟล์', guides: 'คู่มือ', faq: 'คำถามที่พบบ่อย' },
   },

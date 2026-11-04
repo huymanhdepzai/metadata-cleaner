@@ -9,6 +9,7 @@ const hr: Messages = {
   header: {
     language: 'Jezik',
     menu: 'Izbornik',
+    new: 'Novo',
     theme: { label: 'Tema', light: 'Svijetla', dark: 'Tamna', system: 'Sustav' },
     nav: { tool: 'Alat', tools: 'Više alata', how: 'Kako radi', formats: 'Formati', guides: 'Vodiči', faq: 'Česta pitanja' },
   },

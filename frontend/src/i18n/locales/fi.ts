@@ -9,6 +9,7 @@ const fi: Messages = {
   header: {
     language: 'Kieli',
     menu: 'Valikko',
+    new: 'Uusi',
     theme: { label: 'Teema', light: 'Vaalea', dark: 'Tumma', system: 'Järjestelmä' },
     nav: { tool: 'Työkalu', tools: 'Lisää työkaluja', how: 'Näin se toimii', formats: 'Tiedostomuodot', guides: 'Oppaat', faq: 'UKK' },
   },

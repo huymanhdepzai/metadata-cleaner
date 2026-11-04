@@ -9,6 +9,7 @@ const id: Messages = {
   header: {
     language: 'Bahasa',
     menu: 'Menu',
+    new: 'Baru',
     theme: { label: 'Tema', light: 'Terang', dark: 'Gelap', system: 'Sistem' },
     nav: { tool: 'Alat', tools: 'Alat lainnya', how: 'Cara kerja', formats: 'Format', guides: 'Panduan', faq: 'FAQ' },
   },

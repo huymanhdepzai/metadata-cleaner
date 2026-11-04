@@ -9,6 +9,7 @@ const cs: Messages = {
   header: {
     language: 'Jazyk',
     menu: 'Nabídka',
+    new: 'Nové',
     theme: { label: 'Motiv', light: 'Světlý', dark: 'Tmavý', system: 'Podle systému' },
     nav: { tool: 'Nástroj', tools: 'Další nástroje', how: 'Jak to funguje', formats: 'Formáty', guides: 'Návody', faq: 'Časté dotazy' },
   },

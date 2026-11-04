@@ -11,6 +11,7 @@ const en = {
   header: {
     language: 'Language',
     menu: 'Menu',
+    new: 'New',
     theme: { label: 'Theme', light: 'Light', dark: 'Dark', system: 'System' },
     nav: { tool: 'Tool', tools: 'More tools', how: 'How it works', formats: 'Formats', guides: 'Guides', faq: 'FAQ' },
   },

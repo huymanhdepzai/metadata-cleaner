@@ -206,6 +206,89 @@ body {
   }
 }
 
+/*
+ * Nhãn "Mới" dạng lá cờ trong menu header (NewTag ở components/layout/SiteChrome.tsx): chỉ có vải cờ đuôi én,
+ * neo ở mép đầu (transform-origin) và phấp phới bằng skew + co giãn nhẹ, kèm dải sáng chạy ngang mô phỏng nếp vải.
+ * Chiều ngang lật theo hướng chữ (RTL).
+ */
+.new-flag {
+  display: inline-flex;
+}
+.new-flag__cloth {
+  --flag-notch: 5px;
+  position: relative;
+  padding: 2.5px calc(var(--flag-notch) + 4px) 3px 5px;
+  font-size: 0.5625rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #fff;
+  background: linear-gradient(100deg, transparent 20%, rgb(255 255 255 / 0.35) 40%, transparent 60%) 0 0 / 250% 100% no-repeat,
+    linear-gradient(90deg, #059669, #10b981 55%, #14b8a6);
+  clip-path: polygon(0 0, 100% 0, calc(100% - var(--flag-notch)) 50%, 100% 100%, 0 100%);
+  transform-origin: left center;
+  filter: drop-shadow(0 1px 1px rgb(5 150 105 / 0.35));
+  animation:
+    new-flag-wave 2.6s ease-in-out infinite,
+    new-flag-shine 2.6s linear infinite;
+}
+[dir='rtl'] .new-flag__cloth {
+  padding-inline: 5px calc(var(--flag-notch) + 4px);
+  clip-path: polygon(100% 0, 0 0, var(--flag-notch) 50%, 0 100%, 100% 100%);
+  transform-origin: right center;
+}
+@keyframes new-flag-wave {
+  0%,
+  100% {
+    transform: perspective(60px) rotateY(0deg) skewY(0deg) scaleX(1);
+  }
+  25% {
+    transform: perspective(60px) rotateY(-10deg) skewY(-4deg) scaleX(0.95);
+  }
+  50% {
+    transform: perspective(60px) rotateY(4deg) skewY(2.5deg) scaleX(1.02);
+  }
+  75% {
+    transform: perspective(60px) rotateY(-6deg) skewY(-2deg) scaleX(0.97);
+  }
+}
+@keyframes new-flag-shine {
+  from {
+    background-position:
+      150% 0,
+      0 0;
+  }
+  to {
+    background-position:
+      -100% 0,
+      0 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .new-flag__cloth {
+    animation: none;
+  }
+}
+
+/* Menu điện thoại trong header (components/layout/SiteChrome.tsx): trượt nhẹ xuống và hiện dần khi mở. */
+.header-sheet {
+  animation: header-sheet-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: top;
+}
+@keyframes header-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-sheet {
+    animation: none;
+  }
+}
+
 summary::-webkit-details-marker {
   display: none;
 }

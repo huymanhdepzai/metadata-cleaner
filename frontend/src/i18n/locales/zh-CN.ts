@@ -9,6 +9,7 @@ const zhCN: Messages = {
   header: {
     language: '语言',
     menu: '菜单',
+    new: '新',
     theme: { label: '主题', light: '浅色', dark: '深色', system: '跟随系统' },
     nav: { tool: '工具', tools: '更多工具', how: '使用方法', formats: '支持格式', guides: '指南', faq: '常见问题' },
   },

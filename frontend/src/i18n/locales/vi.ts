@@ -9,6 +9,7 @@ const vi: Messages = {
   header: {
     language: 'Ngôn ngữ',
     menu: 'Menu',
+    new: 'Mới',
     theme: { label: 'Giao diện', light: 'Sáng', dark: 'Tối', system: 'Theo hệ thống' },
     nav: { tool: 'Công cụ', tools: 'Công cụ khác', how: 'Cách hoạt động', formats: 'Định dạng', guides: 'Hướng dẫn', faq: 'Hỏi đáp' },
   },
