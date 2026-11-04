@@ -31,9 +31,9 @@ export function ThemeSwitcher() {
         aria-controls={panelId}
         aria-label={`${t.header.theme.label}: ${t.header.theme[mode]}`}
         title={t.header.theme.label}
-        className="inline-flex h-[34px] items-center justify-center rounded-lg border border-slate-200 bg-surface px-2 text-slate-600 hover:bg-slate-50"
+        className="inline-flex h-10 items-center justify-center rounded-lg border border-slate-200 bg-surface px-2.5 text-slate-600 hover:bg-slate-50"
       >
-        <Icon name={current.icon} className="h-4.5 w-4.5" />
+        <Icon name={current.icon} className="h-5 w-5" />
       </button>
 
       {open && (

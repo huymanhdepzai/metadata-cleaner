@@ -21,6 +21,7 @@ import { PrivacyPanel } from '../report/ReportPanels';
 import { RejectionList } from '../RejectionList';
 import { Badge, Icon, Spinner } from '../ui';
 import { ToolArt } from './ToolArt';
+import { ToolSectionArt } from './ToolSectionArt';
 
 /** Đích của một thẻ công cụ ở ngôn ngữ `lang` (bài chưa có ở ngôn ngữ này → công cụ trên trang chủ). */
 function cardHref(lang: LangCode, to: ToolCardTarget): string {
@@ -421,10 +422,18 @@ export function ToolPage({ slug }: { slug: ToolSlug }) {
 
       {content.guide?.sections.map((s, i) => (
         <section key={i} aria-labelledby={`guide-${i}`} className="mx-auto max-w-4xl px-4 py-8">
-          <h2 id={`guide-${i}`} className="text-2xl font-bold tracking-tight text-slate-900">
-            {s.title}
-          </h2>
-          <p className="mt-4 leading-relaxed text-slate-700">{s.text}</p>
+          {/* Chữ + ảnh minh họa riêng của phần; ảnh đổi bên trái/phải theo thứ tự phần trên màn hình rộng. */}
+          <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_18rem] md:gap-10">
+            <div className={i % 2 ? 'md:order-2' : undefined}>
+              <h2 id={`guide-${i}`} className="text-2xl font-bold tracking-tight text-slate-900">
+                {s.title}
+              </h2>
+              <p className="mt-4 leading-relaxed text-slate-700">{s.text}</p>
+            </div>
+            <div className={`overflow-hidden rounded-2xl shadow-sm ring-1 ring-slate-200 ${i % 2 ? 'md:order-1' : ''}`}>
+              <ToolSectionArt slug={slug} index={i} className="block h-auto w-full" />
+            </div>
+          </div>
           {s.items && (
             <dl className="mt-5 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-surface">
               {s.items.map((item) => (

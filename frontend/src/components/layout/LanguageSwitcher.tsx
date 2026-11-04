@@ -54,7 +54,7 @@ export function LanguageSwitcher() {
         aria-controls={panelId}
         // Tên truy cập phải chứa chữ đang hiển thị (WCAG 2.5.3) để người dùng điều khiển bằng giọng nói gọi đúng nút.
         aria-label={`${t.header.language}: ${findLanguage(lang)?.name}`}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-surface px-2.5 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+        className="inline-flex h-10 items-center gap-2 rounded-lg border border-slate-200 bg-surface px-3 text-[0.9375rem] font-medium text-slate-700 hover:bg-slate-50"
       >
         <Flag code={lang} eager />
         <span className="max-w-28 truncate">{findLanguage(lang)?.name}</span>

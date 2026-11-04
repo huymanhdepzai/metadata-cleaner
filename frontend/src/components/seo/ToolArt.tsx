@@ -7,19 +7,19 @@ import type { ToolCardId } from '../../content/seo';
  * Vẽ bằng biến màu của bảng màu (var(--color-…)) nên tự đổi theo chế độ Sáng/Tối; chữ trong hình là thuật ngữ kỹ
  * thuật, giống nhau ở mọi ngôn ngữ. Thuần trang trí (aria-hidden) — tên và mô tả công cụ nằm ngay dưới ảnh.
  */
-type Hue = 'indigo' | 'sky' | 'rose' | 'amber' | 'violet' | 'emerald';
-type Shade = 50 | 100 | 200 | 400 | 500 | 700;
-const c = (name: string) => `var(--color-${name})`;
-const tone = (hue: Hue) => (shade: Shade) => c(`${hue}-${shade}`);
+export type Hue = 'indigo' | 'sky' | 'rose' | 'amber' | 'violet' | 'emerald';
+export type Shade = 50 | 100 | 200 | 400 | 500 | 700;
+export const c = (name: string) => `var(--color-${name})`;
+export const tone = (hue: Hue) => (shade: Shade) => c(`${hue}-${shade}`);
 
 /** Màu cố định (không đổi theo chế độ Tối) cho thân máy ảnh, nút ComfyUI, huy hiệu "cr". */
-const DARK = '#1e293b';
-const DARKER = '#0f172a';
+export const DARK = '#1e293b';
+export const DARKER = '#0f172a';
 const MONO = 'ui-monospace, SFMono-Regular, Menlo, monospace';
 
 // ---------- Thành phần dùng chung ----------
 
-function Txt({
+export function Txt({
   x,
   y,
   size = 9,
@@ -46,7 +46,7 @@ function Txt({
 }
 
 /** Thẻ nền trắng có bóng đổ nhẹ. */
-function Card({ x, y, w, h, r = 10 }: { x: number; y: number; w: number; h: number; r?: number }) {
+export function Card({ x, y, w, h, r = 10 }: { x: number; y: number; w: number; h: number; r?: number }) {
   return (
     <g>
       <rect x={x + 2} y={y + 4} width={w} height={h} rx={r} fill={c('slate-900')} opacity={0.06} />
@@ -56,7 +56,7 @@ function Card({ x, y, w, h, r = 10 }: { x: number; y: number; w: number; h: numb
 }
 
 /** "Bức ảnh" phong cảnh thu nhỏ (trời, mặt trời, núi). */
-function Photo({ x, y, w, h: hh, k, r = 6 }: { x: number; y: number; w: number; h: number; k: (s: Shade) => string; r?: number }) {
+export function Photo({ x, y, w, h: hh, k, r = 6 }: { x: number; y: number; w: number; h: number; k: (s: Shade) => string; r?: number }) {
   return (
     <g>
       <rect x={x} y={y} width={w} height={hh} rx={r} fill={k(200)} />
@@ -68,7 +68,7 @@ function Photo({ x, y, w, h: hh, k, r = 6 }: { x: number; y: number; w: number; 
 }
 
 /** Nhãn kỹ thuật dạng chip. `bad` = bị xóa (đỏ, gạch ngang), `good` = sạch/giữ lại (xanh). */
-function Chip({ x, y, label, kind = 'bad', strike = false, opacity }: { x: number; y: number; label: string; kind?: 'bad' | 'good'; strike?: boolean; opacity?: number }) {
+export function Chip({ x, y, label, kind = 'bad', strike = false, opacity }: { x: number; y: number; label: string; kind?: 'bad' | 'good'; strike?: boolean; opacity?: number }) {
   const w = label.length * 5.6 + 12;
   const [bg, fg] = kind === 'bad' ? [c('rose-100'), c('rose-700')] : [c('emerald-100'), c('emerald-700')];
   return (
@@ -83,7 +83,7 @@ function Chip({ x, y, label, kind = 'bad', strike = false, opacity }: { x: numbe
 }
 
 /** Huy hiệu tròn có dấu tích (đã sạch). */
-function Check({ x, y, r = 11 }: { x: number; y: number; r?: number }) {
+export function Check({ x, y, r = 11 }: { x: number; y: number; r?: number }) {
   return (
     <g>
       <circle cx={x} cy={y} r={r + 2.5} fill={c('surface')} />
@@ -94,7 +94,7 @@ function Check({ x, y, r = 11 }: { x: number; y: number; r?: number }) {
 }
 
 /** Huy hiệu tròn có dấu X (bị xóa / bị chặn). */
-function Cross({ x, y, r = 11 }: { x: number; y: number; r?: number }) {
+export function Cross({ x, y, r = 11 }: { x: number; y: number; r?: number }) {
   const d = r * 0.36;
   return (
     <g>
@@ -106,13 +106,13 @@ function Cross({ x, y, r = 11 }: { x: number; y: number; r?: number }) {
 }
 
 /** Ngôi sao lấp lánh 4 cánh. */
-function Sparkle({ x, y, s = 8, fill }: { x: number; y: number; s?: number; fill: string }) {
+export function Sparkle({ x, y, s = 8, fill }: { x: number; y: number; s?: number; fill: string }) {
   const q = s * 0.28;
   return <path d={`M${x} ${y - s} Q${x + q} ${y - q} ${x + s} ${y} Q${x + q} ${y + q} ${x} ${y + s} Q${x - q} ${y + q} ${x - s} ${y} Q${x - q} ${y - q} ${x} ${y - s} Z`} fill={fill} />;
 }
 
 /** Ghim bản đồ. */
-function Pin({ x, y, s = 1, fill = '#f43f5e' }: { x: number; y: number; s?: number; fill?: string }) {
+export function Pin({ x, y, s = 1, fill = '#f43f5e' }: { x: number; y: number; s?: number; fill?: string }) {
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`}>
       <path d="M0 16 C-4 10 -11 4 -11 -3 A11 11 0 1 1 11 -3 C11 4 4 10 0 16 Z" fill={fill} />
@@ -122,7 +122,7 @@ function Pin({ x, y, s = 1, fill = '#f43f5e' }: { x: number; y: number; s?: numb
 }
 
 /** Nền: màu nhạt của tông + hai vòng tròn trang trí. */
-function Backdrop({ k, children }: { k: (s: Shade) => string; children?: ReactNode }) {
+export function Backdrop({ k, children }: { k: (s: Shade) => string; children?: ReactNode }) {
   return (
     <g>
       <rect width={320} height={180} fill={k(50)} />

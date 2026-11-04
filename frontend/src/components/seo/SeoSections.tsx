@@ -560,11 +560,7 @@ export function Disclaimer() {
   ];
   return (
     <section id={HOME_SECTIONS.disclaimer} className="relative isolate scroll-mt-20 overflow-hidden py-16 sm:py-20">
-      {/* Nền chấm mờ dần ra rìa + hai quầng màu nhạt phía sau các thẻ. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(var(--color-slate-300)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)] bg-[size:22px_22px] opacity-60"
-      />
+      {/* Hai quầng màu nhạt phía sau các thẻ. */}
       <div aria-hidden="true" className="pointer-events-none absolute top-1/3 -left-24 -z-10 h-72 w-72 rounded-full bg-emerald-200/30 blur-3xl" />
       <div aria-hidden="true" className="pointer-events-none absolute -right-24 bottom-0 -z-10 h-72 w-72 rounded-full bg-amber-200/30 blur-3xl" />
 

@@ -18,9 +18,9 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
   const home = useHref(HOME);
   return (
     <Link to={home} className="flex shrink-0 items-center gap-2" aria-label={SITE.name} dir="ltr">
-      <BrandMark className="h-8 w-8 shrink-0" />
+      <BrandMark className="h-9 w-9 shrink-0" />
       <span
-        className={`font-brand text-[1.05rem] font-extrabold tracking-[-0.02em] ${inverted ? 'text-white' : 'hidden text-slate-900 sm:inline'}`}
+        className={`font-brand text-[1.15rem] font-extrabold tracking-[-0.02em] ${inverted ? 'text-white' : 'hidden text-slate-900 sm:inline'}`}
       >
         All Metadata{' '}
         <span
@@ -61,7 +61,7 @@ function MobileNav() {
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={t.header.menu}
-        className="grid h-9 w-9 place-items-center rounded-lg border border-slate-200 bg-surface text-slate-700 hover:bg-slate-50"
+        className="grid h-10 w-10 place-items-center rounded-lg border border-slate-200 bg-surface text-slate-700 hover:bg-slate-50"
       >
         <Icon name={open ? 'x' : 'menu'} className="h-5 w-5" />
       </button>
@@ -95,7 +95,7 @@ export function SiteHeader() {
   const navHref = useNavHref();
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-surface/90 pt-[env(safe-area-inset-top,0px)] backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
+      <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
         <Logo />
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
@@ -103,7 +103,7 @@ export function SiteHeader() {
               <li key={n.section}>
                 <Link
                   to={navHref(n.section)}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                  className="rounded-lg px-3.5 py-2 text-[0.9375rem] font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                 >
                   {t.header.nav[n.label]}
                 </Link>
